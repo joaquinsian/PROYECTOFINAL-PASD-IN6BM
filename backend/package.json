@@ -1,0 +1,11 @@
+{
+  "name": "pasd",
+  "version": "1.0.0",
+  "description": "Proyecto grupal final",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Grupo #2, Joaquín Sián, Jeffry Ordoñez, Luis Morales, Jorge Morataya",
+  "license": "ISC"
+}
