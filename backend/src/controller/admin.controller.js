@@ -41,6 +41,24 @@ async function adminDefault(nombre, usuario, dpi, password, rol){
     }
 }
 
+//Función para obtener a todos los usuarios
+async function usuarios(req, res){
+    if(req.user.rol === "Admin"){
+        await Usuario.find((err, usuarios) => {
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(!usuarios){
+                return res.status(500).send({mensaje: "No se ha podido obtener los usuarios"})
+            }else{
+                return res.status(200).send({usuarios})
+            }
+        })
+    }else{
+        return res.status(500).send({mensaje: "No tiene el rol de autorización"})
+    }
+}
+
 module.exports = {
-    adminDefault
+    adminDefault,
+    usuarios
 }
