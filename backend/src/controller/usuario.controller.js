@@ -10,6 +10,8 @@ async function registro(req, res){
         usuarioModel.nombre = params.nombre;
         usuarioModel.usuario = params.usuario;
         usuarioModel.dpi = params.dpi;
+        usuarioModel.email = params.email;
+        usuarioModel.celular = params.celular
         usuarioModel.rol = "Paciente";
 
         await Usuario.find({$or: [

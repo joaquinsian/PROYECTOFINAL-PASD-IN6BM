@@ -10,6 +10,7 @@ const morgan = require('morgan')
 app.use(cors());
 
 //Importación de rutas
+const Admin_rutas = require('./src/routes/admin.rutas')
 const Login_rutas = require('./src/routes/login.rutas')
 const Usuario_rutas = require('./src/routes/usuario.rutas')
 
@@ -20,6 +21,7 @@ app.use(bodyParser.json());
 app.use(morgan("dev"));
 
 //Utilización de las rutas
+app.use('/PASD', Admin_rutas)
 app.use('/PASD', Login_rutas)
 app.use('/PASD', Usuario_rutas)
 

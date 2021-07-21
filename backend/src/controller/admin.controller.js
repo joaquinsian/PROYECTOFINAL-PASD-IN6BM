@@ -3,13 +3,15 @@ const Usuario = require('../models/usuario.model')
 const bcrypt = require('bcrypt-nodejs')
 
 //Función para crear un administrador
-async function adminDefault(nombre, usuario, dpi, password, rol){
+async function adminDefault(nombre, usuario, dpi, email, celular, password, rol){
     var usuarioModel = new Usuario();
 
     if(nombre && usuario && dpi && password && rol){
         usuarioModel.nombre = nombre;
         usuarioModel.usuario = usuario;
         usuarioModel.dpi = dpi;
+        usuarioModel.email = email;
+        usuarioModel.celular = celular;
         usuarioModel.password = password;
         usuarioModel.rol = rol;
 
@@ -41,10 +43,10 @@ async function adminDefault(nombre, usuario, dpi, password, rol){
     }
 }
 
-//Función para obtener a todos los usuarios
+//Función para obtener a todos los usuarios pacientes
 async function usuarios(req, res){
     if(req.user.rol === "Admin"){
-        await Usuario.find((err, usuarios) => {
+        await Usuario.find({rol: "Paciente"}, (err, usuarios) => {
             if(err){
                 return res.status(500).send({mensaje: "Error en la petición"})
             }else if(!usuarios){

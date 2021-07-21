@@ -6,6 +6,8 @@ var UsuarioSchema = Schema({
     nombre: String,
     usuario: String,
     dpi: String,
+    email: String,
+    celular: String,
     password: String,
     rol: String
 })
