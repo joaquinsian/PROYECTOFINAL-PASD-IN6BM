@@ -1,0 +1,23 @@
+{
+  "name": "proyectofinal-pasd-in6bm",
+  "version": "1.0.0",
+  "description": "proyecto final ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/joaquinsian/PROYECTOFINAL-PASD-IN6BM.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/joaquinsian/PROYECTOFINAL-PASD-IN6BM/issues"
+  },
+  "homepage": "https://github.com/joaquinsian/PROYECTOFINAL-PASD-IN6BM#readme",
+  "dependencies": {
+    "module": "^1.2.5",
+    "node": "^16.5.0"
+  }
+}

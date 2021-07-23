@@ -17,4 +17,4 @@ mongoose.connect('mongodb://u8bsudrljfhbawnh3ikc:JJ0nZ2I0d1ekYja6wjgQ@bqulrrsnav
 //Administrador por default
 const crearAdmin = () => {
     adminController.adminDefault("PASD", "pasd", "pasd", "pasd@gmail.com", "41968661", "123", "Admin");
-}
+} 
