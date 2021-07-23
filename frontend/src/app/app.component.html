@@ -1,33 +1,46 @@
-<nav class="navbar">
-    <div class="main-container">
-        <img id="navbar-logo" src="../assets/img/logo_grupo_3.png" alt="logo.png">
-        <div class="f-right">
-            <a class="navbar-option" href="#">Inicio</a>
-            <a class="navbar-option" href="#">Iniciar Sesión</a>
-        </div>
-    </div>
-</nav>
-
-<div class="div-for-footer">
-    <router-outlet></router-outlet>
-</div>
-
-<footer>
-    <div style="width: 100%; background-color: #009432" class="grid-layout-2">
-        <div style="text-align: right;">
-            <img style="width: 200px;" src="../assets/img/pasd_white.png" alt="logo_footer.png">
-        </div>
-        <div>
-            <div style="margin-bottom:5px">
-                <a class="footer-icon" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a>
-                <a class="footer-icon" href="https://twitter.com" target="_blank"><i class="fab fa-twitter-square"></i></a>
-                <a class="footer-icon" href="https://youtube.com" target="_blank"><i class="fab fa-youtube-square"></i></a>
+<div class="mPTgsQ">
+    <nav class="navbar">
+        <div class="main-container">
+            <a routerLink="/">
+                <img id="navbar-logo" src="../assets/img/logo_grupo_3.png" alt="logo.png">
+            </a>
+            <div class="f-right">
+                <a class="navbar-option" routerLink="/">Inicio</a>
+                <a class="navbar-option" href="#">Iniciar Sesión</a>
+                <a class="navbar-option" href="#">Registrarse</a>
             </div>
-            <p style="margin-bottom:5px;color:white">+(502) 2828-8282</p>
-            <p style="margin-bottom:5px; color:white">pasd@gmail.com</p>
         </div>
+    </nav>
+
+    <div class="main-container" style="padding: 40px 20px">
+        <router-outlet></router-outlet>
+
     </div>
-    <div style="text-align: center; background-color: #006266">
-        <p style="color:white;">&copy;2021 PASD - Todos los derechos reservados</p>
-    </div>
-</footer>
+
+    <footer>
+        <div style="width: 100%; background-color: #013220">
+            <div id="footer-container" style="padding: 20px 0;" class="grid-layout-2">
+                <div id="footer-left">
+                    <div style="width: fit-content;">
+                        <img id="footer-logo" src="../assets/img/pasd_white.png" alt="logo_footer.png">
+                    </div>
+
+                </div>
+                <div id="footer-right">
+                    <div>
+                        <div style="margin-bottom:5px">
+                            <a class="footer-icon" href="https://facebook.com" target="_blank"><i class="fab fa-facebook-square"></i></a>
+                            <a class="footer-icon" href="https://twitter.com" target="_blank"><i class="fab fa-twitter-square"></i></a>
+                            <a class="footer-icon" href="https://youtube.com" target="_blank"><i class="fab fa-youtube-square"></i></a>
+                        </div>
+                        <p style="margin-bottom:5px;color:white">+(502) 2828-8282</p>
+                        <p style="margin-bottom:5px; color:white">pasd@gmail.com</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="text-align: center; background-color: #013220; padding:15px 0">
+            <p style="color:white;">&copy;2021 PASD - Todos los derechos reservados</p>
+        </div>
+    </footer>
+</div>
