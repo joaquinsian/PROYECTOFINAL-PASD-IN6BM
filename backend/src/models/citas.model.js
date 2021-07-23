@@ -6,7 +6,7 @@ var Schema = mongoose.Schema
 var CitasSchema = Schema({
     usuario: String,
     doctor: String,
-    fecha_de_cita: Date
+    fecha_de_cita: String
 })
 
 module.exports = mongoose.model('citas', CitasSchema)
