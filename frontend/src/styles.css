@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Rowdies:wght@300&display=swap');
 * {
     margin: 0;
     box-sizing: border-box;
@@ -36,7 +37,7 @@
 #navbar-logo {
     display: inline-block;
     width: 80px;
-    margin-top: 8px;
+    margin-top: 9px;
     margin-left: 20px;
 }
 
@@ -51,7 +52,7 @@
 
 .footer-icon {
     color: white;
-    font-size: 48px;
+    font-size: 36px;
     margin-right: 10px;
 }
 
@@ -69,4 +70,127 @@
 
 .m-b-40 {
     margin-top: 40px
+}
+
+.f-centered-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.f-v-centered-container {
+    display: flex;
+    align-items: center;
+}
+
+.mPTgsQ {
+    min-height: 100vh;
+    padding-bottom: 200px;
+    position: relative;
+}
+
+footer {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+#footer-left {
+    border-right: 2px dotted white;
+    padding: 0 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+}
+
+#footer-right {
+    padding: 0 20px;
+}
+
+#footer-logo {
+    width: 200px
+}
+
+#login-row {
+    background-color: #e0e0e0;
+    border-radius: 15px
+}
+
+.left-login {
+    padding: 60px 0;
+}
+
+.right-login {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' version='1.1' xmlns:xlink='http://www.w3.org/1999/xlink' xmlns:svgjs='http://svgjs.com/svgjs' width='1440' height='560' preserveAspectRatio='none' viewBox='0 0 1440 560'%3e%3cg mask='url(%26quot%3b%23SvgjsMask1002%26quot%3b)' fill='none'%3e%3crect width='1440' height='560' x='0' y='0' fill='rgba(1%2c 50%2c 32%2c 1)'%3e%3c/rect%3e%3cpath d='M0%2c485.132C94.67%2c462.263%2c195.21%2c482.703%2c282.652%2c439.815C376.844%2c393.616%2c464.579%2c327.395%2c512.197%2c233.912C560.751%2c138.592%2c563.799%2c26.996%2c546.725%2c-78.607C529.852%2c-182.97%2c486.361%2c-281.561%2c416.086%2c-360.54C346.384%2c-438.876%2c250.514%2c-482.526%2c153.007%2c-521.094C46.864%2c-563.078%2c-61.054%2c-607.177%2c-174.45%2c-594.121C-299.531%2c-579.719%2c-423.609%2c-533.2%2c-512.891%2c-444.423C-605.333%2c-352.504%2c-687.059%2c-226.719%2c-674.431%2c-96.968C-662.015%2c30.6%2c-498.496%2c86.85%2c-449.652%2c205.349C-397.646%2c331.521%2c-502.414%2c529.376%2c-386.543%2c601.473C-269.934%2c674.029%2c-133.499%2c517.381%2c0%2c485.132' fill='%2301281a'%3e%3c/path%3e%3cpath d='M1440 1145.147C1547.044 1133.883 1619.924 1038.218 1704.7649999999999 971.982 1781.437 912.124 1857.9 856.197 1912.8890000000001 775.961 1976.652 682.922 2065.446 583.999 2046.917 472.73900000000003 2028.38 361.43100000000004 1904.7350000000001 305.692 1821.825 229.147 1748.587 161.531 1686.113 75.42399999999998 1589.595 50.52600000000001 1494.221 25.923000000000002 1398.956 70.79500000000002 1303.599 95.46199999999999 1204.826 121.01299999999998 1099.425 131.48200000000003 1021.604 197.457 937.3879999999999 268.854 857.389 365.493 854.885 475.873 852.412 584.868 959.597 659.64 1008.913 756.871 1055.5720000000001 848.864 1060.184 962.713 1136.828 1031.745 1218.656 1105.4470000000001 1330.479 1156.672 1440 1145.147' fill='%23013c26'%3e%3c/path%3e%3c/g%3e%3cdefs%3e%3cmask id='SvgjsMask1002'%3e%3crect width='1440' height='560' fill='white'%3e%3c/rect%3e%3c/mask%3e%3c/defs%3e%3c/svg%3e");
+    background-size: cover;
+    border-radius: 15px;
+    padding: 60px 12%;
+}
+
+.title-form {
+    font-size: 40px;
+    color: #013220;
+}
+
+.input-field {
+    font-size: 16px;
+    padding: 10px 12px;
+    border-radius: 5px;
+    border: 1px solid #eee;
+    outline: none;
+    transition: .2s ease all;
+}
+
+.input-field:focus {
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+    background-color: #013220;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s ease all;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #075035;
+}
+
+.w-100 {
+    width: 100%
+}
+
+.form-div {
+    margin-bottom: 15px;
+}
+
+.form-with-title-container {
+    width: 75%;
+}
+
+@media screen and (max-width: 880px) {
+    .left-login {
+        padding: 40px 0;
+    }
+    .grid-layout-2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+    #footer-left {
+        border-right: none;
+        justify-content: center;
+    }
+    #footer-right {
+        padding-top: 20px;
+        display: flex;
+        justify-content: center;
+    }
+    #login-row {
+        margin-bottom: 80px;
+    }
 }
