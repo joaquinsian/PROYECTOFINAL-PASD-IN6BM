@@ -6,8 +6,13 @@
             </a>
             <div class="f-right">
                 <a class="navbar-option" routerLink="/">Inicio</a>
-                <a class="navbar-option" routerLink="/signin">Iniciar Sesión</a>
-                <a class="navbar-option" routerLink="/signup">Registrarse</a>
+                <ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
+                    <a class="navbar-option" routerLink="/signin">Iniciar Sesión</a>
+                    <a class="navbar-option" routerLink="/signup">Registrarse</a>
+                </ng-container>
+                <ng-template #loggedIn>
+                    <a class="navbar-option" style="cursor: pointer;" (click)="loginService.logout()">Cerrar Sesión</a>
+                </ng-template>
             </div>
         </div>
     </nav>

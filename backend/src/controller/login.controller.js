@@ -3,26 +3,26 @@ const bcrypt = require('bcrypt-nodejs')
 const jwt = require('../services/jwt')
 
 //Función para logear
-async function login(req, res){
+async function login(req, res) {
     var params = req.body;
-    await Usuario.findOne({usuario: params.usuario, dpi: params.dpi}, (err, usuarioVisto) => {
-        if(err){
-            return res.status(500).send({mensaje: "Error en la petición"})
-        }else if(usuarioVisto){
+    await Usuario.findOne({ usuario: params.usuario }, (err, usuarioVisto) => {
+        if (err) {
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        } else if (usuarioVisto) {
             bcrypt.compare(params.password, usuarioVisto.password, (err, passCorrect) => {
-                if(passCorrect){
-                    if(params.getToken === "true"){
-                        return res.status(200).send({token: jwt.createToken(usuarioVisto)})
-                    }else{
+                if (passCorrect) {
+                    if (params.getToken === true) {
+                        return res.status(200).send({ token: jwt.createToken(usuarioVisto) })
+                    } else {
                         usuarioVisto.password = undefined;
-                        return res.status(200).send({usuarioVisto})
+                        return res.status(200).send({ usuarioVisto })
                     }
-                }else{
-                    return res.status(500).send({mensaje: "La contraseña no coincide"})
+                } else {
+                    return res.status(500).send({ mensaje: "La contraseña no coincide" })
                 }
             })
-        }else{
-            return res.status(500).send({mensaje: "El usuario no existe"})
+        } else {
+            return res.status(500).send({ mensaje: "El usuario no existe" })
         }
     })
 }

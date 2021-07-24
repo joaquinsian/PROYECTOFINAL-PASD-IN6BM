@@ -4,14 +4,14 @@
             <div style="text-align:center">
                 <h2 class="title-form m-b-20">Iniciar Sesión</h2>
             </div>
-            <form action="#" method="post">
+            <form (ngSubmit)="signIn()" method="post" ngNativeValidate>
                 <div class="form-div">
                     <h5>Nombre de Usuario</h5>
-                    <input class="input-field w-100" type="text" placeholder="Username" />
+                    <input [(ngModel)]="user.usuario" name="usuario" minlength="4" required="required" class="input-field w-100" type="text" placeholder="Username" />
                 </div>
                 <div class="form-div">
                     <h5>Contraseña</h5>
-                    <input class="input-field w-100" type="password" placeholder="Password" />
+                    <input [(ngModel)]="user.password" minlength="4" name="password" required="required" class="input-field w-100" type="password" placeholder="Password" />
                 </div>
                 <input class="btn w-100" type="submit" value="Iniciar Sesión">
             </form>

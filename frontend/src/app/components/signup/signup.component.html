@@ -4,31 +4,31 @@
             <div style="text-align:center">
                 <h2 class="title-form m-b-20">Registrarse</h2>
             </div>
-            <form action="#" method="post">
+            <form (ngSubmit)="signUp()" method="POST" ngNativeValidate>
                 <div class="form-div">
                     <h5>Nombre</h5>
-                    <input class="input-field w-100" type="text" placeholder="Name" />
+                    <input required="required" minlength="4" name="nombre" [(ngModel)]="user.nombre" class="input-field w-100" type="text" placeholder="Name" />
                 </div>
                 <div class="form-div">
                     <h5>Celular</h5>
-                    <input class="input-field w-100" type="text" placeholder="ej. 38485790" />
+                    <input required="required" minlength="4" name="celular" [(ngModel)]="user.celular" class="input-field w-100" type="number" placeholder="ej. 38485790" />
                 </div>
                 <div class="form-div">
                     <h5>Dpi</h5>
-                    <input class="input-field w-100" type="text" placeholder="ej. 2019047" />
+                    <input required="required" minlength="4" name="dpi" [(ngModel)]="user.dpi" class="input-field w-100" type="number" placeholder="ej. 2019047" />
                 </div>
                 <div class="form-div">
                     <h5>Email</h5>
-                    <input class="input-field w-100" type="text" placeholder="example@domain.com" />
+                    <input required="required" minlength="4" name="email" [(ngModel)]="user.email" class="input-field w-100" type="email" placeholder="example@domain.com" />
                 </div>
                 <hr style="margin-bottom: 10px;">
                 <div class="form-div">
                     <h5>Nombre de Usuario</h5>
-                    <input class="input-field w-100" type="text" placeholder="Username" />
+                    <input required="required" minlength="4" name="usuario" [(ngModel)]="user.usuario" class="input-field w-100" type="text" placeholder="Username" />
                 </div>
                 <div class="form-div">
                     <h5>Contraseña</h5>
-                    <input class="input-field w-100" type="password" placeholder="Password" />
+                    <input required="required" minlength="4" name="password" [(ngModel)]="user.password" class="input-field w-100" type="password" placeholder="Password" />
                 </div>
                 <input class="btn w-100" type="submit" value="Registrarse">
             </form>
