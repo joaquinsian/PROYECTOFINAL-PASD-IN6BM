@@ -7,8 +7,8 @@ function crearCitas(req, res){
     var modelocitas = new Citas();
     var params = req.body;
 
-    if (params.usuario && params.doctor && params.fecha_de_cita) {
-        modelocitas.usuario = params.usuario;
+    if (params.doctor && params.fecha_de_cita) {
+
         modelocitas.doctor = params.doctor;
         modelocitas.fecha_de_cita = params.fecha_de_cita;
         
