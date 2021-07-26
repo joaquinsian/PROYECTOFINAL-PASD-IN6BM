@@ -1,5 +1,6 @@
 'use strict'
 const Usuario = require('../models/usuario.model')
+const Datos_Doctor = require('../models/datos_doctor.model')
 const bcrypt = require('bcrypt-nodejs')
 
 //Función para crear un administrador
@@ -118,10 +119,29 @@ async function eliminarUsuario(req, res){
     }
 }
 
+//Función para obtener las solicitudes de doctor pendientes
+async function solicitudPendiente(req, res){
+    if(req.user.rol === "Admin"){
+        await Datos_Doctor.find({solicitud: false}).populate('usuario').exec((err, pendientes) => {
+            if(err){
+                console.log(err);
+                return res.status(500).send({mensaje: "Error en petición"})
+            }else if(!pendientes){
+                return res.status(500).send({mensaje: "No se ha podido obtener las solicitudes pendientes"})
+            }else{
+                return res.status(200).send({pendientes})
+            }
+        })
+    }else{
+        return res.status(500).send({mensaje: "No tiene el rol de autorización"})
+    }
+}
+
 module.exports = {
     adminDefault,
     obtenerUsuarioId,
     usuariosPacientes,
     editarUsuario,
-    eliminarUsuario
+    eliminarUsuario,
+    solicitudPendiente
 }

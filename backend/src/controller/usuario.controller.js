@@ -1,5 +1,6 @@
 'use strict'
 const Usuario = require('../models/usuario.model')
+const Datos_Doctor = require('../models/datos_doctor.model')
 const bcrypt = require('bcrypt-nodejs')
 
 //Función para registro
@@ -93,9 +94,45 @@ async function usuarioId(req, res){
     })
 }
 
+//Función para solicitar ser doctor
+async function solicitudDoctor(req, res){
+    var modelDoctor = new Datos_Doctor();
+    var params = req.body;
+    if(params.foto && params.hospital && params.especialidad){
+        modelDoctor.foto = params.foto;
+        modelDoctor.hospital = params.hospital;
+        modelDoctor.especialidad = params.especialidad;
+        modelDoctor.solicitud = false;
+        modelDoctor.usuario = req.user.sub;
+
+        await Datos_Doctor.find({$or: [
+            {foto: modelDoctor.foto}
+        ]}).exec((err, doctorVisto) => {
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(doctorVisto && doctorVisto.length >= 1){
+                returnres.status(500).send({mensaje: "Ya fue enviada la solicitud"}) 
+            }else{
+                modelDoctor.save((err, doctorNuevo) => {
+                    if(err){
+                        return res.status(500).send({mensaje: "Error en la petición"})
+                    }else if(!doctorNuevo){
+                        return res.status(500).send({mensaje: "No se ha podido guardar el doctor"})
+                    }else{
+                        return res.status(200).send({doctorNuevo})
+                    }
+                })
+            }
+        })
+    }else{
+        return res.status(500).send({mensaje: "No ha completado todos los parámetros"})
+    }
+}
+
 module.exports = {
     registro,
     editarUsuario,
     eliminarUsuario,
-    usuarioId
+    usuarioId,
+    solicitudDoctor
 }

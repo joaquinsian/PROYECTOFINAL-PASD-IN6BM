@@ -8,5 +8,6 @@ api.get('/usuarios', md_autenticacion.ensureAuth, adminController.usuariosPacien
 api.get('/obtenerUsuario/:idUsuario', md_autenticacion.ensureAuth, adminController.obtenerUsuarioId)
 api.put('/editarUsuario/:idUsuario', md_autenticacion.ensureAuth, adminController.editarUsuario)
 api.delete('/eliminarUsuario/:idUsuario', md_autenticacion.ensureAuth, adminController.eliminarUsuario)
+api.get('/solicitudesPendientes', md_autenticacion.ensureAuth, adminController.solicitudPendiente)
 
 module.exports = api;
