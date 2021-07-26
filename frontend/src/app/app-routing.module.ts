@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GameComponent } from './components/game/game.component';
 
 import { IndexComponent } from './components/index/index.component';
 import { MyUserComponent } from './components/my-user/my-user.component';
@@ -19,6 +20,9 @@ const routes: Routes = [
   },{
     path: "my-user",
     component: MyUserComponent
+  },{
+    path: "game",
+    component: GameComponent
   }
 ];
 

@@ -9,6 +9,7 @@ import { IndexComponent } from './components/index/index.component';
 import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MyUserComponent } from './components/my-user/my-user.component';
+import { GameComponent } from './components/game/game.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { MyUserComponent } from './components/my-user/my-user.component';
     SigninComponent,
     IndexComponent,
     SignupComponent,
-    MyUserComponent
+    MyUserComponent,
+    GameComponent
   ],
   imports: [
     BrowserModule,

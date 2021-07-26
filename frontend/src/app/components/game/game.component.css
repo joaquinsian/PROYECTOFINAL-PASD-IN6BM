@@ -1,0 +1,58 @@
+input[type=radio] {
+    display: none;
+}
+
+.question-container {
+    padding: 50px 8%;
+}
+
+.input-container {
+    position: relative;
+}
+
+.response-button {
+    display: block;
+    padding: 10px 12px;
+    border-radius: 3px;
+    cursor: pointer;
+    background-color: rgb(221, 221, 221);
+    transition: .1s ease all;
+    text-align: center;
+}
+
+.options-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.response-button:hover {
+    background-color: rgba(13, 175, 80, 0.8);
+    color: white;
+}
+
+input[type="radio"]:checked~.response-button {
+    background-color: rgb(13, 175, 80);
+    box-shadow: 0px 0px 20px 3px rgba(46, 204, 113, .3);
+    color: white;
+}
+
+.button-pass {
+    padding: 10px 12px;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+#anterior-button {
+    background-color: transparent;
+    border: 1.5px solid gray;
+    color: gray;
+    transition: .2s ease all;
+    cursor: pointer;
+}
+
+#anterior-button:hover {
+    border: 1.5px solid rgb(161, 161, 161);
+    color: rgb(161, 161, 161);
+}
