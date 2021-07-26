@@ -1,0 +1,8 @@
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+}
+
+#progress-number {
+    font-size: 50px;
+}
