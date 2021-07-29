@@ -3,12 +3,18 @@ const mongoose = require('mongoose')
 var Schema = mongoose.Schema;
 
 var RespuestaDeUsuarioSchema = Schema({
-    pregunta: {
+    usuario: {
         type: Schema.Types.ObjectId,
-        ref: "pregunta"
+        ref: "usuario"
     },
-    respuesta_que_ingreso_el_usuario: String,
-    valido: Boolean
-})
+    respuesta: [{
+        pregunta: {
+            type: Schema.Types.ObjectId,
+            ref: "pregunta"
+        },
+        respuesta: String,
+        valido: Boolean
+    }],
+});
 
 module.exports = mongoose.model('respuesta_de_usuario', RespuestaDeUsuarioSchema);

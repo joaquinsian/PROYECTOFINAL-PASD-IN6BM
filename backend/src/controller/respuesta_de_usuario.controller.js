@@ -17,8 +17,8 @@ async function obtenerRespuestaDeUsuarioPorId(req, res) {
 }
 
 async function crearRespuestaDeUsuario(req, res) {
-    const { pregunta, respuesta, juego } = req.body;
-    const nuevoJuego = new RespuestaDeUsuario({ pregunta, respuesta, juego });
+    const { usuario, respuesta } = req.body;
+    const nuevoJuego = new RespuestaDeUsuario({ usuario, respuesta });
     nuevoJuego.save()
         .then(doc => {
             res.json(doc)
@@ -27,8 +27,8 @@ async function crearRespuestaDeUsuario(req, res) {
 }
 
 async function editarRespuestaDeUsuario(req, res) {
-    const { pregunta, respuesta, juego } = req.body;
-    await RespuestaDeUsuario.findByIdAndUpdate(req.params.id, { pregunta, respuesta, juego })
+    const { usuario, respuesta, valido } = req.body;
+    await RespuestaDeUsuario.findByIdAndUpdate(req.params.id, { usuario, respuesta, valido })
         .then(doc => {
             res.json(doc)
         })

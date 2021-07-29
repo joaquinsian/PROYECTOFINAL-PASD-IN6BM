@@ -17,8 +17,8 @@ async function obtenerPreguntaPorId(req, res) {
 }
 
 async function crearPregunta(req, res) {
-    const { pregunta, respuesta, juego } = req.body;
-    const nuevoJuego = new Pregunta({ pregunta, respuesta, juego });
+    const { numero, pregunta, respuesta, juego } = req.body;
+    const nuevoJuego = new Pregunta({ numero, pregunta, respuesta, juego });
     nuevoJuego.save()
         .then(doc => {
             res.json(doc)

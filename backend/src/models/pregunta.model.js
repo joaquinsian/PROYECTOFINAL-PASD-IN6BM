@@ -6,7 +6,8 @@ var PreguntaSchema = Schema({
     numero: Number,
     pregunta: String,
     respuesta: [{
-        type: String
+        respuesta: String,
+        valida: Boolean
     }],
     juego: {
         type: Schema.Types.ObjectId,

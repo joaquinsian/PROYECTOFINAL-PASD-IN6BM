@@ -14,4 +14,4 @@ var ResultadoUsuarioSchema = Schema({
     resultado: Number
 })
 
-module.exports = mongoose.model('respuesta_de_usuario', ResultadoUsuarioSchema);
+module.exports = mongoose.model('resultado_de_usuario', ResultadoUsuarioSchema);
