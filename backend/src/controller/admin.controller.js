@@ -122,14 +122,51 @@ async function eliminarUsuario(req, res){
 //Función para obtener las solicitudes de doctor pendientes
 async function solicitudPendiente(req, res){
     if(req.user.rol === "Admin"){
-        await Datos_Doctor.find({solicitud: false}).populate('usuario').exec((err, pendientes) => {
+        await Datos_Doctor.find({solicitud: false}).populate('usuario').exec((err, solicitudes) => {
             if(err){
                 console.log(err);
-                return res.status(500).send({mensaje: "Error en petición"})
-            }else if(!pendientes){
-                return res.status(500).send({mensaje: "No se ha podido obtener las solicitudes pendientes"})
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(!solicitudes){
+                return res.status(500).send({mensaje: "No se han podido obtener las solicitudes"})
+            }else if(solicitudes && solicitudes.length >= 1){
+                return res.status(200).send({solicitudes})
             }else{
-                return res.status(200).send({pendientes})
+                return res.status(200).send({mensaje: "No hay solicitudes pendientes"})
+            }
+        })
+    }else{
+        return res.status(500).send({mensaje: "No tiene el rol de autorización"})
+    }
+}
+
+//Función para aceptar o rechazar la solicitud del doctor
+async function aceptarSolicitud(req, res){
+    var idSolicitud = req.params.idSolicitud;
+    var Doc = await Datos_Doctor.findById(idSolicitud);
+    await Datos_Doctor.findByIdAndUpdate(idSolicitud, {solicitud: true}, {new: true}, (err, solicitudAceptada) => {
+        if(err){
+            return res.status(500).send({mensaje: "Error en la petición"})
+        }else if(!solicitudAceptada){
+            return res.status(500).send({mensaje: "No se ha podido aceptar la solicitud"})
+        }else{
+            res.json(solicitudAceptada)
+            Usuario.findByIdAndUpdate(Doc.usuario, {rol: "Doctor"}, {new: true})
+            console.log("Usuario Convertido A doctor");
+        }
+    })
+}
+
+//Función para rechazar solicitud
+async function rechazarSolicitud(req, res){
+    if(req.user.rol === "Admin"){
+        var idSolicitud = req.params.idSolicitud;
+        await Datos_Doctor.findByIdAndDelete(idSolicitud, (err, solicitudRechazada) => {
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(!solicitudRechazada){
+                return res.status(500).send({mensaje: "No se ha podido rechazar la solicitud"})
+            }else{
+                return res.status(200).send({solicitudRechazada})
             }
         })
     }else{
@@ -143,5 +180,7 @@ module.exports = {
     usuariosPacientes,
     editarUsuario,
     eliminarUsuario,
-    solicitudPendiente
+    solicitudPendiente,
+    aceptarSolicitud,
+    rechazarSolicitud
 }

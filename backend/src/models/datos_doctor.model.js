@@ -7,7 +7,7 @@ const Datos_DoctorSchema = Schema({
     hospital: String,
     especialidad: String,
     solicitud: Boolean,
-    usuario: {type: Schema.Types.ObjectId, ref: 'usuarios'}
+    usuario: {type: Schema.Types.ObjectId, ref: 'usuario'}
 })
 
 module.exports = mongoose.model('datos_doctor', Datos_DoctorSchema)

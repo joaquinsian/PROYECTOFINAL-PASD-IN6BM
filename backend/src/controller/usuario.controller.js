@@ -106,12 +106,13 @@ async function solicitudDoctor(req, res){
         modelDoctor.usuario = req.user.sub;
 
         await Datos_Doctor.find({$or: [
-            {foto: modelDoctor.foto}
+            {foto: modelDoctor.foto},
+            {usuario: modelDoctor.usuario}
         ]}).exec((err, doctorVisto) => {
             if(err){
                 return res.status(500).send({mensaje: "Error en la petición"})
             }else if(doctorVisto && doctorVisto.length >= 1){
-                returnres.status(500).send({mensaje: "Ya fue enviada la solicitud"}) 
+                return res.status(500).send({mensaje: "Ya fue enviada la solicitud"}) 
             }else{
                 modelDoctor.save((err, doctorNuevo) => {
                     if(err){
