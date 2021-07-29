@@ -139,6 +139,24 @@ async function solicitudPendiente(req, res){
     }
 }
 
+//Función para obtener la solicitud por id
+async function solicitudId(req, res){
+    if(req.user.rol === "Admin"){
+        var idSolicitud = req.params.idSolicitud;
+        await Datos_Doctor.findById(idSolicitud).populate('usuario').exec((err, solicitud) => {
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(!solicitud){
+                return res.status(500).send({ mensaje: "No se ha podido obtener la solicitud"})
+            }else{
+                return res.status(200).send({solicitud})
+            }
+        })
+    }else{
+        return res.status(500).send({mensaje: "No tiene el rol de autorización"})
+    }
+}
+
 //Función para aceptar o rechazar la solicitud del doctor
 async function aceptarSolicitud(req, res){
     var idSolicitud = req.params.idSolicitud;
@@ -180,6 +198,7 @@ module.exports = {
     usuariosPacientes,
     editarUsuario,
     eliminarUsuario,
+    solicitudId,
     solicitudPendiente,
     aceptarSolicitud,
     rechazarSolicitud

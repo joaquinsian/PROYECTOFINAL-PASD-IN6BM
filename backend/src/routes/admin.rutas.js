@@ -9,6 +9,7 @@ api.get('/obtenerUsuario/:idUsuario', md_autenticacion.ensureAuth, adminControll
 api.put('/editarUsuario/:idUsuario', md_autenticacion.ensureAuth, adminController.editarUsuario)
 api.delete('/eliminarUsuario/:idUsuario', md_autenticacion.ensureAuth, adminController.eliminarUsuario)
 api.get('/solicitudesPendientes', md_autenticacion.ensureAuth, adminController.solicitudPendiente)
+api.get('/solicitudId/:idSolicitud', md_autenticacion.ensureAuth, adminController.solicitudId)
 api.get('/aceptarSolicitud/:idSolicitud', adminController.aceptarSolicitud)
 api.get('/rechazarSolicitud/:idSolicitud', md_autenticacion.ensureAuth, adminController.rechazarSolicitud)
 
