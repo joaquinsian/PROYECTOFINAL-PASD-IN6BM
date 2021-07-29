@@ -5,8 +5,12 @@ var Schema = mongoose.Schema;
 
 var informacionSchema = Schema({
     titulo: String,
-    contenido: String,
-    ImagenPrincipal: String
+    ImagenPrincipal: String,
+    parrafos: {
+        parrafo: String
+    }
+}, {
+    timestamps: true
 })
 
-module.exports = mongoose.model('informacion', informacionSchema) 
+module.exports = mongoose.model('informacion', informacionSchema)

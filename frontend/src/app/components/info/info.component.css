@@ -1,0 +1,37 @@
+.info-div {
+    background-color: #ddd;
+    padding: 80px 6%;
+    border-radius: 20px;
+}
+
+.title-div {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.title-div img {
+    width: 65%;
+    box-shadow: 7px 7px 0px 0px #000;
+}
+
+.title-div h1 {
+    color: #013220;
+    font-size: 50px;
+    margin-top: 20px;
+}
+
+.title-div i {
+    color: rgb(97, 97, 97);
+    font-size: 18px;
+}
+
+.paragraph {
+    font-size: 18px;
+    line-height: 30px;
+}
+
+@media screen and (max-width: 830px) {
+    .title-div img {
+        width: 95%;
+    }
+}

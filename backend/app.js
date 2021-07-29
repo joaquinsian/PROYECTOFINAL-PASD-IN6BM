@@ -5,6 +5,7 @@ const app = express()
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const morgan = require('morgan')
+const initial = require("./src/libs/initialSetup")
 
 //Cabeceras
 app.use(cors());
@@ -32,6 +33,10 @@ app.use("/PASD", require("./src/routes/pregunta.rutas"));
 app.use("/PASD", require("./src/routes/juego.rutas"));
 app.use("/PASD", require("./src/routes/respuesta_de_usuario.rutas"));
 app.use("/PASD", require("./src/routes/resultado_usuario.rutas"))
+
+
+// Configuracion inicial
+initial.ejemploGuardar();
 
 //Exportación
 module.exports = app;

@@ -183,6 +183,46 @@ footer {
     width: 75%;
 }
 
+.navbar-dropdown-button {
+    background-color: transparent;
+    border: none;
+}
+
+.navbar-dropdown-container {
+    display: inline-block;
+    position: relative;
+}
+
+.navbar-dropdown-options-container {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    transform: translateX(-20%);
+    transition: .2s ease all;
+    box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.navbar-dropdown-option {
+    color: black;
+    padding: 14px 18px;
+    text-decoration: none;
+    display: block;
+}
+
+.navbar-dropdown-container:hover .navbar-dropdown-button {
+    color: black
+}
+
+.navbar-dropdown-container:hover .navbar-dropdown-options-container {
+    display: block;
+}
+
+.navbar-dropdown-option:hover {
+    background-color: #ddd;
+}
+
 @media screen and (max-width: 880px) {
     .left-login {
         padding: 40px 0;
