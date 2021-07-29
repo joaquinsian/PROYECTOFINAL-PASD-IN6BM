@@ -11,14 +11,10 @@ app.use(cors());
 
 //Importación de rutas
 const Admin_rutas = require('./src/routes/admin.rutas')
-const Login_rutas = require('./src/routes/login.rutas')
 const Usuario_rutas = require('./src/routes/usuario.rutas')
 const Citas_rutas = require('./src/routes/citas.rutas')
 const Info_rutas = require('./src/routes/informacion.rutas')
-const Admin_rutas = require('./src/routes/admin.rutas');
 const Login_rutas = require('./src/routes/login.rutas');
-const Usuario_rutas = require('./src/routes/usuario.rutas');
-const Citas_rutas = require('./src/routes/citas.rutas');
 
 
 //Middlewares
