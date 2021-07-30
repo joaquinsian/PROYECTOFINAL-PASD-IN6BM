@@ -10,6 +10,7 @@ import { SignupComponent } from './components/signup/signup.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MyUserComponent } from './components/my-user/my-user.component';
 import { GameComponent } from './components/game/game.component';
+import { InfoComponent } from './components/info/info.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { GameComponent } from './components/game/game.component';
     IndexComponent,
     SignupComponent,
     MyUserComponent,
-    GameComponent
+    GameComponent,
+    InfoComponent
   ],
   imports: [
     BrowserModule,

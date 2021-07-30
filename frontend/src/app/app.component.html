@@ -13,6 +13,15 @@
                 <ng-template #loggedIn>
                     <a class="navbar-option" style="cursor: pointer;" (click)="loginService.logout()">Cerrar Sesión</a>
                 </ng-template>
+                <div class="navbar-dropdown-container">
+                    <button class="navbar-option navbar-dropdown-button" routerLink="/signup">Información <i class="fas fa-caret-down"></i></button>
+                    <div class="navbar-dropdown-options-container">
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba">Historia 1</a>
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba2">Historia 2</a>
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba3">Info 1</a>
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba4">Info 2</a>
+                    </div>
+                </div>
             </div>
         </div>
     </nav>
