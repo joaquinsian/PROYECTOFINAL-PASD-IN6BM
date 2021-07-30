@@ -168,10 +168,10 @@ async function aceptarSolicitud(req, res){
             return res.status(500).send({mensaje: "No se ha podido aceptar la solicitud"})
         }else{
             res.json(solicitudAceptada)
-            Usuario.findByIdAndUpdate(Doc.usuario, {rol: "Doctor"}, {new: true})
-            console.log("Usuario Convertido A doctor");
         }
     })
+    await Usuario.findByIdAndUpdate(Doc.usuario, {rol: "Doctor"}, {new: true})
+    console.log("Usuario Convertido A doctor");
 }
 
 //Función para rechazar solicitud
