@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MyUserComponent } from './components/my-user/my-user.component';
 import { GameComponent } from './components/game/game.component';
 import { InfoComponent } from './components/info/info.component';
+import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { InfoComponent } from './components/info/info.component';
     SignupComponent,
     MyUserComponent,
     GameComponent,
-    InfoComponent
+    InfoComponent,
+    GameByIdComponent
   ],
   imports: [
     BrowserModule,
