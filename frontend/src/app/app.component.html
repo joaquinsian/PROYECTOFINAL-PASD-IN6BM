@@ -6,13 +6,6 @@
             </a>
             <div class="f-right">
                 <a class="navbar-option" routerLink="/">Inicio</a>
-                <ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
-                    <a class="navbar-option" routerLink="/signin">Iniciar Sesión</a>
-                    <a class="navbar-option" routerLink="/signup">Registrarse</a>
-                </ng-container>
-                <ng-template #loggedIn>
-                    <a class="navbar-option" style="cursor: pointer;" (click)="loginService.logout()">Cerrar Sesión</a>
-                </ng-template>
                 <div class="navbar-dropdown-container">
                     <button class="navbar-option navbar-dropdown-button" routerLink="/signup">Información <i class="fas fa-caret-down"></i></button>
                     <div class="navbar-dropdown-options-container">
@@ -22,6 +15,20 @@
                         <a class="navbar-dropdown-option" routerLink="/info/prueba4">Info 2</a>
                     </div>
                 </div>
+                <ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
+                    <a class="navbar-option" routerLink="/signin">Iniciar Sesión</a>
+                    <a class="navbar-option" routerLink="/signup">Registrarse</a>
+                </ng-container>
+                <ng-template #loggedIn>
+                    <div class="navbar-dropdown-container">
+                        <button class="navbar-option navbar-dropdown-button" routerLink="/signup">Usuario <i class="fas fa-caret-down"></i></button>
+                        <div class="navbar-dropdown-options-container">
+                            <a class="navbar-dropdown-option" routerLink="/my-user">Mi Usuario</a>
+                            <a class="navbar-dropdown-option" style="cursor: pointer;" (click)="loginService.logout()">Cerrar Sesión</a>
+                        </div>
+                    </div>
+                </ng-template>
+
             </div>
         </div>
     </nav>

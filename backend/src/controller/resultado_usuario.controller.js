@@ -1,5 +1,6 @@
 const ResultadoUsuario = require("../models/resultado_usuario.model");
 const RespuestaDeUsuario = require("../models/respuesta_de_usuario.model");
+const Pregunta = require("../models/pregunta.model")
 
 async function obtenerResultadosUsuario(req, res) {
     await ResultadoUsuario.find()
@@ -29,12 +30,23 @@ async function crearResultadoUsuario(req, res) {
 
 async function agregarResultadoAlFinalizarElJuego(req, res) {
     const idusuario = req.params.id;
-    await RespuestaDeUsuario.find({ usuario: idusuario })
+    const idpregunta = req.params.idpregunta;
+
+    let preguntafinded = await Pregunta.findOne({ _id: idpregunta });
+
+    if (preguntafinded.numero !== 10) {
+        return res.status(400).json({ "error": "No ha finalizado o se saltó la preguntas" })
+    }
+
+    RespuestaDeUsuario.find({ usuario: idusuario })
         .then(doc => {
             if (doc.length === 10) {
                 RespuestaDeUsuario.find({ usuario: idusuario, "respuesta.valido": true })
                     .then(doc2 => {
-                        res.json(doc2.length)
+                        const nuevoResultado = new ResultadoUsuario({ juego: preguntafinded.juego, usuario: idusuario, resultado: doc2.length * 10 });
+                        nuevoResultado.save()
+                            .then(doc3 => res.json(doc3))
+                            .catch(err3 => console.error(err3))
                     })
                     .catch(err2 => console.error(err2));
             } else {
