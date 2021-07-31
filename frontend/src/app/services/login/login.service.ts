@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpClientModule, HttpHeaders } from "@angular/common/http";
+import { HttpClient, HttpHeaders } from "@angular/common/http";
 import { Router } from '@angular/router';
 
 
@@ -19,12 +19,21 @@ export class LoginService {
     return this.http.post<any>(this.URL + "/login", user);
   }
 
+  getIdentity(){
+    if(!sessionStorage.getItem("authorization")) return;
+
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
+    return this.http.get<any>(this.URL + "/obtenerIdentidad", {headers: allheaders});;
+  }
+
   logout() {
     if(sessionStorage.getItem("authorization")){
       sessionStorage.removeItem("authorization");
       this.router.navigate(["/"])
     }
   }
+
 
   loggedIn(): Boolean {
     return !!sessionStorage.getItem("authorization");

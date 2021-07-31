@@ -46,6 +46,11 @@ async function registro(req, res) {
     }
 }
 
+async function obtenerIdentidad(req, res) {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    res.json(x)
+}
+
 async function obtenerUsuarios(req, res) {
     await Usuario.find()
         .then(doc => {
@@ -116,10 +121,12 @@ async function solicitudDoctor(req, res) {
         modelDoctor.especialidad = params.especialidad;
         modelDoctor.solicitud = false;
         modelDoctor.usuario = req.user.sub;
-        await Datos_Doctor.find({$or: [
-            {foto: modelDoctor.foto},
-            {usuario: modelDoctor.usuario}
-        ]}).exec((err, doctorVisto) => {
+        await Datos_Doctor.find({
+            $or: [
+                { foto: modelDoctor.foto },
+                { usuario: modelDoctor.usuario }
+            ]
+        }).exec((err, doctorVisto) => {
             if (err) {
                 return res.status(500).send({ mensaje: "Error en la petición" })
             } else if (doctorVisto && doctorVisto.length >= 1) {
@@ -142,53 +149,55 @@ async function solicitudDoctor(req, res) {
 }
 
 //Función para obtener los doctores
-async function doctores(req, res){
-    await Usuario.find({rol: "Doctor"}, (err, doctores) => {
-        if(err){
+async function doctores(req, res) {
+    await Usuario.find({ rol: "Doctor" }, (err, doctores) => {
+        if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
-        }else if(!doctores){
-            return res.status(500).send({ mensaje: "No se ha podido obtener los doctores"})
-        }else{
-            return res.status(200).send({doctores})
+        } else if (!doctores) {
+            return res.status(500).send({ mensaje: "No se ha podido obtener los doctores" })
+        } else {
+            return res.status(200).send({ doctores })
         }
     })
 }
 
 //Función para elegir doctor
-async function elegirDoctor(req, res){
+async function elegirDoctor(req, res) {
     var rel_doc_userModel = new Rel_Doc_User();
     var params = req.body;
-    if(params.doctor){
+    if (params.doctor) {
         rel_doc_userModel.doctor = params.doctor;
         rel_doc_userModel.usuario = req.user.sub;
         rel_doc_userModel.progreso = null;
 
         var doctor = await Usuario.findById(params.doctor)
-        if(doctor.rol === "Doctor"){
-            await Rel_Doc_User.find({$or: [
-                {usuario: rel_doc_userModel.usuario}
-            ]}).exec((err, relacion) => {
-                if(err){
+        if (doctor.rol === "Doctor") {
+            await Rel_Doc_User.find({
+                $or: [
+                    { usuario: rel_doc_userModel.usuario }
+                ]
+            }).exec((err, relacion) => {
+                if (err) {
                     return res.status(500).send({ mensaje: "Error en la petición" })
-                }else if(relacion && relacion.length >= 1){
-                    return res.status(500).send({ mensaje: "Usted ya tiene un doctor"})
-                }else{
+                } else if (relacion && relacion.length >= 1) {
+                    return res.status(500).send({ mensaje: "Usted ya tiene un doctor" })
+                } else {
                     rel_doc_userModel.save((err, relacionGuardada) => {
-                        if(err){
+                        if (err) {
                             return res.status(500).send({ mensaje: "Error en la petición" })
-                        }else if(!relacionGuardada){
-                            return res.status(500).send({mensaje: "No se pudo registrar la relación"})
-                        }else{
-                            return res.status(200).send({relacionGuardada})
+                        } else if (!relacionGuardada) {
+                            return res.status(500).send({ mensaje: "No se pudo registrar la relación" })
+                        } else {
+                            return res.status(200).send({ relacionGuardada })
                         }
                     })
                 }
             })
-        }else{
-            return res.status(500).send({mensaje: "Doctor no localizado"})
+        } else {
+            return res.status(500).send({ mensaje: "Doctor no localizado" })
         }
-    }else{
-        return res.status(500).send({mensaje: "No ha completado todos los parámetros"})
+    } else {
+        return res.status(500).send({ mensaje: "No ha completado todos los parámetros" })
     }
 }
 
@@ -200,5 +209,6 @@ module.exports = {
     usuarioId,
     solicitudDoctor,
     doctores,
-    elegirDoctor
+    elegirDoctor,
+    obtenerIdentidad
 }

@@ -1,42 +1,50 @@
-<div style="border-radius: 15px;background-color: #ddd" class="grid-layout-2">
-    <div class="question-container" style="border-radius: 15px;">
-        <img style="width: 100%;" src="https://st.depositphotos.com/2251967/4280/i/600/depositphotos_42804635-stock-photo-cocaine-powder-in-lines.jpg" alt="family-png">
-    </div>
-    <div class="question-container" style="border-radius: 15px;background-color: #eee;">
-        <form style="display: block; height: 100%; position: relative; padding-bottom: 70px;" method="POST" (ngSubmit)="submitResponse()">
-            <div>
-                <h1 class="m-b-20" style="font-size: 35px;color:#013220">Pregunta 1</h1>
-                <p class="m-b-20" style="font-size: 18px;">¿Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque arcu ligula, euismod ut sodales quis, condimentum id orci. In semper urna nec mi facilisis, a cursus lectus lobortis. Vestibulum ultricies justo vel ipsum tristique, id
-                    facilisis ?
-                </p>
+<div class="all-games-container">
+    <div>
+        <h1 class="m-b-20">Mis Juegos</h1>
+
+        <div class="game-container grid-10 m-b-20">
+            <div class="game-subcontainer left-container f-centered-container">
+                <i class="icon fas fa-egg"></i>
             </div>
-            <div class="options-container">
-                <label for="pregunta_1" class="input-container">
-                    <input [(ngModel)]="game.response" type="radio" name="response" id="pregunta_1" value="respuesta_1">
-                    <span class="response-button">Cocaína, Heroína y Tabaco</span>
-                </label>
-
-                <label for="pregunta_2" class="input-container">
-                    <input [(ngModel)]="game.response" type="radio" name="response" id="pregunta_2" value="respuesta_2">
-                    <span class="response-button">Lorem</span>
-                </label>
-
-                <label for="pregunta_3" class="input-container">
-                    <input [(ngModel)]="game.response" type="radio" name="response" id="pregunta_3" value="respuesta_3">
-                    <span class="response-button">Ipsum</span>
-                </label>
-
-                <label for="pregunta_4" class="input-container">
-                    <input [(ngModel)]="game.response" type="radio" name="response" id="pregunta_4" value="respuesta_4">
-                    <span class="response-button">Dolor</span>
-                </label>
+            <div class="game-subcontainer right-container">
+                <h2>Lorem Ipsum</h2>
+                <h4>Nivel: Fácil</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quas ullam nulla, minima consectetur eos.</p>
+                <span>Calificación: 100%</span>
+                <div>
+                    <button class="btn start-game" routerLink="/my-user/game/game-by-id">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                </div>
             </div>
+        </div>
 
-            <div class="options-container" style="position: absolute; bottom: 0; left: 0;right: 0">
-                <button id="anterior-button" class="button-pass" type="button"><i class="fas fa-caret-left"></i> Anterior</button>
-                <button class="btn" type="submit">Siguiente <i class="fas fa-caret-right"></i></button>
+        <div class="game-container grid-10 m-b-20">
+            <div class="game-subcontainer left-container f-centered-container">
+                <i class="icon fas fa-egg"></i>
             </div>
+            <div class="game-subcontainer right-container">
+                <h2>Lorem Ipsum</h2>
+                <h4>Nivel: Fácil</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quas ullam nulla, minima consectetur eos.</p>
+                <span>Calificación: 100%</span>
+                <div>
+                    <button class="btn start-game" routerLink="/my-user/game/game-by-id">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                </div>
+            </div>
+        </div>
 
-        </form>
+        <div class="game-container grid-10">
+            <div class="game-subcontainer left-container f-centered-container">
+                <i class="icon fas fa-egg"></i>
+            </div>
+            <div class="game-subcontainer right-container">
+                <h2>Lorem Ipsum</h2>
+                <h4>Nivel: Fácil</h4>
+                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rem quas ullam nulla, minima consectetur eos.</p>
+                <span>Calificación: 100%</span>
+                <div>
+                    <button class="btn start-game" routerLink="/my-user/game/game-by-id">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
