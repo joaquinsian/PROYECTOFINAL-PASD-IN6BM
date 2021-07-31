@@ -12,6 +12,7 @@ import { MyUserComponent } from './components/my-user/my-user.component';
 import { GameComponent } from './components/game/game.component';
 import { InfoComponent } from './components/info/info.component';
 import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
+import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { GameByIdComponent } from './components/game/game-by-id/game-by-id.compo
     MyUserComponent,
     GameComponent,
     InfoComponent,
-    GameByIdComponent
+    GameByIdComponent,
+    AwaitingRequestsComponent
   ],
   imports: [
     BrowserModule,
