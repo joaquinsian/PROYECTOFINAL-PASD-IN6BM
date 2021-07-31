@@ -3,6 +3,7 @@ const Usuario = require('../models/usuario.model')
 const Datos_Doctor = require('../models/datos_doctor.model')
 const Rel_Doc_User = require('../models/rel_doc_user.model')
 const bcrypt = require('bcrypt-nodejs')
+const jwt = require('jwt-simple')
 
 //Función para registro
 async function registro(req, res) {

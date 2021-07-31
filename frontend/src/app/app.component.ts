@@ -9,9 +9,8 @@ import { LoginService } from './services/login/login.service';
 export class AppComponent implements OnInit {
   title = 'frontend';
 
-  constructor(public loginService:LoginService){
+  constructor(public loginService:LoginService){}
 
+  ngOnInit():void{
   }
-
-  ngOnInit():void{}
 }
