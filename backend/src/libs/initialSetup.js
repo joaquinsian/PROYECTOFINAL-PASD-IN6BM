@@ -1,7 +1,7 @@
 'use strict'
 
 const modelojuego = require("../models/juego.model")
-
+const Pregunta = require("../models/pregunta.model")
 async function crearJuego() {
 
     try {
@@ -32,4 +32,36 @@ async function crearJuego() {
 }
 
 
-module.exports = { crearJuego }
+async function agregarPreguntas(req, res){
+    var modelopregunta = new Pregunta ();
+    var params = req.body;
+
+    await Juego.findOne({nivel:facil}).exec((err, save)=>{
+        if(err){
+            return res.status(404).send({mensaje:"error"})
+        }if (save){
+            if(params.numero && params.pregunta && params.respuesta){
+                modelopregunta.numero = params.numero;
+                modelopregunta.pregunta = params.pregunta;
+                modelopregunta.respuesta = params.respuesta;
+               
+                modelopregunta.save((err, guardado)=>{
+                    if(err) 
+                    return res.status(404).send({mensaje:"error alguardar la pregunta"});
+                    if (guardado){
+                        return res.status(200).send({guardado})
+                    }
+                   
+                })
+
+            }
+        }
+    })
+}
+
+
+
+module.exports = {
+    crearJuego, 
+    agregarPreguntas
+}

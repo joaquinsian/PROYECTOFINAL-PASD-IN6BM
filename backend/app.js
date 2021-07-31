@@ -16,6 +16,7 @@ const Usuario_rutas = require('./src/routes/usuario.rutas')
 const Citas_rutas = require('./src/routes/citas.rutas')
 const Info_rutas = require('./src/routes/informacion.rutas')
 const Login_rutas = require('./src/routes/login.rutas');
+const { crearPregunta } = require('./src/controller/pregunta.controller')
 
 
 //Middlewares
@@ -37,6 +38,7 @@ app.use("/PASD", require("./src/routes/resultado_usuario.rutas"))
 
 // Configuracion inicial
 initial.crearJuego();
+initial.agregarPreguntas();
 
 //Exportación
 module.exports = app;
