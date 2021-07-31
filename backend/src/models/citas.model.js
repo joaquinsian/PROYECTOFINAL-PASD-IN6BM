@@ -9,4 +9,4 @@ var CitasSchema = Schema({
     fecha_de_cita: Date
 })
 
-module.exports = mongoose.model('citas', CitasSchema)
+module.exports = mongoose.model('citas', CitasSchema)  
