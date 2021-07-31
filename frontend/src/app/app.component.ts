@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Title } from '@angular/platform-browser';
 import { LoginService } from './services/login/login.service';
 
 @Component({
@@ -8,9 +9,22 @@ import { LoginService } from './services/login/login.service';
 })
 export class AppComponent implements OnInit {
   title = 'frontend';
+  role = "";
 
   constructor(public loginService:LoginService){}
 
   ngOnInit():void{
+    this.getIdentidad();
+  }
+
+  getIdentidad(){
+    this.loginService.getIdentity().subscribe(
+      res => {
+        this.role = res.rol;
+      },
+      err => {
+        console.error(err);
+      }
+    )
   }
 }

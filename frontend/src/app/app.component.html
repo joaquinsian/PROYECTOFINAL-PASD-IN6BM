@@ -20,6 +20,7 @@
                     <a class="navbar-option" routerLink="/signup">Registrarse</a>
                 </ng-container>
                 <ng-template #loggedIn>
+                  <a class="navbar-option" routerLink="/awaiting-requests" *ngIf="role === 'Admin' ">Solicitudes Pendientes</a>
                     <div class="navbar-dropdown-container">
                         <button class="navbar-option navbar-dropdown-button">Usuario <i class="fas fa-caret-down"></i></button>
                         <div class="navbar-dropdown-options-container">
