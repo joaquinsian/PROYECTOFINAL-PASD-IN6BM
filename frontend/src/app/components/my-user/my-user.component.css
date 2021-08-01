@@ -15,7 +15,6 @@
     padding: 20px 22px;
     font-size: 22px;
     cursor: pointer;
-    background-color: #e74c3c;
     color: white;
     border: none;
     width: 100%;
@@ -23,6 +22,18 @@
     transition: .2s ease all;
 }
 
-.button-games:hover {
+.red {
+    background-color: #e74c3c;
+}
+
+.red:hover {
     background-color: #f06c5e;
+}
+
+.blue {
+    background-color: #3498db;
+}
+
+.blue:hover {
+    background-color: #4baae9;
 }

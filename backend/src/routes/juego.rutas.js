@@ -7,6 +7,7 @@ const md_autenticacion = require('../middlewares/authenticated')
 var api = express.Router();
 api.get('/juego', juegoController.obtenerJuegos);
 api.get('/juego/:id', juegoController.obtenerJuegoPorId);
+api.get("/verificarencuesta", juegoController.verificarEncuestaPorUsuario);
 api.post('/juego', juegoController.crearJuego);
 api.put('/juego/:id', juegoController.editarJuego);
 api.delete('/juego/:id', juegoController.eliminarJuego);

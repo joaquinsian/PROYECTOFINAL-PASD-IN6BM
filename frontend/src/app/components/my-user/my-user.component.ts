@@ -4,6 +4,7 @@ import { Title } from '@angular/platform-browser';
 import { UsuarioService } from 'src/app/services/login/usuario.service';
 import { Subscription } from 'rxjs';
 import { ActivatedRoute } from '@angular/router';
+import { GameService } from 'src/app/services/game/game.service';
 
 
 @Component({
@@ -20,11 +21,12 @@ export class MyUserComponent implements OnInit {
     descripcion: ""
   };
   public doc = [];
+  public haspoll = false;
   paramsSubscription: Subscription = new Subscription;
 
-  constructor(private titleService: Title,public loginService:LoginService, private usuarioService: UsuarioService, private route: ActivatedRoute) {
-    this.titleService.setTitle("Mi Usuario");
-  }
+  constructor(private titleService: Title,public loginService:LoginService, private usuarioService: UsuarioService, private route: ActivatedRoute, private gameService: GameService) {
+    this.titleService.setTitle("")
+  };
 
   ngOnInit(): void {
     this.getIdentidad();
@@ -34,9 +36,10 @@ export class MyUserComponent implements OnInit {
     })
     this.getAllData(this.idUser);
     this.obtenerDoctor(this.idUser)
+    this.verifyPoll();
   }
 
-  getIdentidad(){
+  getIdentidad() {
     this.loginService.getIdentity().subscribe(
       res => {
         this.role = res.rol;
@@ -45,7 +48,24 @@ export class MyUserComponent implements OnInit {
         console.error(err);
       }
     );
+  }
 
+  verifyPoll() {
+    this.gameService.verifyPoll().subscribe(
+      res => {
+        switch (res.message) {
+          case "El usuario tiene una encuesta":
+            this.haspoll = true;
+            break;
+          case "El usuario no tiene encuesta":
+            this.haspoll = false;
+            break;
+        }
+
+        console.log("HAS POLL: " + this.haspoll)
+      },
+      err => console.error(err)
+    );
   }
 
   getAllData(newid: any){

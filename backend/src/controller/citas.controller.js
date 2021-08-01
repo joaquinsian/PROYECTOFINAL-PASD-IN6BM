@@ -1,17 +1,18 @@
 'use strict'
 
 const Citas = require('../models/citas.model'); 
+const Usuario = require('../models/usuario.model')
 
 
-
-// crear cita desde el usuario doctor
+// crear cita desde el usuario doctor, funciona
 function crearCitas(req, res) { 
     var modelocitas = new Citas();
     var params = req.body;
+    
 
-    if (params.fecha_de_cita && params.usuario && params.doctor) {
+    if (params.fecha_de_cita && params.usuario) {
         modelocitas.doctor = req.user.sub;
-        modelocitas.usuario = params.usuario;
+        modelocitas.usuario = params.usuario ;
         modelocitas.fecha_de_cita = params.fecha_de_cita;
        
 
@@ -24,17 +25,17 @@ function crearCitas(req, res) {
                 res.status(404).send({ mensaje: 'No se ha podido registrar la cita' })
             }
         })
- 
+  
     }
 
 }
 
-//no me muestra en consola los datos del doctor solamente el id
-//mostrar citas
+
+//mostrar citas, funciona
 async function obtenerCitas(req, res) {
     
 
-   await Citas.find().populate('datos_doctor').exec((err, citas) => {
+   await Citas.find().populate('doctor').exec((err, citas) => {
 
         if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
@@ -60,17 +61,16 @@ async function obtenerCitasID(req, res) {
         } else {
             return res.status(200).send({ cita })
         }
-    })
+    }).populate('doctor')
 }
 
 
 
-//me da error al editar la cita
-//editar cita
+
+//editar cita, funciona con fecha
 async function editarCitas(req, res){
     var idCita = req.params.idCita;
     var params = req.body;
-   
 
     await Citas.findByIdAndUpdate(idCita, params, { new: true }, (err, citaActualizada)=>{
         if (err) {
@@ -86,8 +86,8 @@ async function editarCitas(req, res){
 }
 
 
-//no me deja eliminar cita
-//eliminar cita
+
+//eliminar cita, funciona
 async function eliminarCitas(req, res){
     const idCita =req.params.idCita;
 

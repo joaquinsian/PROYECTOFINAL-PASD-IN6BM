@@ -37,7 +37,13 @@
             </ng-container>
         </div>
         <div class="m-t-20">
-            <button routerLink="/my-user/game" class="button-games"><i class="fas fa-gamepad"></i> Juegos <i class="fas fa-angle-double-right"></i></button>
+            <div [ngSwitch]="haspoll">
+                <div *ngSwitchCase="false">
+                    <h3 class="m-b-20"><i class="fas fa-exclamation-circle"></i> Aún no tienes tu nivel de drogadicción</h3>
+                    <button routerLink="/my-user/initial-poll" class="button-games blue"><i class="fas fa-tasks"></i> Encuesta Inicial <i class="fas fa-angle-double-right"></i></button>
+                </div>
+                <div *ngSwitchCase="true"><button routerLink="/my-user/game" class="button-games red"><i class="fas fa-gamepad"></i> Juegos <i class="fas fa-angle-double-right"></i></button></div>
+            </div>
         </div>
     </div>
 </div>
