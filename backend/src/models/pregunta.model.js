@@ -5,9 +5,11 @@ var Schema = mongoose.Schema;
 var PreguntaSchema = Schema({
     numero: Number,
     pregunta: String,
+    imagen: String,
     respuesta: [{
         respuesta: String,
-        valida: Boolean
+        valida: Boolean,
+        puntaje: Number
     }],
     juego: {
         type: Schema.Types.ObjectId,

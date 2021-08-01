@@ -1,17 +1,19 @@
 'use strict'
 
 const Citas = require('../models/citas.model'); 
-const Usuarios = require('../models/usuario.model')
+
+
 
 // crear cita desde el usuario doctor
-function crearCitas(req, res) {
+function crearCitas(req, res) { 
     var modelocitas = new Citas();
     var params = req.body;
 
-    if (params.fecha_de_cita) {
-        modelocitas.usuario = params.usuario;
+    if (params.fecha_de_cita && params.usuario && params.doctor) {
         modelocitas.doctor = req.user.sub;
+        modelocitas.usuario = params.usuario;
         modelocitas.fecha_de_cita = params.fecha_de_cita;
+       
 
         modelocitas.save((err, citaGuardada) => {
             if (err) return res.status(500).send({ mensaje: 'Error al gurdar la cita' })
@@ -22,14 +24,18 @@ function crearCitas(req, res) {
                 res.status(404).send({ mensaje: 'No se ha podido registrar la cita' })
             }
         })
-
+ 
     }
 
 }
 
+//no me muestra en consola los datos del doctor solamente el id
 //mostrar citas
-function obtenerCitas(req, res) {
-   Citas.find/*().populate('usuario').exec*/((err, citas) => {
+async function obtenerCitas(req, res) {
+    
+
+   await Citas.find().populate('datos_doctor').exec((err, citas) => {
+
         if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
         } else if (!citas) {
@@ -41,43 +47,52 @@ function obtenerCitas(req, res) {
 
 }
 
+
+//obtener cita por id , funcional
+async function obtenerCitasID(req, res) {
+    var idCita = req.params.idCita
+    
+    await Citas.findById(idCita, (err, cita) => {
+        if (err) {
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        } else if (!cita) {
+            return res.status(500).send({ mensaje: "No se ha podido obtener la cita" })
+        } else {
+            return res.status(200).send({ cita })
+        }
+    })
+}
+
+
+
+//me da error al editar la cita
 //editar cita
-function editarCitas(req, res){
-    var idUsuario = req.params.idUsuario;
+async function editarCitas(req, res){
+    var idCita = req.params.idCita;
     var params = req.body;
+   
 
-    
-    
-    if(idUsuario != req.user.sub){
-      
-        return res.status(500).send({mensaje : 'No posees los permisos necesarios para actualizar'})
-    
-    }    
-
-    Citas.findByIdAndUpdate(idCita, params, { new: true }, (err, citaActualizada)=>{
-        if(err) 
-        return res.status(500).send({ mensaje: 'Error en la petición '});
-        
-        if(!citaActualizada) 
-        return res.status(500).send({ mensaje: 'No se ha podido actualizar el Usuario'});
-        
-        return res.status(200).send({ citaActualizado });
+    await Citas.findByIdAndUpdate(idCita, params, { new: true }, (err, citaActualizada)=>{
+        if (err) {
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        } else if (!citaActualizada) {
+            return res.status(500).send({ mensaje: "No se ha podido editar la cita" })
+        } else {
+            return res.status(200).send({ citaActualizada })
+        }
     })
 
     
 }
 
 
-
+//no me deja eliminar cita
 //eliminar cita
-function eliminarCitas(req, res){
-    const idUsuario =req.params.idUsuario;
+async function eliminarCitas(req, res){
+    const idCita =req.params.idCita;
 
-    if(idUsuario!= req.user.sub){
-        return res.status(403).send({ mensaje: 'No posee los permisos para eliminar la cita' })
-    }
 
-    Citas.findByIdAndDelete(idCita, (err, citaEliminada)=>{
+    await Citas.findByIdAndDelete(idCita, (err, citaEliminada)=>{
         if(err) 
         return res.status(500).send({ mensaje: 'Error en la petición de eliminar '});
         
@@ -93,6 +108,7 @@ function eliminarCitas(req, res){
 module.exports = {
     crearCitas,
     obtenerCitas,
+    obtenerCitasID,
     editarCitas,
     eliminarCitas
 }
