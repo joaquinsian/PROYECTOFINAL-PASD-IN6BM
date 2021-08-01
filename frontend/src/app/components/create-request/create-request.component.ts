@@ -32,15 +32,32 @@ export class CreateRequestComponent implements OnInit {
       this.usuarioService.crearSolicitud(sessionStorage.getItem("authorization"), this.request).subscribe(
         res => {
           Swal.fire('Solicitud Enviada con Éxito', 'Espera a que el administrador acepte tu solicitud', 'success')
-          this.router.navigate(['/my-user'])
+          this.request = {
+            foto: "",
+            hospital: "",
+            especialidad: "",
+            usuario: ""
+          }
         },
         err => {
           switch(err.error.mensaje){
             case "Error en la petición":
               Swal.fire('Error :(', 'Error en la petición', 'error')
+              this.request = {
+                foto: "",
+                hospital: "",
+                especialidad: "",
+                usuario: ""
+              }
               break;
             case "Ya fue enviada la solicitud":
               Swal.fire('Error :(', 'Ya envió una solicitud', 'error')
+              this.request = {
+                foto: "",
+                hospital: "",
+                especialidad: "",
+                usuario: ""
+              }
               break;
           }
         }
