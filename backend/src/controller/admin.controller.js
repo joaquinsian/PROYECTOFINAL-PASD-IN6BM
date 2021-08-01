@@ -4,7 +4,7 @@ const Datos_Doctor = require('../models/datos_doctor.model')
 const bcrypt = require('bcrypt-nodejs')
 
 //Función para crear un administrador
-async function adminDefault(nombre, usuario, dpi, email, celular, password, rol){
+async function adminDefault(nombre, usuario, dpi, email, celular, password, foto, descripcion, rol){
     var usuarioModel = new Usuario();
 
     if(nombre && usuario && dpi && password && rol){
@@ -14,6 +14,8 @@ async function adminDefault(nombre, usuario, dpi, email, celular, password, rol)
         usuarioModel.email = email;
         usuarioModel.celular = celular;
         usuarioModel.password = password;
+        usuarioModel.foto = foto;
+        usuarioModel.descripcion = descripcion;
         usuarioModel.rol = rol;
 
         await Usuario.find({$or: [

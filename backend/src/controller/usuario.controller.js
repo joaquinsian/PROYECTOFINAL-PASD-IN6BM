@@ -15,6 +15,8 @@ async function registro(req, res) {
         usuarioModel.dpi = params.dpi;
         usuarioModel.email = params.email;
         usuarioModel.celular = params.celular
+        usuarioModel.foto = params.foto;
+        usuarioModel.descripcion = params.descripcion;
         usuarioModel.rol = "Paciente";
 
         await Usuario.find({

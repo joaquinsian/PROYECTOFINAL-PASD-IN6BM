@@ -9,6 +9,8 @@ var UsuarioSchema = Schema({
     email: String,
     celular: String,
     password: String,
+    foto: String,
+    descripcion: String,
     rol: String
 })
 
