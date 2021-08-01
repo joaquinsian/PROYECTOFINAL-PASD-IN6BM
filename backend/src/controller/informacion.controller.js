@@ -8,10 +8,11 @@ function agregarInformacion(req, res){
     var modeloinfo = new Informacion();
     var params = req.body;
 
-    if(params.titulo && params.contenido && params.ImagenPrincipal){
+    if(params.titulo && params.ImagenPrincipal /*&& params.parrafos*/){
         modeloinfo.titulo = params.titulo;
-        modeloinfo.contenido = params.contenido;
         modeloinfo.ImagenPrincipal = params.ImagenPrincipal;
+        //modeloinfo.parrafos = params.parrafos;
+
 
         modeloinfo.save((err, save)=>{
             if(err){
@@ -27,8 +28,9 @@ function agregarInformacion(req, res){
 
 }
 
-//mostrar informacion
+//mostrar informacion , funciona
 function obtenerInformacion(req, res){
+
     Informacion.find((err, informacionEncontrada) => {
         if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
@@ -37,33 +39,62 @@ function obtenerInformacion(req, res){
         } else {
             return res.status(200).send({ informacionEncontrada })
         }
+    }) 
+
+}
+
+//mostrar informacion por id, funciona
+async function obtenerInformacionID(req, res){
+    var idInfo = req.params.idInfo;
+
+    await Informacion.findById(idInfo, (err, informacionEncontrada) => {
+        if (err) {
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        } else if (!informacionEncontrada) {
+            return res.status(500).send({ mensaje: "No se ha podido obtener la cita" })
+        } else {
+            return res.status(200).send({ informacionEncontrada })
+        }
     })
 
 }
 
-//editar informacion
+//editar informacion, funciona 
 function editarInformacion(req, res){
-    var params = req.body; 
-   /* var idInformacion = req.params.idInformacion;
-    var params = req.body; 
-   
-    //req.user.sub <-- id usuario logeado
-    if(idUsuario != req.user.sub){
-        //return es para detener las peticiones
-        return res.status(500).send({mensaje : 'No posees los permisos necesarios para actualizar este '})
-    
-    }*/
+    var idInfo = req.params.idInfo;
+    var params = req.body;
 
-    Informacion.findByIdAndUpdate(idUsuario, params, { new: true }, (err, usuarioActualizado)=>{
-        if(err) return res.status(500).send({ mensaje: 'Error en la petición '});
-        if(!usuarioActualizado) return res.status(500).send({ mensaje: 'No se ha podido actualizar el Usuario'});
-        return res.status(200).send({ usuarioActualizado });
+    Informacion.findByIdAndUpdate(idInfo, params, { new: true }, (err, InformacionActualizada)=>{
+
+        if (err) {
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        } else if (!InformacionActualizada) {
+            return res.status(500).send({ mensaje: "No se ha podido editar la cita" })
+        } else {
+            return res.status(200).send({ InformacionActualizada })
+        }
     })
 }
 
+//eliminar informacion ,funciona
+async function eliminarInformacion(req, res){
+    const idInfo =req.params.idInfo;
+
+
+    await Informacion.findByIdAndDelete(idInfo, (err, InfoEliminada)=>{
+        if(err) return res.status(500).send({ mensaje: 'Error en la petición de eliminar '});
+        if(!InfoEliminada) return res.status(500).send({ mensaje: 'Error al eliminar la informaciocn' });
+
+        return res.status(200).send({ InfoEliminada });
+    })
+
+}
 
 
 module.exports = {
     agregarInformacion,
-    obtenerInformacion
+    obtenerInformacion,
+    obtenerInformacionID,
+    editarInformacion,
+    eliminarInformacion
 }

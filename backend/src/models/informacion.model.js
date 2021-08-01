@@ -13,4 +13,4 @@ var informacionSchema = Schema({
     timestamps: true
 })
 
-module.exports = mongoose.model('informacion', informacionSchema)
+module.exports = mongoose.model('informacion', informacionSchema) 
