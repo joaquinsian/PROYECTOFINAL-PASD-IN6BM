@@ -10,6 +10,6 @@ api.post('/crearCitas' ,md_autenticacion.ensureAuth, citasController.crearCitas)
 api.get('/obtenerCitas', citasController.obtenerCitas);
 api.get('/obtenerCitasID/:idCita', citasController.obtenerCitasID);
 api.put('/editarCitas/:idCita', citasController.editarCitas);
-api.delete('eliminarCitas/:idCita',  citasController.eliminarCitas);
+api.delete('/eliminarCitas/:idCita',  citasController.eliminarCitas);
 
 module.exports = api; 

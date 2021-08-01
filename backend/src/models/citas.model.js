@@ -5,8 +5,8 @@ var Schema = mongoose.Schema;
 
 var CitasSchema = Schema({
     usuario: {type:Schema.Types.ObjectId, ref: 'usuario'},
-    doctor: {type:Schema.Types.ObjectId, ref: 'datos_doctor'},
+    doctor: {type:Schema.Types.ObjectId, ref: 'usuario'},
     fecha_de_cita: Date
 })
-
+ 
 module.exports = mongoose.model('citas', CitasSchema)  
