@@ -21,6 +21,14 @@
                     <h5>Email</h5>
                     <input required="required" minlength="4" name="email" [(ngModel)]="user.email" class="input-field w-100" type="email" placeholder="example@domain.com" />
                 </div>
+                <div class="form-div">
+                  <h5>Foto</h5>
+                  <input required="required" minlength="4" name="foto" [(ngModel)]="user.foto" class="input-field w-100" type="text" placeholder="http://domain.com/image.png" />
+                </div>
+                <div class="form-div">
+                  <h5>Descripción</h5>
+                  <textarea required="required" minlength="4" name="descripcion" [(ngModel)]="user.descripcion" class="input-field w-100" type="text" placeholder="Descripción"></textarea>
+                </div>
                 <hr style="margin-bottom: 10px;">
                 <div class="form-div">
                     <h5>Nombre de Usuario</h5>

@@ -1,0 +1,30 @@
+<div id="login-row" class="grid-layout-2">
+  <div class="left-login f-centered-container">
+      <div class="form-with-title-container">
+          <div style="text-align:center">
+              <h2 class="title-form m-b-20">Solicitud Para Doctor</h2>
+          </div>
+          <form (ngSubmit)="crearSolicitud();" method="post" ngNativeValidate>
+              <div class="form-div">
+                  <h5>Foto (url)</h5>
+                  <input [(ngModel)]="request.foto" name="foto" required="required" class="input-field w-100" type="text" placeholder="http://domain.com/image.png" />
+              </div>
+              <div class="form-div">
+                  <h5>Hospital</h5>
+                  <input [(ngModel)]="request.hospital" name="hospital" required="required" class="input-field w-100" type="text" placeholder="Hospital donde Elabora" />
+              </div>
+              <div class="form-div">
+                <h5>Especialidad</h5>
+                <input [(ngModel)]="request.especialidad" name="especialidad" required="required" class="input-field w-100" type="text" placeholder="Especialidad" />
+            </div>
+              <input class="btn w-100" type="submit" value="Enviar Solicitud">
+          </form>
+      </div>
+  </div>
+  <div class="right-login">
+      <div style="text-align: center" class="m-b-20">
+          <img style="width: 50%" src="https://www.pngkey.com/png/full/196-1960872_doctors-clipart-doctor-patient-see-doctor-png.png" alt="doctor.png">
+      </div>
+      <h3 style="color: white; font-size: 40px; font-family: 'Rowdies';">Conviértete en uno de muchos voluntarios para salvar vidas con una pronta rehabilitación.</h3>
+  </div>
+</div>

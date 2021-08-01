@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
+import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
 import { GameComponent } from './components/game/game.component';
 
@@ -35,6 +36,9 @@ const routes: Routes = [
   },{
     path: "awaiting-requests",
     component: AwaitingRequestsComponent
+  },{
+    path: "create-request",
+    component: CreateRequestComponent
   }
 ];
 
