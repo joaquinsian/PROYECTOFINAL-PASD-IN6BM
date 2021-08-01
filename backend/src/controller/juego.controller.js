@@ -1,5 +1,7 @@
 const Juego = require("../models/juego.model");
+const ResultadoUsuario = require("../models/resultado_usuario.model");
 const mongoose = require("mongoose");
+const jwt = require('jwt-simple');
 
 async function obtenerJuegos(req, res) {
     await Juego.find()
@@ -7,6 +9,16 @@ async function obtenerJuegos(req, res) {
             res.json(doc)
         })
         .catch(err => console.error(err));
+}
+
+async function verificarEncuestaPorUsuario(req, res) {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    const resultfound = await ResultadoUsuario.findOne({ usuario: x.sub });
+    if (resultfound) {
+        res.json({ "message": "El usuario tiene una encuesta" });
+    } else {
+        res.status(200).json({ message: "El usuario no tiene encuesta" });
+    }
 }
 
 async function obtenerJuegoPorId(req, res) {
@@ -50,6 +62,7 @@ async function eliminarJuego(req, res) {
 module.exports = {
     obtenerJuegos,
     obtenerJuegoPorId,
+    verificarEncuestaPorUsuario,
     crearJuego,
     editarJuego,
     eliminarJuego

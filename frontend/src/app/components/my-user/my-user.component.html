@@ -5,7 +5,7 @@
                 <div style="width: 200px; height: 200px; background-color: gray; border-radius: 50%;"></div>
             </div>
             <div class="m-t-20">
-                <h1>Lorem Ipsum Dolor</h1>
+                <h1>{{user.nombre}}</h1>
             </div>
         </div>
 
@@ -41,7 +41,13 @@
             <p>Al dejar este doctor se perderá toda relación y sus datos juntos</p>
         </div>
         <div class="m-t-20">
-            <button routerLink="/my-user/game" class="button-games"><i class="fas fa-gamepad"></i> Juegos <i class="fas fa-angle-double-right"></i></button>
+            <div [ngSwitch]="haspoll">
+                <div *ngSwitchCase="false">
+                    <h3 class="m-b-20"><i class="fas fa-exclamation-circle"></i> Aún no tienes tu nivel de drogadicción</h3>
+                    <button routerLink="/my-user/initial-poll" class="button-games blue"><i class="fas fa-tasks"></i> Encuesta Inicial <i class="fas fa-angle-double-right"></i></button>
+                </div>
+                <div *ngSwitchCase="true"><button routerLink="/my-user/game" class="button-games red"><i class="fas fa-gamepad"></i> Juegos <i class="fas fa-angle-double-right"></i></button></div>
+            </div>
         </div>
     </div>
 </div>

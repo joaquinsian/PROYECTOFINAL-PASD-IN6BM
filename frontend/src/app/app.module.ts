@@ -14,6 +14,7 @@ import { InfoComponent } from './components/info/info.component';
 import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
 import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
+import { InitialPollComponent } from './components/my-user/initial-poll/initial-poll.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +27,8 @@ import { CreateRequestComponent } from './components/create-request/create-reque
     InfoComponent,
     GameByIdComponent,
     AwaitingRequestsComponent,
-    CreateRequestComponent
+    CreateRequestComponent,
+    InitialPollComponent
   ],
   imports: [
     BrowserModule,
