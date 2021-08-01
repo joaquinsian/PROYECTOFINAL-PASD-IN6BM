@@ -13,6 +13,7 @@ import { GameComponent } from './components/game/game.component';
 import { InfoComponent } from './components/info/info.component';
 import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
 import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
+import { CreateRequestComponent } from './components/create-request/create-request.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiti
     GameComponent,
     InfoComponent,
     GameByIdComponent,
-    AwaitingRequestsComponent
+    AwaitingRequestsComponent,
+    CreateRequestComponent
   ],
   imports: [
     BrowserModule,
