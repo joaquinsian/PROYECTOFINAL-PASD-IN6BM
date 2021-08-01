@@ -22,7 +22,7 @@ const routes: Routes = [
     path: "signup",
     component: SignupComponent
   },{
-    path: "my-user",
+    path: "my-user/:id",
     component: MyUserComponent
   },{
     path: "my-user/game",

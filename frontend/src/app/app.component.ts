@@ -10,6 +10,7 @@ import { LoginService } from './services/login/login.service';
 export class AppComponent implements OnInit {
   title = 'frontend';
   role = "";
+  sub = "";
 
   constructor(public loginService:LoginService){}
 
@@ -20,6 +21,7 @@ export class AppComponent implements OnInit {
   getIdentidad(){
     this.loginService.getIdentity().subscribe(
       res => {
+        this.sub = res.sub;
         this.role = res.rol;
       },
       err => {

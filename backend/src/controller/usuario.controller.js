@@ -203,6 +203,36 @@ async function elegirDoctor(req, res) {
     }
 }
 
+//Función para obtener el la relación de doctor y progreso
+async function obtenerDoctor(req, res){
+    var idUsuario = req.params.idUsuario;
+    await Datos_Doctor.find({usuario: idUsuario}).populate('usuario').exec((err, resultado) => {
+        if(err){
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        }else if(!resultado){
+            console.log(resultado);
+            return res.status(500).send({ mensaje: "No se ha podido obtener la relación"})
+        }else if(resultado && resultado.length === 0){
+            return res.status(200).send({mensaje: "Aún no contiene doctor"})
+        }else{
+            return res.status(200).send({resultado})
+        }
+    })
+}
+
+//Función para obtener la especialidad de los doctores
+async function doctoresDetalle(req, res){
+    await Datos_Doctor.find({solicitud: true}).populate('usuario').exec((err, datos) => {
+        if(err){
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        }else if(!datos){
+            return res.status(500).send({ mensaje: "No se ha podido obtener a los doctores"})
+        }else{
+            return res.status(200).send({datos})
+        }
+    })
+}
+
 module.exports = {
     registro,
     obtenerUsuarios,
@@ -212,5 +242,7 @@ module.exports = {
     solicitudDoctor,
     doctores,
     elegirDoctor,
-    obtenerIdentidad
+    obtenerIdentidad,
+    obtenerDoctor,
+    doctoresDetalle
 }

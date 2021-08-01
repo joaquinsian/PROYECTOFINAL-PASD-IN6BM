@@ -1,4 +1,5 @@
 import { HttpClient, HttpHeaders } from "@angular/common/http";
+import { templateJitUrl } from "@angular/compiler";
 import { Injectable } from "@angular/core";
 import { Router } from "@angular/router";
 
@@ -14,5 +15,13 @@ export class UsuarioService{
     const headers = new HttpHeaders();
     const allheaders = headers.set("authorization", token);
     return this.http.post<any>(this.URL + "/enviarSolicitud", request, {headers: allheaders})
+  }
+
+  obtenerUsuarioId(id: any){
+    return this.http.get<any>(this.URL + "/usuarioId/" + id)
+  }
+
+  obtenerDoctor(id: any){
+    return this.http.get<any>(this.URL + "/obtenerDoctor/"+ id)
   }
 }

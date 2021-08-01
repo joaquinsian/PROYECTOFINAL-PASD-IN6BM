@@ -2,17 +2,20 @@
     <div>
         <div>
             <div>
-                <div style="width: 200px; height: 200px; background-color: gray; border-radius: 50%;"></div>
+                <div>
+                  <img style="width: 200px; height: 200px; background-color: transparent; border-radius: 50%;" src={{user.foto}} alt="">
+                </div>
             </div>
             <div class="m-t-20">
-                <h1>Lorem Ipsum Dolor</h1>
+                <h1>{{user.nombre}}</h1>
             </div>
         </div>
 
         <div class="m-t-20 m-b-20 grid-2" style="position:relative">
             <div>
                 <h3>Progreso:</h3>
-                <h2 id="progress-number">80%</h2>
+                <h2 id="progress-number" *ngIf="doc.length >= 1">{{doc.progreso}}</h2>
+                <h4 id="sin-progress-number" *ngIf="doc.length === 0">Sin progreso</h4>
             </div>
             <div>
                 <h3>Nivel de drogadicción:</h3>
@@ -22,23 +25,16 @@
 
         <div class="m-t-20">
             <ng-container *ngIf="loginService.loggedIn();">
-                <div [ngSwitch]="role">
-                    <div *ngSwitchCase="'Paciente'">
-                        <p style="color: red">Su rol es <b>Paciente</b></p>
-                    </div>
-                    <div *ngSwitchCase="'Admin'">
-                        <p style="color: red">Su rol es <b>Administrador</b></p>
-                    </div>
-                    <div *ngSwitchCase="'Doctor'">
-                        <p style="color: red">Su rol es <b>Doctor</b></p>
-                    </div>
-                    <div *ngSwitchDefault>No está logueado</div>
-                </div>
+                <h3 *ngIf="user.descripcion.length >= 1" >Descripción</h3>
+              <p>{{user.descripcion}}</p>
             </ng-container>
-            <button class="m-t-20 btn" *ngIf="role === 'Paciente' ">Dejar doctor</button>
+            <button class="m-t-20 btn" *ngIf="role === 'Paciente' && doc.length >= 1">Dejar doctor</button>
+            <button class="m-t-20 btn" *ngIf="role === 'Paciente' && doc.length === 0">Agregar Doctor</button>
             <button class="m-t-20 btn" style="margin: 10px;" *ngIf="role === 'Paciente' " routerLink="/create-request">Crear Solicitud Doctor</button>
-            <h3 class="m-t-20"><i class="fas fa-exclamation-circle"></i> Advertencia</h3>
-            <p>Al dejar este doctor se perderá toda relación y sus datos juntos</p>
+            <ng-container *ngIf="doc.length >= 1 && role === 'Paciente'">
+              <h3 class="m-t-20"><i class="fas fa-exclamation-circle"></i> Advertencia</h3>
+              <p>Al dejar este doctor se perderá toda relación y sus datos juntos</p>
+            </ng-container>
         </div>
         <div class="m-t-20">
             <button routerLink="/my-user/game" class="button-games"><i class="fas fa-gamepad"></i> Juegos <i class="fas fa-angle-double-right"></i></button>
