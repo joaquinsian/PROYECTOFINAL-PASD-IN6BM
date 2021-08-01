@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
 import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
@@ -23,7 +24,7 @@ const routes: Routes = [
     path: "signup",
     component: SignupComponent
   },{
-    path: "my-user/:id",
+    path: "my-user",
     component: MyUserComponent
   },{
     path: "my-user/game",
@@ -43,6 +44,9 @@ const routes: Routes = [
   },{
     path: "my-user/initial-poll",
     component: InitialPollComponent
+  },{
+    path: "add-doctor",
+    component: AddDoctorComponent
   }
 ];
 

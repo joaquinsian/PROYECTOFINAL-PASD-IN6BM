@@ -13,79 +13,32 @@ import { GameService } from 'src/app/services/game/game.service';
   styleUrls: ['./my-user.component.css']
 })
 export class MyUserComponent implements OnInit {
-  idUser = "";
-  public role="";
-  public user = {
+
+  user = {
+    _id: "",
     nombre: "",
+    usuario: "",
+    dpi: "",
+    email: "",
+    celular: "",
     foto: "",
-    descripcion: ""
-  };
-  public doc = [];
-  public haspoll = false;
-  paramsSubscription: Subscription = new Subscription;
+    descripcion: "",
+    rol: ""
+  }
 
   constructor(private titleService: Title,public loginService:LoginService, private usuarioService: UsuarioService, private route: ActivatedRoute, private gameService: GameService) {
-    this.titleService.setTitle("")
+    this.titleService.setTitle("Mi usuario")
   };
 
   ngOnInit(): void {
-    this.getIdentidad();
-    this.paramsSubscription = this.route.params.subscribe(params => {
-      this.idUser = params['id'];
-      console.log(this.idUser);
-    })
-    this.getAllData(this.idUser);
-    this.obtenerDoctor(this.idUser)
-    this.verifyPoll();
+    this.obtenerUsuario();
   }
 
-  getIdentidad() {
-    this.loginService.getIdentity().subscribe(
+  obtenerUsuario(){
+    this.usuarioService.usuarioId().subscribe(
       res => {
-        this.role = res.rol;
-      },
-      err => {
-        console.error(err);
-      }
-    );
-  }
-
-  verifyPoll() {
-    this.gameService.verifyPoll().subscribe(
-      res => {
-        switch (res.message) {
-          case "El usuario tiene una encuesta":
-            this.haspoll = true;
-            break;
-          case "El usuario no tiene encuesta":
-            this.haspoll = false;
-            break;
-        }
-
-        console.log("HAS POLL: " + this.haspoll)
-      },
-      err => console.error(err)
-    );
-  }
-
-  getAllData(newid: any){
-    this.usuarioService.obtenerUsuarioId(this.idUser).subscribe(
-      res => {
-        this.user.nombre = res.usuarioEncontrado.nombre;
-        this.user.foto = res.usuarioEncontrado.foto;
-        this.user.descripcion = res.usuarioEncontrado.descripcion;
-      },
-      err => {
-        console.error(err);
-      }
-    )
-  }
-
-  obtenerDoctor(newid: any){
-    this.usuarioService.obtenerDoctor(this.idUser).subscribe(
-      res => {
-        this.doc = res.resultado;
-        console.log(this.doc);
+        this.user = res.usuarioEncontrado;
+        console.log(this.user);
       },
       err => {
         console.error(err);

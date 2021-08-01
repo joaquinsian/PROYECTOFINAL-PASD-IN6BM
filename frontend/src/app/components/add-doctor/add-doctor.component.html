@@ -1,0 +1,43 @@
+<div class="m-container w-100">
+  <h2 class="m-b-30">Elije a tu Doctor!</h2>
+  <table class="table-standard m-table">
+      <thead>
+          <tr>
+            <th>Foto</th>
+              <th>Nombre</th>
+              <th>Celular</th>
+              <th>Email</th>
+              <th>Hospital</th>
+              <th>Especialidad</th>
+          </tr>
+      </thead>
+      <tbody>
+          <tr *ngFor="let x of doctorDetalle">
+              <img style="width: 100px; height:auto;" src={{x.foto}} alt="logo-img">
+              <td> {{x.usuario.nombre}} </td>
+              <td> {{x.usuario.celular}} </td>
+              <td> {{x.usuario.email}} </td>
+              <td> {{x.hospital}} </td>
+              <td> {{x.especialidad}} </td>
+          </tr>
+      </tbody>
+  </table>
+    <div id="login-row" class="form-center w-50 space">
+      <div class="left-login f-centered-container">
+        <div class="form-with-title-container">
+          <div style="text-align:center">
+            <h2 class="title-form m-b-20">Elección de doctor</h2>
+          </div>
+          <form (ngSubmit)="addDoctor();" method="post" ngNativeValidate>
+            <div class="form-div">
+              <h5>Elije tu doctor</h5>
+              <select [(ngModel)]="newDoctor.doctor" name="doctor" required="required" class="input-field w-50 space">
+                <option *ngFor="let x of doctores" [value]="x._id"> {{x.nombre}} </option>
+              </select>
+            </div>
+            <input class="btn w-100" type="submit" value="Enviar Solicitud">
+          </form>
+        </div>
+      </div>
+    </div>
+</div>
