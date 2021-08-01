@@ -14,7 +14,7 @@ api.post('/enviarSolicitud', md_autenticacion.ensureAuth, usuarioController.soli
 api.get('/doctores', usuarioController.doctores)
 api.post('/elegirDoctor', md_autenticacion.ensureAuth, usuarioController.elegirDoctor);
 api.get("/obtenerIdentidad", usuarioController.obtenerIdentidad)
-api.get("/obtenerDoctor/:idUsuario", usuarioController.obtenerDoctor)
+api.get("/obtenerDoctor",md_autenticacion.ensureAuth,usuarioController.obtenerDoctor)
 api.get('/doctoresDetalle', usuarioController.doctoresDetalle)
 
 module.exports = api;

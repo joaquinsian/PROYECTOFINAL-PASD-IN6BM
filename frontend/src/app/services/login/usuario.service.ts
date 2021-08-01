@@ -25,8 +25,12 @@ export class UsuarioService{
     return this.http.get<any>(this.URL + "/usuarioId", {headers: allheaders});;
   }
 
-  obtenerDoctor(id: any){
-    return this.http.get<any>(this.URL + "/obtenerDoctor/"+ id)
+  obtenerDoctor(){
+    if(!sessionStorage.getItem("authorization")) return;
+
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
+    return this.http.get<any>(this.URL + "/obtenerDoctor", {headers: allheaders})
   }
 
   obtenerEspecialidades(){

@@ -219,8 +219,8 @@ async function eliminarMiDoctor(req, res){
 
 //Función para obtener el la relación de doctor y progreso
 async function obtenerDoctor(req, res){
-    var idUsuario = req.params.idUsuario;
-    await Rel_Doc_User.find({usuario: idUsuario}).populate('doctor usuario').exec((err, resultado) => {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Rel_Doc_User.find({usuario: x.sub}).populate('doctor usuario').exec((err, resultado) => {
         if(err){
             return res.status(500).send({ mensaje: "Error en la petición" })
         }else if(!resultado){

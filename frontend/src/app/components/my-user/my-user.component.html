@@ -3,7 +3,8 @@
         <div>
             <div>
                 <div>
-                  <img style="width: 200px; height: 200px; background-color: transparent; border-radius: 50%;">
+                  <img style="width: 200px; height: 200px; background-color: transparent; border-radius: 50%;" *ngIf="user.foto" src={{user.foto}}>
+                  <img style="width: 200px; height: 200px; background-color: black; border-radius: 50%;" *ngIf="!user.foto">
                 </div>
             </div>
             <div class="m-t-20">
@@ -12,11 +13,11 @@
         </div>
 
         <div class="m-t-20 m-b-20 grid-2" style="position:relative">
-            <div>
+            <div *ngFor="let y of doc">
                 <h3>Progreso:</h3>
-                <h2 id="progress-number"></h2>
-                <h4 id="sin-progress-number">Sin progreso</h4>
-                <h1>0%</h1>
+                <h2 id="progress-number" *ngIf="doc.length >= 1">{{doc.progreso}}</h2>
+                <h4 id="sin-progress-number" *ngIf="doc.length === 0">Sin progreso</h4>
+                <h1 *ngIf="y.progreso === null">0%</h1>
             </div>
             <div>
                 <h3>Nivel de drogadicción:</h3>
@@ -27,24 +28,24 @@
         <div class="m-t-20">
             <ng-container *ngIf="loginService.loggedIn();">
                 <h3>Descripción</h3>
-              <p></p>
+              <p>{{user.descripcion}}</p>
             </ng-container>
-            <button class="m-t-20 btn">Dejar doctor</button>
-            <button class="m-t-20 btn" routerLink="/add-doctor">Agregar Doctor</button>
-            <button class="m-t-20 btn" style="margin: 10px;"routerLink="/create-request">Crear Solicitud Doctor</button>
-            <ng-container>
+            <button class="m-t-20 btn" *ngIf="role === 'Paciente' && doc.length >= 1 ">Dejar doctor</button>
+            <button class="m-t-20 btn" *ngIf="role === 'Paciente' && doc.length === 0" routerLink="/add-doctor">Agregar Doctor</button>
+            <button class="m-t-20 btn" style="margin: 10px;" *ngIf="role === 'Paciente' " routerLink="/create-request">Crear Solicitud Doctor</button>
+            <ng-container *ngIf="role === 'Paciente' && doc.length >= 1 ">
               <h3 class="m-t-20"><i class="fas fa-exclamation-circle"></i> Advertencia</h3>
               <p>Al dejar este doctor se perderá toda relación y sus datos juntos</p>
             </ng-container>
         </div>
         <div class="m-t-20">
-            <div>
-                <div>
-                    <h3 class="m-b-20"><i class="fas fa-exclamation-circle"></i> Aún no tienes tu nivel de drogadicción</h3>
-                    <button routerLink="/my-user/initial-poll" class="button-games blue"><i class="fas fa-tasks"></i> Encuesta Inicial <i class="fas fa-angle-double-right"></i></button>
-                </div>
-                <div><button routerLink="/my-user/game" class="button-games red"><i class="fas fa-gamepad"></i> Juegos <i class="fas fa-angle-double-right"></i></button></div>
-            </div>
-        </div>
+          <div>
+              <div>
+                  <h3 class="m-b-20"><i class="fas fa-exclamation-circle"></i> Aún no tienes tu nivel de drogadicción</h3>
+                  <button routerLink="/my-user/initial-poll" class="button-games blue"><i class="fas fa-tasks"></i> Encuesta Inicial <i class="fas fa-angle-double-right"></i></button>
+              </div>
+              <div><button routerLink="/my-user/game" class="button-games red"><i class="fas fa-gamepad"></i> Juegos <i class="fas fa-angle-double-right"></i></button></div>
+          </div>
+      </div>
     </div>
 </div>
