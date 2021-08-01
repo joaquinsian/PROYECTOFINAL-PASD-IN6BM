@@ -7,14 +7,15 @@ var RespuestaDeUsuarioSchema = Schema({
         type: Schema.Types.ObjectId,
         ref: "usuario"
     },
-    respuesta: [{
+    respuesta: {
         pregunta: {
             type: Schema.Types.ObjectId,
             ref: "pregunta"
         },
         respuesta: String,
-        valido: Boolean
-    }],
+        valido: Boolean,
+        puntaje: Number
+    },
 });
 
 module.exports = mongoose.model('respuesta_de_usuario', RespuestaDeUsuarioSchema);

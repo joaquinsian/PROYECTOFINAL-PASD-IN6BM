@@ -228,8 +228,24 @@ async function agregarPreguntas() {
             }],
             juego: idinicial._id // AQUI USO EL ID DE INICIAL QUE OBTUVE EN LINEA 40
         }).save(),
-    ]);
 
+        // ########################################################################
+
+        new Pregunta({
+            numero: 1,
+            pregunta: "¿Las drogas se clasifican en legales (alcohol y tabaco) e ilegales (mariguana, cocaína, heroína, metanfetaminas, etcétera)?",
+            imagen: "https://www.ardurecoverycenter.com/wp-content/uploads/2020/09/Drugs_-Types-of-Illegal-Drugs.png",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+    ]);
 
     // MOSTRARLOS EN CONSOLA
     console.log(values);

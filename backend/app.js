@@ -38,7 +38,7 @@ app.use("/PASD", require("./src/routes/resultado_usuario.rutas"))
 
 // Configuracion inicial
 initial.crearJuego();
-//initial.agregarPreguntas();
+initial.agregarPreguntas();
 
 //Exportación
 module.exports = app;

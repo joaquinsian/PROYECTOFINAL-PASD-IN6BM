@@ -1,6 +1,7 @@
 const ResultadoUsuario = require("../models/resultado_usuario.model");
 const RespuestaDeUsuario = require("../models/respuesta_de_usuario.model");
-const Pregunta = require("../models/pregunta.model")
+const Pregunta = require("../models/pregunta.model");
+const Juego = require("../models/juego.model");
 
 async function obtenerResultadosUsuario(req, res) {
     await ResultadoUsuario.find()
@@ -56,6 +57,19 @@ async function agregarResultadoAlFinalizarElJuego(req, res) {
         .catch(err => console.error(err));
 }
 
+async function agregarEncuestaInicialAlFinalizarElJuego(req, res) {
+    const idusuario = req.params.id;
+    const idpregunta = req.params.idpregunta;
+
+    let preguntafinded = await Pregunta.findOne({ _id: idpregunta });
+    let juegofinded = await Juego.findOne({ nivel: "inicial" });
+
+    if (String(preguntafinded.juego) !== String(juegofinded._id)) return res.status(400).json({ error: "No es una encuesta" });
+
+    const respuestafinded = await RespuestaDeUsuario.find({ usuario: idusuario });
+    res.json(respuestafinded);
+}
+
 async function editarResultadoUsuario(req, res) {
     const { juego, usuario, resultado } = req.body;
     await ResultadoUsuario.findByIdAndUpdate(req.params.id, { juego, usuario, resultado })
@@ -77,6 +91,7 @@ module.exports = {
     obtenerResultadosUsuario,
     obtenerResultadoUsuarioPorId,
     agregarResultadoAlFinalizarElJuego,
+    agregarEncuestaInicialAlFinalizarElJuego,
     crearResultadoUsuario,
     editarResultadoUsuario,
     eliminarResultadoUsuario,
