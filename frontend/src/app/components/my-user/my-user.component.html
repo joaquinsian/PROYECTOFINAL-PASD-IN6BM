@@ -30,7 +30,7 @@
                 <h3>Descripción</h3>
               <p>{{user.descripcion}}</p>
             </ng-container>
-            <button class="m-t-20 btn" *ngIf="role === 'Paciente' && doc.length >= 1 ">Dejar doctor</button>
+            <button class="m-t-20 btn" *ngIf="role === 'Paciente' && doc.length >= 1 " (click)="eliminarDoctor()">Dejar doctor</button>
             <button class="m-t-20 btn" *ngIf="role === 'Paciente' && doc.length === 0" routerLink="/add-doctor">Agregar Doctor</button>
             <button class="m-t-20 btn" style="margin: 10px;" *ngIf="role === 'Paciente' " routerLink="/create-request">Crear Solicitud Doctor</button>
             <ng-container *ngIf="role === 'Paciente' && doc.length >= 1 ">

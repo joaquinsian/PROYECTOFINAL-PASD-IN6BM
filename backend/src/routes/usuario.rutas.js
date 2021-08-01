@@ -13,6 +13,7 @@ api.get('/usuarioId', usuarioController.usuarioId)
 api.post('/enviarSolicitud', md_autenticacion.ensureAuth, usuarioController.solicitudDoctor)
 api.get('/doctores', usuarioController.doctores)
 api.post('/elegirDoctor', md_autenticacion.ensureAuth, usuarioController.elegirDoctor);
+api.delete('/eliminarMiDoctor', md_autenticacion.ensureAuth, usuarioController.eliminarMiDoctor)
 api.get("/obtenerIdentidad", usuarioController.obtenerIdentidad)
 api.get("/obtenerDoctor",md_autenticacion.ensureAuth,usuarioController.obtenerDoctor)
 api.get('/doctoresDetalle', usuarioController.doctoresDetalle)

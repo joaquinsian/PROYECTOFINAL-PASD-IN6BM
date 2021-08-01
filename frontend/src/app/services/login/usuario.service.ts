@@ -46,4 +46,11 @@ export class UsuarioService{
     const allheaders = headers.set("authorization",token)
     return this.http.post(this.URL + '/elegirDoctor', addDoctor, {headers: allheaders})
   }
+
+  eliminarDoctor(){
+    if(!sessionStorage.getItem("authorization")) return;
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
+    return this.http.delete<any>(this.URL + "/eliminarMiDoctor", {headers: allheaders})
+  }
 }

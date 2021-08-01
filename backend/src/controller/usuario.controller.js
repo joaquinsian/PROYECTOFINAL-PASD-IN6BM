@@ -205,14 +205,15 @@ async function elegirDoctor(req, res) {
 
 //Función para eliminar la relación de doctor
 async function eliminarMiDoctor(req, res){
-    var idUsuario = req.params.idUsuario;
-    await Rel_Doc_User.findOneAndDelete({usuario: idUsuario}, (err, relacionEliminada) => {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Rel_Doc_User.findOneAndDelete({usuario: x.sub}, (err, relacionEliminada) => {
         if(err){
             return res.status(500).send({ mensaje: "Error en la petición" })
         }else if(!relacionEliminada){
+            console.log(relacionEliminada);
             return res.status(500).send({mensaje: "No se ha podido eliminar la relación"})
         }else{
-            return res.status(200).send({relaciónEliminada})
+            return res.status(200).send({relacionEliminada})
         }
     })
 }

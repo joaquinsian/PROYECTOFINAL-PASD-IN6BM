@@ -64,6 +64,7 @@ export class AddDoctorComponent implements OnInit {
           usuario: "",
           progreso: null
         }
+        this.router.navigate(["/my-user"])
       },
       err => {
         switch(err.error.mensaje){
