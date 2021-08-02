@@ -1,0 +1,137 @@
+@import url('https://fonts.googleapis.com/css2?family=Maven+Pro:wght@400;500;600;700&display=swap');
+
+.m-container {
+    background-color: white;
+    padding: 40px;
+    border-radius: 5px;
+}
+
+.btn {
+    background-color: #2ecc71;
+    color: white;
+    border-radius: 5px;
+    border: none;
+    padding: 10px 16px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: .2s ease all;
+    text-align: center;
+}
+
+.btn:hover {
+    background-color: #0aa34a;
+}
+
+.space{
+  margin: 3% 0%;
+}
+
+.btn-cancelar {
+  background-color: #e74c3c;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .2s ease all;
+  text-align: center;
+}
+
+.btn-cancelar:hover {
+  background-color: #fa3620;
+}
+
+.w-100 {
+    width: 100%
+}
+
+.m-b-30 {
+    margin-bottom: 30px;
+}
+
+.table-standard {
+    border-collapse: collapse;
+}
+
+.table-standard td,
+.table-standard th {
+    text-align: left;
+    padding: 12px;
+}
+
+.m-table {
+    border-radius: 5px;
+    box-shadow: 0px 0px 15px 1px rgba(0, 0, 0, 0.1);
+}
+
+.m-table thead {
+  background-color: #013220;
+    color: white;
+}
+
+.m-table th {
+    text-align: center;
+}
+
+.m-table td {
+    text-align: center;
+}
+
+.m-table tbody tr {
+    background-color: white;
+}
+
+.cont-centered {
+  text-align: center;
+}
+
+.m-b-40 {
+  margin-bottom: 40px;
+}
+
+#sad-face {
+  width: 300px;
+}
+
+@media (max-width: 589px) {
+  #sad-face {
+      width: 100%;
+  }
+}
+
+@media screen and (max-width: 1045px) {
+    .grid-4 {
+        grid-template-columns: repeat(3, 1fr);
+    }
+    .left-column,
+    .right-column {
+        width: 100%;
+    }
+}
+
+@media screen and (max-width: 820px) {
+    .grid-4 {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 630px) {
+    .navbar-option.navbar-a,
+    .navbar .f-right {
+        float: none;
+        display: block;
+        width: 100%;
+    }
+    .navbar-option.burger-btn {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: block;
+        cursor: pointer;
+    }
+    .grid-4,
+    .grid-2 {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

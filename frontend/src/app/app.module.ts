@@ -16,6 +16,9 @@ import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiti
 import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { InitialPollComponent } from './components/my-user/initial-poll/initial-poll.component';
 import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
+import { QuotesComponent } from './components/quotes/quotes.component';
+import { AddQuotesComponent } from './components/quotes/add-quotes/add-quotes.component';
+import { EditQuotesComponent } from './components/quotes/edit-quotes/edit-quotes.component';
 
 @NgModule({
   declarations: [
@@ -30,7 +33,10 @@ import { AddDoctorComponent } from './components/add-doctor/add-doctor.component
     AwaitingRequestsComponent,
     CreateRequestComponent,
     InitialPollComponent,
-    AddDoctorComponent
+    AddDoctorComponent,
+    QuotesComponent,
+    AddQuotesComponent,
+    EditQuotesComponent
   ],
   imports: [
     BrowserModule,

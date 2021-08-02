@@ -21,6 +21,7 @@
                 </ng-container>
                 <ng-template #loggedIn>
                   <a class="navbar-option" routerLink="/awaiting-requests" *ngIf="role === 'Admin' ">Solicitudes Pendientes</a>
+                  <a class="navbar-option" routerLink="/quotes" *ngIf="role === 'Doctor' ">Gestionar Citas</a>
                     <div class="navbar-dropdown-container">
                         <button class="navbar-option navbar-dropdown-button">Usuario <i class="fas fa-caret-down"></i></button>
                         <div class="navbar-dropdown-options-container">
@@ -35,7 +36,7 @@
     </nav>
 
     <div class="main-container" style="padding: 40px 20px">
-        <router-outlet></router-outlet>
+      <router-outlet></router-outlet>
     </div>
 
     <footer>

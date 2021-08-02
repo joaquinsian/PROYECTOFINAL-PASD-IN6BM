@@ -1,0 +1,28 @@
+<div id="login-row" class="grid-layout-2">
+  <div class="left-login f-centered-container">
+      <div class="form-with-title-container">
+          <div style="text-align:center">
+              <h2 class="title-form m-b-20">Crear Cita</h2>
+          </div>
+          <form (ngSubmit)="addQuotes();" method="post" ngNativeValidate>
+              <div class="form-div">
+                  <h5>Paciente</h5>
+                  <select [(ngModel)]="quoutes.usuario" name="usuario" required="required" class="input-field w-100">
+                    <option *ngFor="let x of pacientes" [value]="x.usuario._id">{{x.usuario.nombre}}</option>
+                  </select>
+              </div>
+              <div class="form-div">
+                  <h5>Fecha Cita</h5>
+                  <input [(ngModel)]="quoutes.fecha_cita" name="fecha_cita" required="required" class="input-field w-100" type="date">
+              </div>
+              <input class="btn w-100" type="submit" value="Crear Cita">
+          </form>
+      </div>
+  </div>
+  <div class="right-login">
+      <div style="text-align: center" class="m-b-20">
+          <img style="width: 50%" src="https://www.pngkey.com/png/full/196-1960872_doctors-clipart-doctor-patient-see-doctor-png.png" alt="doctor.png">
+      </div>
+      <h3 style="color: white; font-size: 40px; font-family: 'Rowdies';">Ayuda a las personas que verdaderamente lo necesiten para su pronta rehabilitación.</h3>
+  </div>
+</div>
