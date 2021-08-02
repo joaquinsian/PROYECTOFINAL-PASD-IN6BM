@@ -38,7 +38,7 @@ const routes: Routes = [
     path: "info/:id",
     component: InfoComponent
   },{
-    path: "my-user/game/game-by-id/:idjuego/:numero",
+    path: "my-user/game/game-by-id/:idjuego/:number",
     component: GameByIdComponent
   },{
     path: "awaiting-requests",

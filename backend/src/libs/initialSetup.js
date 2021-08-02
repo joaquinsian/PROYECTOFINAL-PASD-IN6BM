@@ -517,8 +517,36 @@ async function agregarPreguntas() {
         // #####################################################################
 
         new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            numero: 1,
+            pregunta: "¿Es la pobreza un factor de riesgo para el consumo de drogas?",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 2,
+            pregunta: "¿La manera de vestir, hablar y escuchar música de un adolescente, se relacionan con el consumo de drogas?",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 3,
+            pregunta: " ¿Existe relación entre el trastorno por déficit de atención e hiperactividad (TDAH) y el consumo de drogas?",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",
@@ -531,8 +559,8 @@ async function agregarPreguntas() {
         }).save(),
 
         new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            numero: 4,
+            pregunta: "El TDAH se caracteriza porque el niño se mueve mucho más que lo ‘normal', parece que se mueve por moverse . Asimismo, se le dificulta mucho poner atención en lo que ve o escucha, solamente es capaz de atender con interés durante lapsos muy breves. Otra característica es que no concluye las cosas que empieza: juegos, tareas escolares, etcétera.",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",
@@ -545,8 +573,8 @@ async function agregarPreguntas() {
         }).save(),
 
         new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            numero: 5,
+            pregunta: "¿Las conductas violentas durante la infancia desempeñan un papel importante para que los niños y adolescentes se inicien en el consumo de drogas?",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",
@@ -559,8 +587,8 @@ async function agregarPreguntas() {
         }).save(),
 
         new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            numero: 6,
+            pregunta: "La hiperactividad: Se determina por falta de atención y concentración en las distintas actividades y conducta impulsiva. Lo anterior se debe a que existe una disfunción cerebral menor. Cuando la impulsividad y la inquietud rebasan los límites, es necesario atender al niño que las padece a tiempo, ya que estas características suelen generar rechazo por parte de familiares, amigos, compañeros y maestros.",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",
@@ -573,8 +601,8 @@ async function agregarPreguntas() {
         }).save(),
 
         new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            numero: 7,
+            pregunta: "¿El estrés es la reacción que tiene una persona ante situaciones amenazantes, angustiantes o que ponen en riesgo su bienestar; ¿provoca, además, un deseo intenso de huir de la situación o de enfrentarla violentamente?",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",
@@ -587,8 +615,8 @@ async function agregarPreguntas() {
         }).save(),
 
         new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            numero: 8,
+            pregunta: "Cuando una persona tiene constantes niveles altos de estrés es probable que en ese mismo grado se deprima o se sienta exageradamente presionado, lo que puede llevarlo al consumo de drogas.",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",
@@ -601,50 +629,22 @@ async function agregarPreguntas() {
         }).save(),
 
         new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            numero: 9,
+            pregunta: "¿Cuándo una persona tiene constante estrés es bueno tomarse un tiempo libre y beberse una cerveza ya que esta puede bajar el nivel de estrés?",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",
-                valida: true
+                valida: false
             }, {
                 respuesta: "Falso",
-                valida: false
+                valida: true
             }],
             juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
         }).save(),
 
         new Pregunta({
             numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
-            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
-            respuesta: [{
-                respuesta: "Verdadero",
-                valida: true
-            }, {
-                respuesta: "Falso",
-                valida: false
-            }],
-            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
-        }).save(),
-
-        new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
-            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
-            respuesta: [{
-                respuesta: "Verdadero",
-                valida: true
-            }, {
-                respuesta: "Falso",
-                valida: false
-            }],
-            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
-        }).save(),
-
-        new Pregunta({
-            numero: 10,
-            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            pregunta: "La diferencia está en el control que cada persona tenga para dosificar la cantidad y la frecuencia del consumo de alguna sustancia. En lo general, el grado de control se relaciona con el tiempo de consumo de cierta sustancia, como alcohol o mariguana, aunque a veces no es necesariamente así.",
             imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
             respuesta: [{
                 respuesta: "Verdadero",

@@ -30,6 +30,19 @@ async function obtenerPreguntasInicial(req, res) {
         .catch(err => console.error(err));
 }
 
+async function obtenerPreguntasNivel(req, res) {
+    const { numero } = req.params;
+    const initialfinded = await Juego.findOne({ _id: req.params.idjuego });
+    if (isNaN(numero)) return res.status(400).json({ error: "No es un numero" });
+
+    Pregunta.findOne({ juego: initialfinded._id, numero })
+        .then(doc => {
+            res.json(doc)
+        })
+        .catch(err => console.error(err));
+
+}
+
 async function crearPregunta(req, res) {
     const { numero, pregunta, respuesta, juego } = req.body;
     const nuevoJuego = new Pregunta({ numero, pregunta, respuesta, juego });
@@ -61,6 +74,7 @@ module.exports = {
     obtenerPreguntas,
     obtenerPreguntasInicial,
     obtenerPreguntaPorId,
+    obtenerPreguntasNivel,
     crearPregunta,
     editarPregunta,
     eliminarPregunta

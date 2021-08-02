@@ -7,7 +7,6 @@ import { LoginService } from 'src/app/services/login/login.service';
 import Swal from 'sweetalert2';
 import { UserResponseService } from 'src/app/services/user-response/user-response.service';
 import { UserResultService } from 'src/app/services/user-result/user-result.service';
-import { MyUserComponent } from '../my-user.component';
 
 @Component({
   selector: 'app-initial-poll',
@@ -39,8 +38,7 @@ export class InitialPollComponent implements OnInit {
     private router: Router,
     private loginService: LoginService,
     private userResponseService: UserResponseService,
-    private userResultService: UserResultService,
-    private myUserComponent: MyUserComponent
+    private userResultService: UserResultService
   ) {
     this.titleService.setTitle("Encuesta Inicial");
   }

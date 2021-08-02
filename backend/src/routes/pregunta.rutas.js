@@ -7,7 +7,8 @@ const md_autenticacion = require('../middlewares/authenticated')
 var api = express.Router();
 api.get('/pregunta', preguntaController.obtenerPreguntas);
 api.get('/pregunta/:id', preguntaController.obtenerPreguntaPorId);
-api.get("/preguntainicial/:numero", preguntaController.obtenerPreguntasInicial)
+api.get("/preguntainicial/:numero", preguntaController.obtenerPreguntasInicial);
+api.get("/preguntanivel/:idjuego/:numero", preguntaController.obtenerPreguntasNivel);
 
 api.post('/pregunta', preguntaController.crearPregunta);
 
