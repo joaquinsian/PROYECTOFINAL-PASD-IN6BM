@@ -1,6 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
+import { AllUserComponent } from './components/all-user/all-user.component';
+import { EditUserComponent } from './components/all-user/edit-user/edit-user.component';
 import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
@@ -59,6 +61,12 @@ const routes: Routes = [
   },{
     path: "edit-quotes/:idCita",
     component: EditQuotesComponent
+  },{
+    path: "all-user",
+    component: AllUserComponent
+  },{
+    path: "edit-user/:idUsuario",
+    component: EditUserComponent
   }
 ];
 

@@ -1,0 +1,53 @@
+<div id="login-row" class="grid-layout-2">
+  <div class="left-login f-centered-container">
+      <div class="form-with-title-container">
+          <div style="text-align:center">
+              <h2 class="title-form m-b-20">Registrarse</h2>
+          </div>
+          <form (ngSubmit)="editarUsuario()" method="POST" ngNativeValidate>
+              <div class="form-div">
+                  <h5>Nombre</h5>
+                  <input required="required" minlength="4" name="nombre" [(ngModel)]="newUser.nombre" class="input-field w-100" type="text" placeholder="Name" />
+              </div>
+              <div class="form-div">
+                  <h5>Celular</h5>
+                  <input required="required" minlength="4" name="celular" [(ngModel)]="newUser.celular" class="input-field w-100" type="number" placeholder="ej. 38485790" />
+              </div>
+              <div class="form-div">
+                  <h5>Dpi</h5>
+                  <input required="required" minlength="4" name="dpi" [(ngModel)]="newUser.dpi" class="input-field w-100" type="number" placeholder="ej. 2019047" />
+              </div>
+              <div class="form-div">
+                  <h5>Email</h5>
+                  <input required="required" minlength="4" name="email" [(ngModel)]="newUser.email" class="input-field w-100" type="email" placeholder="example@domain.com" />
+              </div>
+              <div class="form-div">
+                  <h5>Foto</h5>
+                  <input required="required" minlength="4" name="foto" [(ngModel)]="newUser.foto" class="input-field w-100" type="text" placeholder="http://domain.com/image.png" />
+              </div>
+              <div class="form-div">
+                  <h5>Descripción</h5>
+                  <textarea required="required" minlength="4" id="text-area-description" name="descripcion" [(ngModel)]="newUser.descripcion" class="input-field w-100" type="text" placeholder="Descripción"></textarea>
+              </div>
+              <hr style="margin-bottom: 10px;">
+              <div class="form-div">
+                  <h5>Nombre de Usuario</h5>
+                  <input required="required" minlength="4" name="usuario" [(ngModel)]="newUser.usuario" class="input-field w-100" type="text" placeholder="Username" />
+              </div>
+              <div class="form-div">
+                <h5>Rol</h5>
+                <input required="required" minlength="4" name="rol" [(ngModel)]="newUser.rol" class="input-field w-100" type="text" placeholder="Username" />
+            </div>
+              <input class="btn w-100" type="submit" value="Editar Usuario">
+          </form>
+    </div>
+  </div>
+  <div class="right-login f-centered-container">
+      <div>
+          <div style="text-align: center" class="m-b-20">
+              <img style="width: 50%" src="https://cdn.pngsumo.com/doctors-clipart-primary-care-physician-doctors-primary-care-primary-care-physician-png-640_640.png" alt="doctor.png">
+          </div>
+          <h3 style="color: white; font-size: 40px; font-family: 'Rowdies';">Recuerda en tomar las mejores y buenas decisiones que tu cerebro ejecute, no lo arruines.</h3>
+      </div>
+  </div>
+</div>

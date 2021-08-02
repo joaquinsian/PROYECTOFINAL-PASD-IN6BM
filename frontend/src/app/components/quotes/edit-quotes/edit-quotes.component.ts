@@ -21,7 +21,7 @@ export class EditQuotesComponent implements OnInit {
     fecha_cita: ""
   }
 
-  constructor(private titleService: Title, private route: ActivatedRoute, private router: Router, private loginService: LoginService, private doctorService: DoctorService) {
+  constructor(private titleService: Title, private route: ActivatedRoute, private router: Router, private doctorService: DoctorService) {
     this.titleService.setTitle("Editar Cita");
    }
 

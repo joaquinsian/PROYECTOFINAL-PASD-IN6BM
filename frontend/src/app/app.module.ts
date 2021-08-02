@@ -19,6 +19,8 @@ import { AddDoctorComponent } from './components/add-doctor/add-doctor.component
 import { QuotesComponent } from './components/quotes/quotes.component';
 import { AddQuotesComponent } from './components/quotes/add-quotes/add-quotes.component';
 import { EditQuotesComponent } from './components/quotes/edit-quotes/edit-quotes.component';
+import { AllUserComponent } from './components/all-user/all-user.component';
+import { EditUserComponent } from './components/all-user/edit-user/edit-user.component';
 
 @NgModule({
   declarations: [
@@ -36,7 +38,9 @@ import { EditQuotesComponent } from './components/quotes/edit-quotes/edit-quotes
     AddDoctorComponent,
     QuotesComponent,
     AddQuotesComponent,
-    EditQuotesComponent
+    EditQuotesComponent,
+    AllUserComponent,
+    EditUserComponent
   ],
   imports: [
     BrowserModule,
