@@ -1,0 +1,5 @@
+#text-area-description {
+    resize: none;
+    height: 125px;
+    overflow: auto;
+}

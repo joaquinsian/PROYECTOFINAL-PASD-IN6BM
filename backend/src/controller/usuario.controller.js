@@ -101,14 +101,14 @@ async function eliminarUsuario(req, res) {
 
 //Función para obtener un usuario por id
 async function usuarioId(req, res) {
-    var idUsuario = req.params.idUsuario;
-    await Usuario.findById(idUsuario, (err, usuarioEncontrado) => {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Usuario.findById(x.sub, (err, usuarioEncontrado) => {
         if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
         } else if (!usuarioEncontrado) {
             return res.status(500).send({ mensaje: "No se ha podido obtener el usuario" })
         } else {
-            return res.status(200).send({ usuarioEncontrado })
+            return res.status(200).send({usuarioEncontrado})
         }
     })
 }
@@ -203,10 +203,25 @@ async function elegirDoctor(req, res) {
     }
 }
 
+//Función para eliminar la relación de doctor
+async function eliminarMiDoctor(req, res){
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Rel_Doc_User.findOneAndDelete({usuario: x.sub}, (err, relacionEliminada) => {
+        if(err){
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        }else if(!relacionEliminada){
+            console.log(relacionEliminada);
+            return res.status(500).send({mensaje: "No se ha podido eliminar la relación"})
+        }else{
+            return res.status(200).send({relacionEliminada})
+        }
+    })
+}
+
 //Función para obtener el la relación de doctor y progreso
 async function obtenerDoctor(req, res){
-    var idUsuario = req.params.idUsuario;
-    await Datos_Doctor.find({usuario: idUsuario}).populate('usuario').exec((err, resultado) => {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Rel_Doc_User.find({usuario: x.sub}).populate('doctor usuario').exec((err, resultado) => {
         if(err){
             return res.status(500).send({ mensaje: "Error en la petición" })
         }else if(!resultado){
@@ -242,6 +257,7 @@ module.exports = {
     solicitudDoctor,
     doctores,
     elegirDoctor,
+    eliminarMiDoctor,
     obtenerIdentidad,
     obtenerDoctor,
     doctoresDetalle

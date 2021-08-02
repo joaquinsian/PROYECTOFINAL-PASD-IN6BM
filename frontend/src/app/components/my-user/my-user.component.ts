@@ -2,9 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { LoginService } from 'src/app/services/login/login.service';
 import { Title } from '@angular/platform-browser';
 import { UsuarioService } from 'src/app/services/login/usuario.service';
-import { Subscription } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { GameService } from 'src/app/services/game/game.service';
+import Swal from 'sweetalert2';
 
 
 @Component({
@@ -13,30 +13,28 @@ import { GameService } from 'src/app/services/game/game.service';
   styleUrls: ['./my-user.component.css']
 })
 export class MyUserComponent implements OnInit {
-  idUser = "";
-  public role="";
-  public user = {
+  public role = "";
+  doc = [];
+  user = {
+    _id: "",
     nombre: "",
+    usuario: "",
+    dpi: "",
+    email: "",
+    celular: "",
     foto: "",
-    descripcion: ""
-  };
-  public doc = [];
-  public haspoll = false;
-  paramsSubscription: Subscription = new Subscription;
+    descripcion: "",
+    rol: ""
+  }
 
-  constructor(private titleService: Title,public loginService:LoginService, private usuarioService: UsuarioService, private route: ActivatedRoute, private gameService: GameService) {
-    this.titleService.setTitle("")
+  constructor(private titleService: Title,public loginService:LoginService, private usuarioService: UsuarioService, private router: Router, private gameService: GameService) {
+    this.titleService.setTitle("Mi usuario")
   };
 
   ngOnInit(): void {
     this.getIdentidad();
-    this.paramsSubscription = this.route.params.subscribe(params => {
-      this.idUser = params['id'];
-      console.log(this.idUser);
-    })
-    this.getAllData(this.idUser);
-    this.obtenerDoctor(this.idUser)
-    this.verifyPoll();
+    this.obtenerUsuario();
+    this.obtenerDoctor();
   }
 
   getIdentidad() {
@@ -50,30 +48,10 @@ export class MyUserComponent implements OnInit {
     );
   }
 
-  verifyPoll() {
-    this.gameService.verifyPoll().subscribe(
+  obtenerUsuario(){
+    this.usuarioService.usuarioId().subscribe(
       res => {
-        switch (res.message) {
-          case "El usuario tiene una encuesta":
-            this.haspoll = true;
-            break;
-          case "El usuario no tiene encuesta":
-            this.haspoll = false;
-            break;
-        }
-
-        console.log("HAS POLL: " + this.haspoll)
-      },
-      err => console.error(err)
-    );
-  }
-
-  getAllData(newid: any){
-    this.usuarioService.obtenerUsuarioId(this.idUser).subscribe(
-      res => {
-        this.user.nombre = res.usuarioEncontrado.nombre;
-        this.user.foto = res.usuarioEncontrado.foto;
-        this.user.descripcion = res.usuarioEncontrado.descripcion;
+        this.user = res.usuarioEncontrado;
       },
       err => {
         console.error(err);
@@ -81,15 +59,44 @@ export class MyUserComponent implements OnInit {
     )
   }
 
-  obtenerDoctor(newid: any){
-    this.usuarioService.obtenerDoctor(this.idUser).subscribe(
+  obtenerDoctor(){
+    this.usuarioService.obtenerDoctor().subscribe(
       res => {
         this.doc = res.resultado;
-        console.log(this.doc);
       },
       err => {
         console.error(err);
       }
     )
+  }
+
+  eliminarDoctor(){
+    Swal.fire({
+      title: 'Dejar este doctor',
+      text: '¿Desea dejar este doctor?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Aceptar',
+      cancelButtonText: 'Cancelar'
+    }).then((result) => {
+      if(result.isConfirmed){
+        this.usuarioService.eliminarDoctor().subscribe(
+          res => {
+            this.router.navigate(["/"])
+            Swal.fire("Relación Eliminada", "La relación entre el doctor y tu ha sido eliminada. Regresa a 'Mi Usuario' para ver los cambios.", "success");
+          },
+          err => {
+            switch(err.error.mensaje){
+              case "Error en la petición":
+                Swal.fire("Error :(", "Hubo un error en la petición, recarga la página", "error");
+                break;
+              case "No se ha podido eliminar la relación":
+                Swal.fire("Error :(", "La relación entre el doctor y tu no se ha podido eliminar", "error");
+                break;
+            }
+          }
+        )
+      }
+    })
   }
 }

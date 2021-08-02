@@ -15,6 +15,7 @@ import { GameByIdComponent } from './components/game/game-by-id/game-by-id.compo
 import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { InitialPollComponent } from './components/my-user/initial-poll/initial-poll.component';
+import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { InitialPollComponent } from './components/my-user/initial-poll/initial-
     GameByIdComponent,
     AwaitingRequestsComponent,
     CreateRequestComponent,
-    InitialPollComponent
+    InitialPollComponent,
+    AddDoctorComponent
   ],
   imports: [
     BrowserModule,
