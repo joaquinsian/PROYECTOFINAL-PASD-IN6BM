@@ -1,5 +1,12 @@
 .game-container {
     border-radius: 15px;
+    box-shadow: 0px 0px 15px 3px rgba(0, 0, 0, 0.1);
+}
+
+.score {
+    font-size: 22px;
+    margin-top: 10px;
+    display: block;
 }
 
 .left-container {

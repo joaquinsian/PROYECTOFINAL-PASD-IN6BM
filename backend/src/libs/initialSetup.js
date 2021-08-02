@@ -245,6 +245,416 @@ async function agregarPreguntas() {
             juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
         }).save(),
 
+        new Pregunta({
+            numero: 2,
+            pregunta: "¿La droga es una sustancia o mezcla de sustancias, necesarias para el mantenimiento de la vida?",
+            imagen: "https://ichef.bbci.co.uk/news/976/cpsprodpb/3B90/production/_118684251_gettyimages-538870696.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 3,
+            pregunta: "La farmacodependencia o drogadicción es la relación que se establece con una sustancia tóxica, la cual puede provocar cambios en el organismo, afectando la salud, las relaciones con la familia, con los amigos, en la escuela, en el trabajo, etcétera.",
+            imagen: "https://www.ardurecoverycenter.com/wp-content/uploads/2020/09/Drugs_-Types-of-Illegal-Drugs.png",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 4,
+            pregunta: "¿Los efectos que causa una droga a nuestro organismo varían en función de la clase de sustancia de la que se trate?",
+            imagen: "https://www.simcoemuskokahealth.org/images/default-source/homeslider/istock-174825736-webbanner.jpg?sfvrsn=2",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 5,
+            pregunta: "¿Una mujer embarazada que consume drogas no puede dañar a su hijo?",
+            imagen: "http://www.anthonylouiscenter.com/wp-content/uploads/2015/04/Commonly-Abused-Drugs.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 6,
+            pregunta: "¿Las drogas alivian el estrés y ayudan a soportar los problemas?",
+            imagen: "https://www.ardurecoverycenter.com/wp-content/uploads/2020/09/Drugs_-Types-of-Illegal-Drugs.png",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 7,
+            pregunta: "¿Los efectos de la mariguana desaparecen después de unas cuantas horas?",
+            imagen: "https://ichef.bbci.co.uk/news/976/cpsprodpb/1E5C/production/_107427770_hi053578994.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 8,
+            pregunta: "¿El alcohol y el tabaco se consideran drogas?",
+            imagen: "https://www.ardurecoverycenter.com/wp-content/uploads/2020/09/Drugs_-Types-of-Illegal-Drugs.png",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 9,
+            pregunta: "¿El consumo de alcohol y tabaco en un adolescente, incrementa el riesgo de usar otras drogas?",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La marihuana se puede utilizar con fines médicos?",
+            imagen: "https://p0.pikrepo.com/preview/600/292/oval-white-pills-thumbnail.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idfacil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        // #######################################################################
+
+        new Pregunta({
+            numero: 1,
+            pregunta: "¿El consumo de drogas es provocado por factores genéticos o hereditarios?",
+            imagen: "https://www.phoenixprogrammes.com/images/4.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 2,
+            pregunta: "Las causas que propician el consumo de drogas obedecen a ciertos factores, como la creencia de que la droga no le hace daño, la presión de los amigos; la curiosidad, la suposición de que las drogas pueden ayudarlos a olvidar sus problemas o a calmar su angustia, ansiedad o dolor. ",
+            imagen: "https://www.ardurecoverycenter.com/wp-content/uploads/2020/09/Drugs_-Types-of-Illegal-Drugs.png",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 3,
+            pregunta: "Las drogas alucinógenos son Sustancias que, al igual que los depresores, actúan directamente sobre el sistema nervioso central, pero de otra manera, ya que generan diferentes reacciones del cuerpo, como aumento en la presión sanguínea, en la temperatura corporal y el ritmo cardiaco; asimismo, euforia, sensación de bienestar, sentimiento exagerado de felicidad, ansiedad, disminución del apetito, estados de pánico, miedo, indiferencia al dolor y fatiga, alteraciones del sueño, comportamiento violento, sentimiento de mayor resistencia física, entre otras.",
+            imagen: "https://www.simcoemuskokahealth.org/images/default-source/homeslider/istock-174825736-webbanner.jpg?sfvrsn=2",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 4,
+            pregunta: "Las drogas depresoras éstos son, el funcionamiento del sistema nervioso central disminuye, provocando descontrol motor y del lenguaje, fallas en la percepción, lo que origina que los consumidores de estas drogas se tropiecen, caigan, permanezcan mucho tiempo sentados o acostados; hablen lentamente y se queden dormidos, ya que generalmente el abuso de sustancias depresoras termina en episodios de sueño profundo o de inactividad.",
+            imagen: "http://www.anthonylouiscenter.com/wp-content/uploads/2015/04/Commonly-Abused-Drugs.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 5,
+            pregunta: "¿Si se compra la droga a vendedores conocidos, se asegura su pureza?",
+            imagen: "https://www.news-medical.net/image.axd?picture=2021%2F1%2Fshutterstock_544348294.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: false
+            }, {
+                respuesta: "Falso",
+                valida: true
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 6,
+            pregunta: "Las drogas estimulantes son El LSD, la mezcalina y el peyote, constituyen las tres drogas alucinógenas más importantes que producen trastornos en la percepción; es decir, son sustancias que hacen que el usuario perciba objetos o sensaciones que no existen en la realidad",
+            imagen: "https://previews.123rf.com/images/nanastudio/nanastudio1912/nanastudio191200316/135632399-hard-drugs-on-dark-table-drug-syringe-and-cooked-heroin.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idmedio._id // ANDATE ALV SIAN IMBECIL INUTILTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 7,
+            pregunta: "La drogadicción es ante todo, una enfermedad y, adicionalmente, un problema social; lo primero porque afecta directamente la salud física y mental de las personas, al generar daños orgánicos, empeorar la calidad de vida, limitar el desarrollo de metas personales y profesionales, etcétera.",
+            imagen: "https://ichef.bbci.co.uk/news/976/cpsprodpb/1E5C/production/_107427770_hi053578994.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 8,
+            pregunta: "Si en las familias alguno o ambos padres son alcohólicos, fumadores o consumen alguna otra droga, los hijos aprenden de su ejemplo, considerando o dando por hecho que son conductas adecuadas y normales.",
+            imagen: "https://p0.pikrepo.com/preview/600/292/oval-white-pills-thumbnail.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 9,
+            pregunta: "Los golpes e insultos a los niños y adolescentes provocan que huyan de sus hogares, los que los pone en una situación con muy pocos o nulos apoyos para rechazar el consumo de alcohol y otras drogas.",
+            imagen: "https://p0.pikrepo.com/preview/600/292/oval-white-pills-thumbnail.jpg",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: idmedio._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+
+        // #####################################################################
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
+
+        new Pregunta({
+            numero: 10,
+            pregunta: "¿La violencia familiar representa un riesgo por abusar de drogas? ",
+            imagen: "https://i0.wp.com/post.medicalnewstoday.com/wp-content/uploads/sites/3/2021/04/GettyImages-1301603007_header-1024x575.jpg?w=1155&h=1528",
+            respuesta: [{
+                respuesta: "Verdadero",
+                valida: true
+            }, {
+                respuesta: "Falso",
+                valida: false
+            }],
+            juego: iddificil._id // AQUI USO EL ID DE FACIL QUE OBTUVE EN LINEA 43
+        }).save(),
     ]);
 
     // MOSTRARLOS EN CONSOLA

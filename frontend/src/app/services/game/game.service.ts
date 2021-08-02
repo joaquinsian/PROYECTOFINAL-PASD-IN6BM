@@ -9,11 +9,19 @@ export class GameService {
 
   constructor(private http: HttpClient) { }
 
-  verifyPoll(){
-    if(!sessionStorage.getItem("authorization")) return;
+  verifyPoll() {
+    if (!sessionStorage.getItem("authorization")) return;
 
     const headers = new HttpHeaders();
     const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
-    return this.http.get<any>(this.URL + "/verificarencuesta", {headers: allheaders});;
+    return this.http.get<any>(this.URL + "/verificarencuesta", { headers: allheaders });;
+  }
+
+  verifyRequiredGames() {
+    if (!sessionStorage.getItem("authorization")) return;
+
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
+    return this.http.get<any>(this.URL + "/verificarjuegos", { headers: allheaders });;
   }
 }
