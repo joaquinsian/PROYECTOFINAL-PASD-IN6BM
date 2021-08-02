@@ -37,8 +37,8 @@ export class MyUserComponent implements OnInit {
   };
 
   ngOnInit(): void {
-    this.obtenerUsuario();
     this.verifyPoll();
+    this.obtenerUsuario();
     this.obtenerDoctor();
   }
 
