@@ -13,12 +13,51 @@ async function obtenerJuegos(req, res) {
 
 async function verificarEncuestaPorUsuario(req, res) {
     let x = jwt.decode(req.headers["authorization"], "PASD");
-    const resultfound = await ResultadoUsuario.findOne({ usuario: x.sub });
+    const juegofinded = await Juego.findOne({ nivel: "inicial" });
+
+    const resultfound = await ResultadoUsuario.findOne({ usuario: x.sub, juego: juegofinded._id });
+
     if (resultfound) {
         res.json({ "message": "El usuario tiene una encuesta" });
     } else {
         res.status(200).json({ message: "El usuario no tiene encuesta" });
     }
+
+}
+
+async function verificarJuegosPorUsuario(req, res) {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    const juegofinded = await Juego.findOne({ nivel: "inicial" });
+
+    const resultfound = await ResultadoUsuario.findOne({ usuario: x.sub, juego: juegofinded._id });
+
+    if (!resultfound) return res.status(400).json({ error: "El usuario no ha realizado su encuesta" });
+
+    if (resultfound.resultado < 80) {
+        console.log("El resultado es pequeño");
+        await Juego.find({ $or: [{ nivel: "facil" }] })
+            .then(doc => {
+                res.json(doc)
+            })
+            .catch(err => console.error(err));
+
+    } else if (resultfound.resultado < 90) {
+        console.log("El resultado es mediano");
+        await Juego.find({ $or: [{ nivel: "facil" }, { nivel: "medio" }] })
+            .then(doc => {
+                res.json(doc)
+            })
+            .catch(err => console.error(err));
+
+    } else {
+        console.log("El resultado es grande");
+        await Juego.find({ $or: [{ nivel: "facil" }, { nivel: "medio" }, { nivel: "dificil" }] })
+            .then(doc => {
+                res.json(doc)
+            })
+            .catch(err => console.error(err));
+    }
+
 }
 
 async function obtenerJuegoPorId(req, res) {
@@ -63,6 +102,7 @@ module.exports = {
     obtenerJuegos,
     obtenerJuegoPorId,
     verificarEncuestaPorUsuario,
+    verificarJuegosPorUsuario,
     crearJuego,
     editarJuego,
     eliminarJuego
