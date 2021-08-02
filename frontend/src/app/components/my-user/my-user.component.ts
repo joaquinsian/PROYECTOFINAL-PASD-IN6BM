@@ -14,7 +14,8 @@ import Swal from 'sweetalert2';
 })
 export class MyUserComponent implements OnInit {
   public haspoll = "noasignado";
-  doc = [];
+  public docLleno = "";
+  public doc = [];
   user = {
     _id: "",
     nombre: "",
@@ -37,9 +38,10 @@ export class MyUserComponent implements OnInit {
   };
 
   ngOnInit(): void {
+    this.obtenerDoctor();
     this.verifyPoll();
     this.obtenerUsuario();
-    this.obtenerDoctor();
+    this.relDoctor();
   }
 
   obtenerUsuario() {
@@ -57,7 +59,36 @@ export class MyUserComponent implements OnInit {
     this.usuarioService.obtenerDoctor().subscribe(
       res => {
         console.log(res);
+        if(res.mensaje === "Aún no contiene doctor"){
+          Swal.fire({
+            title: 'Agrege un doctor',
+            text: 'Para su pronta rehabilitación es necesario que tenga apoyo de un doctor, agregue uno.',
+            icon: 'question',
+            showCancelButton: true,
+          confirmButtonText: 'Aceptar',
+          cancelButtonText: 'Cancelar'
+          }).then((result) => {
+            if (result.isConfirmed) {
+              this.router.navigate(["/add-doctor"])
+            }
+          })
+        }else if(res.mensaje == "Contiene doctor"){
+          this.docLleno = "lleno";
+        }
+        console.log(this.docLleno);
+
+      },
+      err => {
+        console.error(err);
+      }
+    )
+  }
+
+  relDoctor(){
+    this.usuarioService.relDoc().subscribe(
+      res => {
         this.doc = res.resultado;
+        console.log(this.doc);
       },
       err => {
         console.error(err);

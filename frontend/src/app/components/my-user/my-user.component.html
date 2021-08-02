@@ -15,8 +15,7 @@
         <div class="m-t-20 m-b-20 grid-2" style="position:relative">
             <div *ngFor="let y of doc">
                 <h3>Progreso:</h3>
-                <h2 id="progress-number" *ngIf="doc.length >= 1">{{doc.progreso}}</h2>
-                <h4 id="sin-progress-number" *ngIf="doc.length === 0">Sin progreso</h4>
+                <h2 id="progress-number" *ngIf="y.progreso >= 1">{{y.progreso}}%</h2>
                 <h1 *ngIf="y.progreso === null">0%</h1>
             </div>
             <div>
@@ -30,13 +29,14 @@
                 <h3>Descripción</h3>
                 <p>{{user.descripcion}}</p>
             </ng-container>
-            <!--button class="m-t-20 btn" *ngIf="user.rol === 'Paciente' && doc.length >= 1 " (click)="eliminarDoctor()">Dejar doctor</button-->
-            <!--button class="m-t-20 btn" *ngIf="user.rol === 'Paciente' && doc.length === 0" routerLink="/add-doctor">Agregar Doctor</button-->
+            <ng-container>
+              <button class="m-t-20 btn" *ngIf="docLleno == 'lleno' && user.rol === 'Paciente' " (click)="eliminarDoctor()">Dejar doctor</button>
+            </ng-container>
             <button class="m-t-20 btn" style="margin: 10px;" *ngIf="user.rol === 'Paciente' " routerLink="/create-request">Crear Solicitud Doctor</button>
-            <!--ng-container *ngIf="user.rol === 'Paciente' && doc.length >= 1 ">
+            <ng-container *ngIf="user.rol === 'Paciente' && docLleno == 'lleno' ">
                 <h3 class="m-t-20"><i class="fas fa-exclamation-circle"></i> Advertencia</h3>
                 <p>Al dejar este doctor se perderá toda relación y sus datos juntos</p>
-            </ng-container-->
+            </ng-container>
         </div>
         <div class="m-t-20">
             <div>

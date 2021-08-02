@@ -94,6 +94,21 @@
   width: 300px;
 }
 
+.btn-edit {
+  background-color: #051a12;
+  color: white;
+  border-radius: 5px;
+  border: none;
+  padding: 10px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: .2s ease all;
+  text-align: center;
+}
+.btn-edit:hover {
+  background-color: #075035;
+}
+
 @media (max-width: 589px) {
   #sad-face {
       width: 100%;

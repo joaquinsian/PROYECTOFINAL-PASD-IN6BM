@@ -229,7 +229,23 @@ async function obtenerDoctor(req, res){
             return res.status(500).send({ mensaje: "No se ha podido obtener la relación"})
         }else if(resultado && resultado.length === 0){
             return res.status(200).send({mensaje: "Aún no contiene doctor"})
-        }else{
+        }else if(resultado && resultado.length >= 1){
+            return res.status(200).send({mensaje: "Contiene doctor"});
+        }
+    })
+}
+
+//Función obtener datos relación doc
+async function relDoc(req, res){
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Rel_Doc_User.find({usuario: x.sub}).populate('doctor usuario').exec((err, resultado) => {
+        if(err){
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        }else if(!resultado){
+            return res.status(500).send({ mensaje: "No se ha podido obtener la relación"})
+        }else if(resultado && resultado.length === 0){
+            return res.status(200).send({mensaje: "Aún no contiene doctor"})
+        }else if(resultado && resultado.length >= 1){
             return res.status(200).send({resultado})
         }
     })
@@ -260,5 +276,6 @@ module.exports = {
     eliminarMiDoctor,
     obtenerIdentidad,
     obtenerDoctor,
+    relDoc,
     doctoresDetalle
 }

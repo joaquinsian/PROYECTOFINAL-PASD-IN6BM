@@ -16,6 +16,7 @@ api.post('/elegirDoctor', md_autenticacion.ensureAuth, usuarioController.elegirD
 api.delete('/eliminarMiDoctor', md_autenticacion.ensureAuth, usuarioController.eliminarMiDoctor)
 api.get("/obtenerIdentidad", usuarioController.obtenerIdentidad)
 api.get("/obtenerDoctor",md_autenticacion.ensureAuth,usuarioController.obtenerDoctor)
+api.get("/relDoc", md_autenticacion.ensureAuth, usuarioController.relDoc)
 api.get('/doctoresDetalle', usuarioController.doctoresDetalle)
 
 module.exports = api;

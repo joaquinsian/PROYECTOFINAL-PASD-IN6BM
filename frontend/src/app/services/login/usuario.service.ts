@@ -33,6 +33,14 @@ export class UsuarioService{
     return this.http.get<any>(this.URL + "/obtenerDoctor", {headers: allheaders})
   }
 
+  relDoc(){
+    if(!sessionStorage.getItem("authorization")) return;
+
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
+    return this.http.get<any>(this.URL + "/relDoc", {headers: allheaders})
+  }
+
   obtenerEspecialidades(){
     return this.http.get<any>(this.URL + "/doctoresDetalle")
   }

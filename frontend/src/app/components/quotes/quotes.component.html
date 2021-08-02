@@ -21,10 +21,10 @@
               <td> {{x.fecha_cita}} </td>
               <ng-container>
                   <td>
-                    <a class="btn" (click)="aceptarSolicitud(x._id)">Aceptar</a>
+                    <a class="btn-edit" (click)="aceptarSolicitud(x._id)"><i class="fab fa-bitbucket"></i> Editar</a>
                   </td>
                   <td>
-                    <a class="btn-cancelar" (click)="rechazarSolicitud(x._id)" >Rechazar</a>
+                    <a class="btn-cancelar" (click)="eliminarCita(x._id)" > <i class="fa fa-pencil"></i> Eliminar</a>
                   </td>
               </ng-container>
           </tr>
@@ -36,5 +36,5 @@
       <h1>No hay solicitudes pendientes</h1>
     </div>
   </ng-container>
-  <input type="submit" class="btn w-40 space" routerLink="/add-quotes" value="Agregar Cita">
+  <button type="submit" class="btn w-40 space" routerLink="/add-quotes"><i class="fas fa-book-medical"></i> AgregarCita</button>
 </div>
