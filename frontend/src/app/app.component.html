@@ -7,12 +7,12 @@
             <div class="f-right">
                 <a class="navbar-option" routerLink="/">Inicio</a>
                 <div class="navbar-dropdown-container">
-                    <button class="navbar-option navbar-dropdown-button" routerLink="/signup">Información <i class="fas fa-caret-down"></i></button>
+                    <button class="navbar-option navbar-dropdown-button" >Información <i class="fas fa-caret-down"></i></button>
                     <div class="navbar-dropdown-options-container">
-                        <a class="navbar-dropdown-option" routerLink="/info/prueba">Historia 1</a>
-                        <a class="navbar-dropdown-option" routerLink="/info/prueba2">Historia 2</a>
-                        <a class="navbar-dropdown-option" routerLink="/info/prueba3">Info 1</a>
-                        <a class="navbar-dropdown-option" routerLink="/info/prueba4">Info 2</a>
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba">Historia corta</a>
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba2">Historia Corta</a>
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba3">Historia Corta</a>
+                        <a class="navbar-dropdown-option" routerLink="/info/prueba4">Historia Corta</a>
                     </div>
                 </div>
                 <ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
