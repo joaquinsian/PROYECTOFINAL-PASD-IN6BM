@@ -2,6 +2,7 @@ const ResultadoUsuario = require("../models/resultado_usuario.model");
 const RespuestaDeUsuario = require("../models/respuesta_de_usuario.model");
 const Pregunta = require("../models/pregunta.model");
 const Juego = require("../models/juego.model");
+const jwt = require('jwt-simple');
 
 async function obtenerResultadosUsuario(req, res) {
     await ResultadoUsuario.find()
@@ -58,16 +59,41 @@ async function agregarResultadoAlFinalizarElJuego(req, res) {
 }
 
 async function agregarEncuestaInicialAlFinalizarElJuego(req, res) {
-    const idusuario = req.params.id;
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    let count = 0;
+    let resultadofinal = 0;
+    const idusuario = x.sub;
     const idpregunta = req.params.idpregunta;
 
     let preguntafinded = await Pregunta.findOne({ _id: idpregunta });
     let juegofinded = await Juego.findOne({ nivel: "inicial" });
+    console.log(juegofinded._id)
+
+    const test = await ResultadoUsuario.findOne({ juego: juegofinded._id, usuario: idusuario });
+    if (test) return res.status(400).json({ error: "El usuario ya tiene una encuesta" })
+
 
     if (String(preguntafinded.juego) !== String(juegofinded._id)) return res.status(400).json({ error: "No es una encuesta" });
 
-    const respuestafinded = await RespuestaDeUsuario.find({ usuario: idusuario });
-    res.json(respuestafinded);
+    const respuestafinded = await RespuestaDeUsuario.find({ usuario: idusuario }).populate("respuesta.pregunta");
+
+    if (!respuestafinded) return res.status(400).json({ error: "El usuario no tiene encuesta completada" });
+    respuestafinded.forEach(x => {
+        if (String(x.respuesta.pregunta.juego) === String(juegofinded._id)) {
+            resultadofinal = resultadofinal + x.respuesta.puntaje;
+            count++;
+        }
+    });
+
+    if (count === 10) {
+        const newResultado = new ResultadoUsuario({ juego: juegofinded._id, usuario: idusuario, resultado: resultadofinal })
+        newResultado.save()
+            .then(doc => res.json(doc))
+            .catch(err => console.error(err));
+    } else {
+        res.status(400).json({ error: "El usuario no ha terminado sus preguntas" })
+    }
+
 }
 
 async function editarResultadoUsuario(req, res) {

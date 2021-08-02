@@ -13,7 +13,7 @@ import Swal from 'sweetalert2';
   styleUrls: ['./my-user.component.css']
 })
 export class MyUserComponent implements OnInit {
-  public role = "";
+  public haspoll = "noasignado";
   doc = [];
   user = {
     _id: "",
@@ -27,28 +27,22 @@ export class MyUserComponent implements OnInit {
     rol: ""
   }
 
-  constructor(private titleService: Title,public loginService:LoginService, private usuarioService: UsuarioService, private router: Router, private gameService: GameService) {
+  constructor(
+    private titleService: Title,
+    public loginService: LoginService,
+    private usuarioService: UsuarioService,
+    private router: Router,
+    private gameService: GameService) {
     this.titleService.setTitle("Mi usuario")
   };
 
   ngOnInit(): void {
-    this.getIdentidad();
     this.obtenerUsuario();
+    this.verifyPoll();
     this.obtenerDoctor();
   }
 
-  getIdentidad() {
-    this.loginService.getIdentity().subscribe(
-      res => {
-        this.role = res.rol;
-      },
-      err => {
-        console.error(err);
-      }
-    );
-  }
-
-  obtenerUsuario(){
+  obtenerUsuario() {
     this.usuarioService.usuarioId().subscribe(
       res => {
         this.user = res.usuarioEncontrado;
@@ -59,9 +53,10 @@ export class MyUserComponent implements OnInit {
     )
   }
 
-  obtenerDoctor(){
+  obtenerDoctor() {
     this.usuarioService.obtenerDoctor().subscribe(
       res => {
+        console.log(res);
         this.doc = res.resultado;
       },
       err => {
@@ -70,7 +65,24 @@ export class MyUserComponent implements OnInit {
     )
   }
 
-  eliminarDoctor(){
+  verifyPoll() {
+    this.gameService.verifyPoll().subscribe(
+      res => {
+        console.log(res);
+        if (res.message == "El usuario tiene una encuesta") {
+          this.haspoll = "tiene";
+        } else if (res.message == "El usuario no tiene encuesta") {
+          this.haspoll = "no tiene";
+        }
+        console.log(this.haspoll)
+      },
+      err => {
+        console.error(err);
+      }
+    )
+  }
+
+  eliminarDoctor() {
     Swal.fire({
       title: 'Dejar este doctor',
       text: '¿Desea dejar este doctor?',
@@ -79,14 +91,14 @@ export class MyUserComponent implements OnInit {
       confirmButtonText: 'Aceptar',
       cancelButtonText: 'Cancelar'
     }).then((result) => {
-      if(result.isConfirmed){
+      if (result.isConfirmed) {
         this.usuarioService.eliminarDoctor().subscribe(
           res => {
             this.router.navigate(["/"])
             Swal.fire("Relación Eliminada", "La relación entre el doctor y tu ha sido eliminada. Regresa a 'Mi Usuario' para ver los cambios.", "success");
           },
           err => {
-            switch(err.error.mensaje){
+            switch (err.error.mensaje) {
               case "Error en la petición":
                 Swal.fire("Error :(", "Hubo un error en la petición, recarga la página", "error");
                 break;

@@ -42,7 +42,7 @@ const routes: Routes = [
     path: "create-request",
     component: CreateRequestComponent
   },{
-    path: "my-user/initial-poll",
+    path: "my-user/initial-poll/:number",
     component: InitialPollComponent
   },{
     path: "add-doctor",
