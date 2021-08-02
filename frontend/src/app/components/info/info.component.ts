@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
+import { informacionService } from 'src/app/services/informacion/informacion.service';
 
 @Component({
   selector: 'app-info',
@@ -8,14 +9,19 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./info.component.css'],
 })
 export class InfoComponent implements OnInit {
-  paramsSubscription: Subscription = new Subscription;
+ /* paramsSubscription: Subscription = new Subscription;
 
-  public iddocumento = "";
-  myDate = new Date();
+  public getInformation = "";
+  myDate = new Date();*/
 
+  titulo = this.informacionservice.getInformation();
+  
+ 
   public informacion = {
-    titulo: "Eminem, lorem ipsum dolor imet",
-    imagen: "https://eltiempolv.com/wp-content/uploads/2020/01/13255110_web1_eminemweb.jpg?w=700",
+    
+    
+    /*titulo: this.informacionservice.getInformation(),
+    imagen: "https://www.recursosdeautoayuda.com/wp-content/uploads/2018/01/Consecuencias-del-uso-de-las-drogas.jpg",
     parrafos: [
       {
         parrafo: "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Mauris interdum, diam vulputate mollis lacinia, sem nulla varius urna, sit amet luctus dolor nibh volutpat sapien. Etiam ut velit quis sapien luctus finibus id eu urna. Pellentesque a massa sit amet est volutpat varius. Integer convallis elit eros, et placerat elit suscipit eget. Quisque tincidunt ipsum justo, at facilisis sapien elementum sit amet. Donec tincidunt dapibus dolor a elementum. Sed viverra massa est, ac consequat metuscondimentum in."
@@ -29,17 +35,23 @@ export class InfoComponent implements OnInit {
       {
         parrafo: "Nam a leo ligula. Nullam non nulla ac justo aliquet euismod non eu ipsum. Morbi eleifend ante nec odio tincidunt, et tempus massa consectetur. Aenean id tristique orci. Quisque pulvinar purus dapibus nisl consectetur, ut ornare orci gravida. Sed at porttitor justo. Etiam porta fringilla nibh, sed consectetur augue laoreet ut. Fusce ut cursus nibh."
       }
-    ]
+    ]*/
   }
 
+  ngOnInit(){
+
+  }
+
+  //accediendo a los metodos de getdata de servicios
   constructor(
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private informacionservice: informacionService
   ) {}
 
-  ngOnInit(): void {
+  /*ngOnInit(): void {
     this.paramsSubscription = this.route.params.subscribe(params => {
-      this.iddocumento = params['id'];
+      this.getInformation = params['obtenerInformacion'];
     });
-  }
+  }*/
 
 }
