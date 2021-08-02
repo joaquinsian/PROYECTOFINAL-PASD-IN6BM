@@ -57,7 +57,7 @@ const routes: Routes = [
     path: "add-quotes",
     component: AddQuotesComponent
   },{
-    path: "edit-quotes/:idQuotes",
+    path: "edit-quotes/:idCita",
     component: EditQuotesComponent
   }
 ];

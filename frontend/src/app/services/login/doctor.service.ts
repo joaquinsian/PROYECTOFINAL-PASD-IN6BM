@@ -36,4 +36,14 @@ export class DoctorService{
     const allheaders = headers.set("authorization", token);
     return this.http.delete(this.URL + "/eliminarCitas/" + id, { headers: allheaders})
   }
+
+  citaId(id:any){
+    return this.http.get<any>(this.URL + "/obtenerCitasID/" + id);
+  }
+
+  editarCita(token: any, id: any, cita:any){
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization",token)
+    return this.http.put<any>(this.URL + "/editarCitas/" + id, cita, { headers: allheaders})
+  }
 }

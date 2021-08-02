@@ -21,7 +21,7 @@
               <td> {{x.fecha_cita}} </td>
               <ng-container>
                   <td>
-                    <a class="btn-edit" (click)="aceptarSolicitud(x._id)"><i class="fab fa-bitbucket"></i> Editar</a>
+                    <a class="btn-edit" routerLink="/edit-quotes/{{x._id}}"><i class="fab fa-bitbucket"></i> Editar</a>
                   </td>
                   <td>
                     <a class="btn-cancelar" (click)="eliminarCita(x._id)" > <i class="fa fa-pencil"></i> Eliminar</a>
