@@ -10,6 +10,10 @@ export class QuestionService {
   constructor(private http: HttpClient) { }
 
   getInitialPollByNumber(number: Number) {
-    return this.http.get<any>(this.URL + "/preguntainicial/" + number);;
+    return this.http.get<any>(this.URL + "/preguntainicial/" + number);
+  }
+
+  getQuestionPollByNumber(iduser:any,number: Number) {
+    return this.http.get<any>(this.URL + "/preguntanivel/" + iduser + "/" + number);
   }
 }

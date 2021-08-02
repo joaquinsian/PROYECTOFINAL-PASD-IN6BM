@@ -16,5 +16,15 @@ export class UserResultService {
     const headers = new HttpHeaders();
     const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
     return this.http.post<any>(this.URL + "/agregarencuesta/" + question, {},{headers: allheaders});
+
+  }
+
+  submitUserCommonResult(question:any) {
+    if(!sessionStorage.getItem("authorization")) return;
+
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
+    return this.http.post<any>(this.URL + "/agregardespues/" + question, {},{headers: allheaders});
+    
   }
 }
