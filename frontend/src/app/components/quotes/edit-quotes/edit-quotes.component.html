@@ -1,0 +1,22 @@
+<div id="login-row" class="grid-layout-2">
+  <div class="left-login f-centered-container">
+      <div class="form-with-title-container">
+          <div style="text-align:center">
+              <h2 class="title-form m-b-20">Edita La Cita</h2>
+          </div>
+          <form (ngSubmit)="editarCita()" method="post" ngNativeValidate>
+              <div class="form-div">
+                  <h5>Fecha Cita</h5>
+                  <input [(ngModel)]="updQuote.fecha_cita" name="fecha_cita" required="required" class="input-field w-100" type="date">
+              </div>
+              <input class="btn w-100" type="submit" value="Editar Cita">
+          </form>
+      </div>
+  </div>
+  <div class="right-login">
+      <div style="text-align: center" class="m-b-20">
+          <img style="width: 50%" src="https://www.pngkey.com/png/full/196-1960872_doctors-clipart-doctor-patient-see-doctor-png.png" alt="doctor.png">
+      </div>
+      <h3 style="color: white; font-size: 40px; font-family: 'Rowdies';">Algunas veces las demás personas necesitan de una segunda oportunidad, en tus manos está dársela.</h3>
+  </div>
+</div>

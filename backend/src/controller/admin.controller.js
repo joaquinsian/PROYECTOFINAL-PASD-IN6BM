@@ -64,10 +64,10 @@ async function obtenerUsuarioId(req, res){
     }
 }
 
-//Función para obtener a todos los usuarios pacientes
-async function usuariosPacientes(req, res){
+//Función para obtener a todos los usuarios
+async function todosUsuarios(req, res){
     if(req.user.rol === "Admin"){
-        await Usuario.find({rol: "Paciente"}, (err, usuarios) => {
+        await Usuario.find((err, usuarios) => {
             if(err){
                 return res.status(500).send({mensaje: "Error en la petición"})
             }else if(!usuarios){
@@ -107,6 +107,7 @@ async function editarUsuario(req, res){
 async function eliminarUsuario(req, res){
     if(req.user.rol === "Admin"){
         var idUsuario = req.params.idUsuario;
+        delete params.password;
         await Usuario.findByIdAndDelete(idUsuario, (err, usuarioEliminado) => {
             if(err){
                 return res.status(500).send({mensaje: "Error en la petición"})
@@ -197,7 +198,7 @@ async function rechazarSolicitud(req, res){
 module.exports = {
     adminDefault,
     obtenerUsuarioId,
-    usuariosPacientes,
+    todosUsuarios,
     editarUsuario,
     eliminarUsuario,
     solicitudId,

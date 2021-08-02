@@ -9,7 +9,10 @@ import { informacionService } from 'src/app/services/informacion/informacion.ser
   styleUrls: ['./info.component.css'],
 })
 export class InfoComponent implements OnInit {
+
  /* paramsSubscription: Subscription = new Subscription;
+
+
 
   public getInformation = "";
   myDate = new Date();*/

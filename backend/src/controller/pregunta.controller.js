@@ -1,4 +1,5 @@
 const Pregunta = require("../models/pregunta.model");
+const Juego = require("../models/juego.model");
 
 async function obtenerPreguntas(req, res) {
     await Pregunta.find()
@@ -14,6 +15,32 @@ async function obtenerPreguntaPorId(req, res) {
             res.json(doc)
         })
         .catch(err => console.error(err));
+}
+
+async function obtenerPreguntasInicial(req, res) {
+    const initialfinded = await Juego.findOne({ nivel: "inicial" });
+    const { numero } = req.params;
+
+    if (isNaN(numero)) return res.status(400).json({ error: "No es un numero" });
+
+    Pregunta.findOne({ juego: initialfinded._id, numero })
+        .then(doc => {
+            res.json(doc)
+        })
+        .catch(err => console.error(err));
+}
+
+async function obtenerPreguntasNivel(req, res) {
+    const { numero } = req.params;
+    const initialfinded = await Juego.findOne({ _id: req.params.idjuego });
+    if (isNaN(numero)) return res.status(400).json({ error: "No es un numero" });
+
+    Pregunta.findOne({ juego: initialfinded._id, numero })
+        .then(doc => {
+            res.json(doc)
+        })
+        .catch(err => console.error(err));
+
 }
 
 async function crearPregunta(req, res) {
@@ -45,7 +72,9 @@ async function eliminarPregunta(req, res) {
 
 module.exports = {
     obtenerPreguntas,
+    obtenerPreguntasInicial,
     obtenerPreguntaPorId,
+    obtenerPreguntasNivel,
     crearPregunta,
     editarPregunta,
     eliminarPregunta

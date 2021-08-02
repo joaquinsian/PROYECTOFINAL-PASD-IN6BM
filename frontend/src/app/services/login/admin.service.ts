@@ -27,4 +27,28 @@ export class AdminService{
     const allheaders = headers.set("authorization", token);
     return this.http.get<any>(this.URL + "/rechazarSolicitud/" + id, {headers: allheaders})
   }
+
+  getAllUsers(token: any){
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", token);
+    return this.http.get<any>(this.URL + "/usuarios", {headers: allheaders})
+  }
+
+  eliminarUsuarios(token: any, id: any){
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization",token)
+    return this.http.delete(this.URL + "/eliminarUsuario/" + id, {headers: allheaders})
+  }
+
+  usuarioId(token: any, id: any){
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", token)
+    return this.http.get<any>(this.URL + "/obtenerUsuario/" + id, {headers: allheaders})
+  }
+
+  editUser(token: any, id: any, user: any){
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", token)
+    return this.http.put(this.URL + "/editarUsuario/" + id, user, {headers: allheaders})
+  }
 }

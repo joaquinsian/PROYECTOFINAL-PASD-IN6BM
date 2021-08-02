@@ -1,108 +1,118 @@
 'use strict'
 
-const Citas = require('../models/citas.model'); 
-const Usuario = require('../models/usuario.model')
+const Citas = require('../models/citas.model');
+const Rel_Doc_User = require('../models/rel_doc_user.model')
+const jwt = require('jwt-simple');
+const tiempo = Date.now();
+const hoy = new Date(tiempo);
 
 
 // crear cita desde el usuario doctor, funciona
-function crearCitas(req, res) { 
-    var modelocitas = new Citas();
-    var params = req.body;
-    
+async function crearCitas(req, res) {
+    if(req.user.rol === "Doctor"){
+        var citasModel = new Citas();
+        var params = req.body;
+        if(params.usuario && params.fecha_cita){
+            citasModel.usuario = params.usuario;
+            citasModel.doctor = req.user.sub;
+            citasModel.fecha_cita = params.fecha_cita;
 
-    if (params.fecha_de_cita && params.usuario) {
-        modelocitas.doctor = req.user.sub;
-        modelocitas.usuario = params.usuario ;
-        modelocitas.fecha_de_cita = params.fecha_de_cita;
-       
-
-        modelocitas.save((err, citaGuardada) => {
-            if (err) return res.status(500).send({ mensaje: 'Error al gurdar la cita' })
-
-            if (citaGuardada) {
-                res.status(200).send(citaGuardada)
-            } else {
-                res.status(404).send({ mensaje: 'No se ha podido registrar la cita' })
-            }
-        })
-  
+            citasModel.save((err, citaGuardada) => {
+                if(err){
+                    return res.status(500).send({ mensaje: "Error en la petición" })
+                }else if(!citaGuardada){
+                    return res.status(500).send({ mensaje: "No se ha podido almacenar la cita"})
+                }else{
+                    return res.status(200).send({citaGuardada})
+                }
+            })
+        }else{
+            return res.status(500).send({ mensaje: "No ha completado todos los parámetros"})
+        }
+    }else{
+        return res.status(500).send({mensaje: "No tiene el rol de autorización"})
     }
-
 }
 
-
-//mostrar citas, funciona
+//mostrar citas del doctor
 async function obtenerCitas(req, res) {
-    
-
-   await Citas.find().populate('doctor').exec((err, citas) => {
-
-        if (err) {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Citas.find({doctor: x.sub}).populate('usuario doctor').exec((err, citasDoc) => {
+        if(err){
+            console.log(err);
             return res.status(500).send({ mensaje: "Error en la petición" })
-        } else if (!citas) {
-            return res.status(500).send({ mensaje: "No se han podido obtener las citas" })
-        } else {
-            return res.status(200).send({ citas })
+        }else if(!citasDoc){
+            return res.status(500).send({mensaje: "No se ha podido obtener las citas"})
+        }else{
+            return res.status(200).send({citasDoc})
         }
     })
-
 }
-
 
 //obtener cita por id , funcional
 async function obtenerCitasID(req, res) {
-    var idCita = req.params.idCita
-    
-    await Citas.findById(idCita, (err, cita) => {
-        if (err) {
+    var idCita = req.params.idCita;
+    await Citas.findById(idCita).populate('usuario doctor').exec((err, cita) => {
+        if(err){
             return res.status(500).send({ mensaje: "Error en la petición" })
-        } else if (!cita) {
-            return res.status(500).send({ mensaje: "No se ha podido obtener la cita" })
-        } else {
-            return res.status(200).send({ cita })
+        }else if(!cita){
+            return res.status(500).send({ mensaje: "No se ha podido obtener la cita"})
+        }else{
+            return res.status(200).send({cita})
         }
-    }).populate('doctor')
+    })
 }
-
-
-
 
 //editar cita, funciona con fecha
 async function editarCitas(req, res){
-    var idCita = req.params.idCita;
-    var params = req.body;
-
-    await Citas.findByIdAndUpdate(idCita, params, { new: true }, (err, citaActualizada)=>{
-        if (err) {
-            return res.status(500).send({ mensaje: "Error en la petición" })
-        } else if (!citaActualizada) {
-            return res.status(500).send({ mensaje: "No se ha podido editar la cita" })
-        } else {
-            return res.status(200).send({ citaActualizada })
-        }
-    })
-
-    
+    if(req.user.rol === "Doctor"){
+        var idCita = req.params.idCita;
+        var params = req.body;
+        await Citas.findByIdAndUpdate(idCita, params, {new: true}, (err, citaEditada) => {
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición"})
+            }else if(!citaEditada){
+                return res.status(500).send({ mensaje: "No se ha podido editar la cita"})
+            }else{
+                return res.status(200).send({citaEditada})
+            }
+        })
+    }else{
+        return res.status(500).send({ mensaje: "No tiene el rol de autorización"})
+    }
 }
-
-
 
 //eliminar cita, funciona
 async function eliminarCitas(req, res){
-    const idCita =req.params.idCita;
-
-
-    await Citas.findByIdAndDelete(idCita, (err, citaEliminada)=>{
-        if(err) 
-        return res.status(500).send({ mensaje: 'Error en la petición de eliminar '});
-        
-        if(!citaEliminada) 
-        return res.status(404).send({ mensaje: 'Error al eliminar la cita' });
-
-        return res.status(200).send({ citaEliminada });
-    })
+    if(req.user.rol === "Doctor"){
+        var idCita = req.params.idCita;
+        await Citas.findByIdAndDelete(idCita, (err,citaEliminada) => {
+            if(err){
+                return res.status(500).send({mensaje: "Error en la petición" })
+            }else if(!citaEliminada){
+                return res.status(500).send({ mensaje: "No se ha podido eliminar la cita"})
+            }else{
+                return res.status(200).send({citaEliminada})
+            }
+        })
+    }else{
+        return res.status(500).send({ mensaje: "No tiene el rol de autorización"})
+    }
 }
 
+//Función mis pacientes
+async function misPacientes(req, res){
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    await Rel_Doc_User.find({doctor: x.sub}).populate('usuario doctor').exec((err, misPacientes) => {
+        if(err){
+            return res.status(500).send({ mensaje: "Error en la petición" })
+        }else if(!misPacientes){
+            return res.status(500).send({ mensaje: "No se han podido obtener los pacientes"})
+        }else{
+            return res.status(200).send({misPacientes})
+        }
+    })
+}
 
 
 module.exports = {
@@ -110,5 +120,6 @@ module.exports = {
     obtenerCitas,
     obtenerCitasID,
     editarCitas,
-    eliminarCitas
+    eliminarCitas,
+    misPacientes
 }
