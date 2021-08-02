@@ -4,7 +4,7 @@ const app = require('./app')
 const adminController = require('./src/controller/admin.controller')
 
 mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://u8bsudrljfhbawnh3ikc:JJ0nZ2I0d1ekYja6wjgQ@bqulrrsnavpkw3q-mongodb.services.clever-cloud.com:27017/bqulrrsnavpkw3q', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false }).then(() => {
+mongoose.connect('mongodb://u8bsudrljfhbawnh3ikc:JJ0nZ2I0d1ekYja6wjgQ@bqulrrsnavpkw3q-mongodb.services.clever-cloud.com:27017/bqulrrsnavpkw3q', { useNewUrlParser: true, useUnifiedTopology: true, useFindAndModify: false, useCreateIndex: true }).then(() => {
     console.log("Se encuentra conectado a la base de datos");
 
     crearAdmin();

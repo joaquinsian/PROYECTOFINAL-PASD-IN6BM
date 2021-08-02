@@ -8,7 +8,7 @@ import { Subscription } from 'rxjs';
   styleUrls: ['./info.component.css'],
 })
 export class InfoComponent implements OnInit {
-  paramsSubscription: Subscription = new Subscription;
+  paramsSubscription: Subscription = new Subscription();
 
   public iddocumento = "";
   myDate = new Date();
