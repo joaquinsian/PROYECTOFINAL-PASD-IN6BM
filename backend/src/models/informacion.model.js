@@ -6,9 +6,7 @@ var Schema = mongoose.Schema;
 var informacionSchema = Schema({
     titulo: String,
     ImagenPrincipal: String,
-    parrafos: {
-        parrafo: String
-    }
+    parrafos: String
 }, {
     timestamps: true
 })

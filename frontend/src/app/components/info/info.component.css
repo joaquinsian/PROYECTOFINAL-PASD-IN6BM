@@ -1,4 +1,5 @@
 .info-div {
+    margin-top: 50px;
     background-color: #ddd;
     padding: 80px 6%;
     border-radius: 20px;
@@ -10,7 +11,7 @@
 }
 
 .title-div img {
-    width: 65%;
+    width: 45%;
     box-shadow: 7px 7px 0px 0px #000;
 }
 

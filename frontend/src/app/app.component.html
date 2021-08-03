@@ -7,13 +7,13 @@
             <div class="f-right">
                 <a class="navbar-option" routerLink="/">Inicio</a>
                 <div class="navbar-dropdown-container">
-                    <button class="navbar-option navbar-dropdown-button" >Información <i class="fas fa-caret-down"></i></button>
-                    <div class="navbar-dropdown-options-container">
+                    <button class="navbar-option navbar-dropdown-button" routerLink="/info/historia">Saliendo de las drogas </button>
+                    <!--div class="navbar-dropdown-options-container">
                         <a class="navbar-dropdown-option" routerLink="/info/historia">Historia corta</a>
                         <a class="navbar-dropdown-option" routerLink="/info/prueba2">Historia Corta</a>
                         <a class="navbar-dropdown-option" routerLink="/info/prueba3">Historia Corta</a>
                         <a class="navbar-dropdown-option" routerLink="/info/prueba4">Historia Corta</a>
-                    </div>
+                    </div-->
                 </div> 
                 <ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
                     <a class="navbar-option" routerLink="/signin">Iniciar Sesión</a>

@@ -8,10 +8,10 @@ function agregarInformacion(req, res){
     var modeloinfo = new Informacion();
     var params = req.body;
 
-    if(params.titulo && params.ImagenPrincipal /*&& params.parrafos*/){
+    if(params.titulo && params.ImagenPrincipal && params.parrafos){
         modeloinfo.titulo = params.titulo;
         modeloinfo.ImagenPrincipal = params.ImagenPrincipal;
-        //modeloinfo.parrafos = params.parrafos;
+        modeloinfo.parrafos = params.parrafos;
 
 
         modeloinfo.save((err, save)=>{

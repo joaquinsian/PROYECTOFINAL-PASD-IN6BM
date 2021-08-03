@@ -1,9 +1,8 @@
-
-<div class="info-div">
-    <div class="title-div" *ngFor="let info of miData">
+<div class="info-div" *ngFor="let info of miData"> 
+    <div class="title-div" >
         <div >
             <div >
-                <p>{{info.imagen}}</p>
+                <img [src]="info.ImagenPrincipal">
             </div>
         </div>
 
@@ -11,10 +10,10 @@
 
         <div>
             <div >
-                <p>{{info.titulo}}</p>
+                <h1>{{info.titulo}}</h1>
             </div>
         </div>
-        <i>Publicado el 20/01/2021 por Joaquín Sian</i>
+        <i>{{info.createdAt | date}}</i>
    
     <hr style="margin-bottom: 20px;">
 
@@ -24,7 +23,7 @@
 
     <div >
         <div>
-            <p>{{info.parrafo}}</p>
+            <p>{{info.parrafos}}</p>
         </div>
     </div>
 
