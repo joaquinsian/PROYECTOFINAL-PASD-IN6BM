@@ -11,7 +11,7 @@ export class informacionService {
     // PRUEBA PARA SIAN, ENVIAR SI SE MODIFICA
     //public headersVariable = new HttpHeaders().set('Content-Type', 'application/json');
 
-    private URL = "http://localhost:3000/PASD";
+    private URL = "https://pasd-backend.herokuapp.com/PASD/";
 
     constructor( private http: HttpClient, private router: Router){ }
 

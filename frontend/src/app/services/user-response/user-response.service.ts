@@ -5,7 +5,7 @@ import { HttpClient, HttpHeaders } from "@angular/common/http";
   providedIn: 'root'
 })
 export class UserResponseService {
-  private URL = "http://localhost:3000/PASD";
+  private URL = "https://pasd-backend.herokuapp.com/PASD/";
 
   constructor(private http: HttpClient) { }
 
