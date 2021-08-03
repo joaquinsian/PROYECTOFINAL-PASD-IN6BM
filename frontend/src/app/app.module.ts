@@ -21,6 +21,8 @@ import { AddQuotesComponent } from './components/quotes/add-quotes/add-quotes.co
 import { EditQuotesComponent } from './components/quotes/edit-quotes/edit-quotes.component';
 import { AllUserComponent } from './components/all-user/all-user.component';
 import { EditUserComponent } from './components/all-user/edit-user/edit-user.component';
+import { GetAllScoresComponent } from './components/admin/get-all-scores/get-all-scores.component';
+import { ChatByIdComponent } from './components/chat/chat-by-id/chat-by-id.component';
 
 
 
@@ -42,7 +44,9 @@ import { EditUserComponent } from './components/all-user/edit-user/edit-user.com
     AddQuotesComponent,
     EditQuotesComponent,
     AllUserComponent,
-    EditUserComponent
+    EditUserComponent,
+    GetAllScoresComponent,
+    ChatByIdComponent
   ],
   imports: [
     BrowserModule,

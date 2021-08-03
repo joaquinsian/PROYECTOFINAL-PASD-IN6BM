@@ -1,0 +1,21 @@
+.chat-container {
+    background-color: #ddd;
+    width: 500px;
+}
+
+.fake-board {
+    background-color: #eee;
+    height: 300px;
+}
+
+.cont {
+    padding: 30px 30px;
+}
+
+.message {
+    padding: 14px 16px;
+    background-color: #2980b9;
+    color: white;
+    width: fit-content;
+    border-radius: 3px;
+}

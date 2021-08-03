@@ -7,7 +7,8 @@
             <div class="f-right">
                 <a class="navbar-option" routerLink="/">Inicio</a>
                 <div class="navbar-dropdown-container">
-                    <button class="navbar-option navbar-dropdown-button" style="cursor:pointer" routerLink="/info/historia">Saliendo de las drogas </button>
+                    <button class="navbar-option navbar-dropdown-button" style="cursor:pointer; outline:none" routerLink="/info/historia">Saliendo de las drogas </button>
+
                     <!--div class="navbar-dropdown-options-container">
                         <a class="navbar-dropdown-option" routerLink="/info/historia">Historia corta</a>
                         <a class="navbar-dropdown-option" routerLink="/info/prueba2">Historia Corta</a>
@@ -20,8 +21,14 @@
                     <a class="navbar-option" routerLink="/signup">Registrarse</a>
                 </ng-container>
                 <ng-template #loggedIn>
-                    <a class="navbar-option" routerLink="/awaiting-requests" *ngIf="role === 'Admin'">Solicitudes Pendientes</a>
-                    <a class="navbar-option" routerLink="/all-user" *ngIf="role === 'Admin' ">Todos los Usuarios</a>
+                    <div class="navbar-dropdown-container" *ngIf="role === 'Admin'">
+                        <button class="navbar-option navbar-dropdown-button">Opciones<i class="fas fa-caret-down"></i></button>
+                        <div class="navbar-dropdown-options-container">
+                            <a class="navbar-dropdown-option" routerLink="/awaiting-requests">Solicitudes Pendientes</a>
+                            <a class="navbar-dropdown-option" routerLink="/all-user">Todos los Usuarios</a>
+                            <a class="navbar-dropdown-option" routerLink="/admin/get-scores">Ver Resultados</a>
+                        </div>
+                    </div>
                     <a class="navbar-option" routerLink="/quotes" *ngIf="role === 'Doctor' ">Gestionar Citas</a>
                     <div class="navbar-dropdown-container">
                         <button class="navbar-option navbar-dropdown-button">Usuario <i class="fas fa-caret-down"></i></button>

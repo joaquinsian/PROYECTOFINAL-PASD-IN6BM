@@ -1,6 +1,12 @@
 <div class="all-games-container">
     <div [ngSwitch]="level">
-        <h1 class="m-b-20" style="color:#013220">Mis Juegos</h1>
+        <h1 class="m-b-20" style="color:#013220;font-size:35px">Mis Juegos</h1>
+        <ng-container *ngIf="scores.easy != '' && scores.medium != '' && scores.hard != ''">
+            <div class="m-b-20">
+                <h2 style="font-weight:bold;color: #e74c3c; font-size: 30px;text-shadow: 2px 2px rgba(0,0,0,0.1);"><i class="fas fa-check"></i> GRACIAS POR JUGAR </h2>
+                <p style="font-size: 20px;">Recuerda siempre buscar ayuda y cuidarte a ti mismo</p>
+            </div>
+        </ng-container>
         <div *ngSwitchCase="'low'">
             <h3 class="m-b-20">Nivel de drogadicción: <span style="color:#27ae60">Bajo</span></h3>
             <div class="game-container grid-10 m-b-20">
@@ -10,6 +16,7 @@
                 <div class="game-subcontainer right-container">
                     <h2>Conociéndome</h2>
                     <h4>Nivel: <span style="color:#27ae60"> Fácil</span></h4>
+                    <p style="font-size: 18px; margin-top: 5px;">El primer paso para empezar este camino es conocerse a uno mismo y reconocer nuestros atributos y defectos</p>
                     <ng-container *ngIf="scores.easy !== '' else easyempty">
                         <span class="score">Calificación: {{scores.easy}}%</span>
                     </ng-container>
@@ -31,6 +38,7 @@
                 <div class="game-subcontainer right-container">
                     <h2>Conociéndome</h2>
                     <h4>Nivel: <span style="color:#27ae60"> Fácil</span></h4>
+                    <p style="font-size: 18px; margin-top: 5px;">El primer paso para empezar este camino es conocerse a uno mismo y reconocer nuestros atributos y defectos</p>
                     <ng-container *ngIf="scores.easy !== '' else easyempty">
                         <span class="score">Calificación: {{scores.easy}}%</span>
                     </ng-container>
@@ -49,6 +57,7 @@
                 <div class="game-subcontainer right-container">
                     <h2>Realidad</h2>
                     <h4>Nivel: <span style="color:#d35400"> Medio</span></h4>
+                    <p style="font-size: 18px; margin-top: 5px;">El mundo en el que vivimos posee una variedad de maneras de disfrutar la vida, por eso es importante reconocer cuales podrían ser las maneras para adentrarse en ellas</p>
                     <ng-container *ngIf="scores.medium !== '' else mediumempty">
                         <span class="score">Calificación: {{scores.medium}}%</span>
                     </ng-container>
@@ -67,7 +76,9 @@
                     <i class="icon fas fa-egg"></i>
                 </div>
                 <div class="game-subcontainer right-container">
+                    <h2>Conociendome</h2>
                     <h4>Nivel: <span style="color:#27ae60"> Fácil</span></h4>
+                    <p style="font-size: 18px; margin-top: 5px;">El primer paso para empezar este camino es conocerse a uno mismo y reconocer nuestros atributos y defectos</p>
                     <ng-container *ngIf="scores.easy !== '' else easyempty">
                         <span class="score">Calificación: {{scores.easy}}%</span>
                     </ng-container>
@@ -84,8 +95,9 @@
                     <i class="icon fas fa-star"></i>
                 </div>
                 <div class="game-subcontainer right-container">
-                    <h2>Realidad</h2>
+                    <h2>Entendiendo</h2>
                     <h4>Nivel: <span style="color:#d35400"> Medio</span></h4>
+                    <p style="font-size: 18px; margin-top: 5px;">El mundo en el que vivimos posee una variedad de maneras de disfrutar la vida, por eso es importante reconocer cuales podrían ser las maneras para adentrarse en ellas</p>
                     <ng-container *ngIf="scores.medium !== '' else mediumempty">
                         <span class="score">Calificación: {{scores.medium}}%</span>
                     </ng-container>
@@ -105,6 +117,7 @@
                 <div class="game-subcontainer right-container">
                     <h2>Realidad</h2>
                     <h4>Nivel: <span style="color:#c0392b"> Dificil</span></h4>
+                    <p style="font-size: 18px; margin-top: 5px;">Ahora es momento de disfrutar los regalos de la vida y adentrarse en un nuevo modo de vivir más sano.</p>
                     <ng-container *ngIf="scores.hard !== '' else hardempty">
                         <span class="score">Calificación: {{scores.hard}}%</span>
                     </ng-container>

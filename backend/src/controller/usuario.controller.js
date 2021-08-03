@@ -108,7 +108,7 @@ async function usuarioId(req, res) {
         } else if (!usuarioEncontrado) {
             return res.status(500).send({ mensaje: "No se ha podido obtener el usuario" })
         } else {
-            return res.status(200).send({usuarioEncontrado})
+            return res.status(200).send({ usuarioEncontrado })
         }
     })
 }
@@ -204,62 +204,62 @@ async function elegirDoctor(req, res) {
 }
 
 //Función para eliminar la relación de doctor
-async function eliminarMiDoctor(req, res){
+async function eliminarMiDoctor(req, res) {
     let x = jwt.decode(req.headers["authorization"], "PASD");
-    await Rel_Doc_User.findOneAndDelete({usuario: x.sub}, (err, relacionEliminada) => {
-        if(err){
+    await Rel_Doc_User.findOneAndDelete({ usuario: x.sub }, (err, relacionEliminada) => {
+        if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
-        }else if(!relacionEliminada){
+        } else if (!relacionEliminada) {
             console.log(relacionEliminada);
-            return res.status(500).send({mensaje: "No se ha podido eliminar la relación"})
-        }else{
-            return res.status(200).send({relacionEliminada})
+            return res.status(500).send({ mensaje: "No se ha podido eliminar la relación" })
+        } else {
+            return res.status(200).send({ relacionEliminada })
         }
     })
 }
 
 //Función para obtener el la relación de doctor y progreso
-async function obtenerDoctor(req, res){
+async function obtenerDoctor(req, res) {
     let x = jwt.decode(req.headers["authorization"], "PASD");
-    await Rel_Doc_User.find({usuario: x.sub}).populate('doctor usuario').exec((err, resultado) => {
-        if(err){
+    await Rel_Doc_User.find({ usuario: x.sub }).populate('doctor usuario').exec((err, resultado) => {
+        if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
-        }else if(!resultado){
+        } else if (!resultado) {
             console.log(resultado);
-            return res.status(500).send({ mensaje: "No se ha podido obtener la relación"})
-        }else if(resultado && resultado.length === 0){
-            return res.status(200).send({mensaje: "Aún no contiene doctor"})
-        }else if(resultado && resultado.length >= 1){
-            return res.status(200).send({mensaje: "Contiene doctor"});
+            return res.status(500).send({ mensaje: "No se ha podido obtener la relación" })
+        } else if (resultado && resultado.length === 0) {
+            return res.status(200).send({ mensaje: "Aún no contiene doctor" })
+        } else if (resultado && resultado.length >= 1) {
+            return res.status(200).send({ mensaje: "Contiene doctor" });
         }
     })
 }
 
 //Función obtener datos relación doc
-async function relDoc(req, res){
+async function relDoc(req, res) {
     let x = jwt.decode(req.headers["authorization"], "PASD");
-    await Rel_Doc_User.find({usuario: x.sub}).populate('doctor usuario').exec((err, resultado) => {
-        if(err){
+    await Rel_Doc_User.find({ usuario: x.sub }).populate('doctor usuario').exec((err, resultado) => {
+        if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
-        }else if(!resultado){
-            return res.status(500).send({ mensaje: "No se ha podido obtener la relación"})
-        }else if(resultado && resultado.length === 0){
-            return res.status(200).send({mensaje: "Aún no contiene doctor"})
-        }else if(resultado && resultado.length >= 1){
-            return res.status(200).send({resultado})
+        } else if (!resultado) {
+            return res.status(500).send({ mensaje: "No se ha podido obtener la relación" })
+        } else if (resultado && resultado.length === 0) {
+            return res.status(200).send({ mensaje: "Aún no contiene doctor" })
+        } else if (resultado && resultado.length >= 1) {
+            return res.status(200).send({ resultado })
         }
     })
 }
 
 //Función para obtener la especialidad de los doctores
-async function doctoresDetalle(req, res){
-    await Datos_Doctor.find({solicitud: true}).populate('usuario').exec((err, datos) => {
-        if(err){
+async function doctoresDetalle(req, res) {
+    await Datos_Doctor.find({ solicitud: true }).populate('usuario').exec((err, datos) => {
+        if (err) {
             return res.status(500).send({ mensaje: "Error en la petición" })
-        }else if(!datos){
-            return res.status(500).send({ mensaje: "No se ha podido obtener a los doctores"})
-        }else{
-            return res.status(200).send({datos})
+        } else if (!datos) {
+            return res.status(500).send({ mensaje: "No se ha podido obtener a los doctores" })
+        } else {
+            return res.status(200).send({ datos })
         }
     })
 }

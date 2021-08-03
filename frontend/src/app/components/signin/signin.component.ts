@@ -3,6 +3,7 @@ import { Title } from '@angular/platform-browser';
 import { Router } from '@angular/router';
 import { LoginService } from 'src/app/services/login/login.service';
 import Swal from 'sweetalert2';
+import { AppComponent } from 'src/app/app.component';
 
 @Component({
   selector: 'app-signin',
@@ -16,7 +17,11 @@ export class SigninComponent implements OnInit {
     getToken: true
   }
 
-  constructor(private titleService: Title, private loginService:LoginService,private router:Router) {
+  constructor(
+    private titleService: Title, 
+    private loginService:LoginService,
+    private router:Router,
+    private appComponent:AppComponent) {
     this.titleService.setTitle("Iniciar Sesión");
   }
 
@@ -27,6 +32,7 @@ export class SigninComponent implements OnInit {
     this.loginService.signIn(this.user).subscribe(
       res => {
         sessionStorage.setItem("authorization", res.token);
+        this.appComponent.ngOnInit();
         this.router.navigate(["/"]);
       },
       err => {

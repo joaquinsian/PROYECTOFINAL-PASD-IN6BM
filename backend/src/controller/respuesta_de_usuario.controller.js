@@ -21,7 +21,12 @@ async function obtenerRespuestaDeUsuarioPorId(req, res) {
 async function crearRespuestaDeUsuario(req, res) {
     const { usuario, respuesta } = req.body;
 
-    const preguntafinded = await Pregunta.findOne({ _id: respuesta.pregunta })
+    const preguntafinded = await Pregunta.findOne({ _id: respuesta.pregunta });
+
+    /*
+    const hasresponse = await RespuestaDeUsuario.find({ usuario, "respuesta.pregunta": respuesta.pregunta });
+    if (hasresponse) return res.status(400).json({error: "El usuario tiene una respuesta"});
+    */
 
     let encuestafinded = await Juego.findOne({ nivel: "inicial" });
 

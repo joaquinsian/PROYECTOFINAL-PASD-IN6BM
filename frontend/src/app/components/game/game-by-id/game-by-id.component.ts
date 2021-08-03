@@ -107,7 +107,7 @@ export class GameByIdComponent implements OnInit {
                 confirmButtonText: 'Aceptar'
               }).then((result) => {
                 if (result.isConfirmed) {
-                  this.router.navigate(["/my-user"]);
+                  this.router.navigate(["/my-user/game"]);
                   console.log("FUNCIONAAAAA");
                 }
               })
@@ -127,6 +127,11 @@ export class GameByIdComponent implements OnInit {
         }
       },
       err => {
+        switch (err) {
+          case "El usuario ya ha respondido esta pregunta":
+            Swal.fire("Error", "El usuario ya ha respondido esta pregunta", "error");
+            break;
+        }
         console.error(err);
       }
     )

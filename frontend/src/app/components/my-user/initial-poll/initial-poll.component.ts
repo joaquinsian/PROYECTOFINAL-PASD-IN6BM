@@ -122,6 +122,11 @@ export class InitialPollComponent implements OnInit {
         }
       },
       err => {
+        switch (err.error.error) {
+          case "El usuario tiene una respuesta":
+            Swal.fire("Error", "El usuario ya ha respondido esta pregunta", "error");
+            break;
+        }
         console.error(err);
       }
     )

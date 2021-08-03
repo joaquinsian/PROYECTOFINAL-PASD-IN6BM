@@ -5,7 +5,7 @@ const Juego = require("../models/juego.model");
 const jwt = require('jwt-simple');
 
 async function obtenerResultadosUsuario(req, res) {
-    await ResultadoUsuario.find()
+    await ResultadoUsuario.find().populate("juego").populate("usuario")
         .then(doc => {
             res.json(doc)
         })

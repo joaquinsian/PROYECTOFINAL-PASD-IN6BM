@@ -1,9 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AddDoctorComponent } from './components/add-doctor/add-doctor.component';
+import { GetAllScoresComponent } from './components/admin/get-all-scores/get-all-scores.component';
 import { AllUserComponent } from './components/all-user/all-user.component';
 import { EditUserComponent } from './components/all-user/edit-user/edit-user.component';
 import { AwaitingRequestsComponent } from './components/awaiting-requests/awaiting-requests.component';
+import { ChatByIdComponent } from './components/chat/chat-by-id/chat-by-id.component';
 import { CreateRequestComponent } from './components/create-request/create-request.component';
 import { GameByIdComponent } from './components/game/game-by-id/game-by-id.component';
 import { GameComponent } from './components/game/game.component';
@@ -67,6 +69,12 @@ const routes: Routes = [
   },{
     path: "edit-user/:idUsuario",
     component: EditUserComponent
+  },{
+    path: "admin/get-scores",
+    component:GetAllScoresComponent
+  },{
+    path: "chat/chat-by-id",
+    component:ChatByIdComponent
   }
 ];
 

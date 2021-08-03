@@ -35,4 +35,8 @@ export class UserResultService {
     const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
     return this.http.get<any>(this.URL + "/obtenercalificaciones",{headers: allheaders});
   }
+
+  getAllScores(){
+    return this.http.get<any>(this.URL + "/resultado_de_usuario");
+  }
 }

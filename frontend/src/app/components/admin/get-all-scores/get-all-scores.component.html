@@ -1,0 +1,28 @@
+<h1 class="m-b-20">Todos los resultados</h1>
+
+<ng-container *ngIf="results.length==0;else notnull">
+    <h1 style="color:red;">Aún nadie ha jugado</h1>
+</ng-container>
+
+<ng-template #notnull>
+    <table class="table-standard m-table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Usuario</th>
+                <th>Juego</th>
+                <th>Resultado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let x of results; let i = index" [attr.data-index]="i">
+                <td>{{i+1}}</td>
+                <td>{{x.usuario.nombre}}</td>
+                <td>{{x.usuario.usuario}}</td>
+                <td>{{x.juego.nivel | titlecase}}</td>
+                <td>{{x.resultado}}</td>
+            </tr>
+        </tbody>
+    </table>
+</ng-template>
