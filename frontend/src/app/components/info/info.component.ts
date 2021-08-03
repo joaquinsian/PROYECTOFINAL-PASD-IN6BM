@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { informacionService } from 'src/app/services/informacion/informacion.service';
-import { Informacion } from '../models/informacion.models';
 
 
 
@@ -10,22 +9,24 @@ import { Informacion } from '../models/informacion.models';
   selector: 'app-info',
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.css'],
- 
+
 })
 export class InfoComponent implements OnInit {
-
   public getInformation="";
   myDate = new Date();
- 
+
   paramsSubscription: Subscription = new Subscription;
 
   //public getInformation = "";
-  
 
-  public informacion = {
+
+
+
+  /*public informacion = {
     
     
     titulo: "",
+
     imagen: "https://www.recursosdeautoayuda.com/wp-content/uploads/2018/01/Consecuencias-del-uso-de-las-drogas.jpg",
     parrafos: [
       {
@@ -40,8 +41,13 @@ export class InfoComponent implements OnInit {
       {
         parrafo: "Nam a leo ligula. Nullam non nulla ac justo aliquet euismod non eu ipsum. Morbi eleifend ante nec odio tincidunt, et tempus massa consectetur. Aenean id tristique orci. Quisque pulvinar purus dapibus nisl consectetur, ut ornare orci gravida. Sed at porttitor justo. Etiam porta fringilla nibh, sed consectetur augue laoreet ut. Fusce ut cursus nibh."
       }
+
     ]
-  }
+
+  }*/
+
+  public miData : any;
+
   //accediendo a los metodos de getdata de serviciossSss
   constructor(
     private route: ActivatedRoute,
@@ -50,9 +56,9 @@ export class InfoComponent implements OnInit {
 
   ngOnInit(): void {
     //para los parametros de subscirpcion(transmicion) es igual a las ruta.parametro.suscrito(transmitidos)
-    this.paramsSubscription = this.route.params.subscribe(params => {
+    this.paramsSubscription =this.informacionservice.obtenerInformacion().subscribe(data => {this.miData = data}) /*this.route.params.subscribe(params => {
       this.informacionservice = params['obtenerInformacion'];
-    });
+    });*/
   }
 
 }

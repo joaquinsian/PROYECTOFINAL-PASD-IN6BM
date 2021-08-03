@@ -1,19 +1,33 @@
+
 <div class="info-div">
-    <div class="title-div">
-        <img src={{informacion.imagen}} alt="decoration-image.png">
-        <h1  >{{informacion.titulo}}</h1>
-        <i>Publicado el 20/01/2021 por Joaquín Sian</i>
+    <div class="title-div" *ngFor="let info of miData">
+        <div >
+            <div >
+                <p>{{info.imagen}}</p>
+            </div>
+        </div>
+
     </div>
+
+        <div>
+            <div >
+                <p>{{info.titulo}}</p>
+            </div>
+        </div>
+        <i>Publicado el 20/01/2021 por Joaquín Sian</i>
+   
     <hr style="margin-bottom: 20px;">
 
-    <!-- BORRAR ESTA LINEA, SOLO ES DEMOSTRACION -->
-    <p><!--<b>[(borrar esto) ID de url: {{iddocumento}}]</b>--></p>
+ 
+    <!--<p><b>[(borrar esto) ID de url: {{iddocumento}}]</b></p> -->
     <!-- ########################## -->
 
-    <ng-container *ngFor="let x of informacion.parrafos">
-        <p class="paragraph">
-            {{x.parrafo}}
-        </p>
-        <br>
-    </ng-container>
+    <div >
+        <div>
+            <p>{{info.parrafo}}</p>
+        </div>
+    </div>
+
+
 </div>
+
