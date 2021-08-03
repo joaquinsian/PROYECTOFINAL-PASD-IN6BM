@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { GameService } from 'src/app/services/game/game.service';
 import { Title } from '@angular/platform-browser';
+import { UserResultService } from 'src/app/services/user-result/user-result.service';
 
 @Component({
   selector: 'app-game',
@@ -12,13 +13,25 @@ export class GameComponent implements OnInit {
   public games = [{
     _id: "",
     nivel: ""
-  }]
-  constructor(private gameService: GameService, private titleService: Title) {
+  }];
+
+  public scores = {
+    easy: "",
+    medium: "",
+    hard: ""
+  }
+
+  constructor(
+    private gameService: GameService,
+    private titleService: Title,
+    private userResultService: UserResultService,
+  ) {
     this.titleService.setTitle("Mis Juegos");
   }
 
   ngOnInit(): void {
     this.verifyMyGames();
+    this.getMyScores();
   }
 
   verifyMyGames() {
@@ -42,4 +55,32 @@ export class GameComponent implements OnInit {
       err => { console.error(err) }
     )
   }
+
+  getMyScores() {
+    this.userResultService.getMyScores().subscribe(
+      res => {
+        console.log(res);
+        res.forEach(x => {
+          switch (x.juego.nivel) {
+            case "facil":
+              console.log("Es facil");
+              this.scores.easy = x.resultado;
+              break;
+            case "medio":
+              console.log("Es medio");
+              this.scores.medium = x.resultado;
+              break;
+            case "dificil":
+              console.log("Es dificil");
+              this.scores.hard = x.resultado;
+              break;
+          }
+        });
+      },
+      err => {
+        console.error(err);
+      }
+    )
+  }
+
 }

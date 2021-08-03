@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { informacionService } from 'src/app/services/informacion/informacion.service';
+// import { informacionService } from 'src/app/services/informacion/informacion.service';
 
 
 
@@ -21,9 +21,13 @@ export class InfoComponent implements OnInit {
 
 
 
+  //titulo = this.informacionservice.getInformation();
+  public iddocumento = "laksjd";
+ 
   public informacion = {
-
-    ttitulo: "",
+    
+    
+    titulo: "El Pepe",
     imagen: "https://www.recursosdeautoayuda.com/wp-content/uploads/2018/01/Consecuencias-del-uso-de-las-drogas.jpg",
     parrafos: [
       {
@@ -38,22 +42,26 @@ export class InfoComponent implements OnInit {
       {
         parrafo: "Nam a leo ligula. Nullam non nulla ac justo aliquet euismod non eu ipsum. Morbi eleifend ante nec odio tincidunt, et tempus massa consectetur. Aenean id tristique orci. Quisque pulvinar purus dapibus nisl consectetur, ut ornare orci gravida. Sed at porttitor justo. Etiam porta fringilla nibh, sed consectetur augue laoreet ut. Fusce ut cursus nibh."
       }
-
     ]
   }
+
 
   //accediendo a los metodos de getdata de serviciossSss
   constructor(
     private route: ActivatedRoute,
-    private informacionservice: informacionService
+    // private informacionservice: informacionService
   ) {}
 
+  
   ngOnInit(): void {
     //para los parametros de subscirpcion(transmicion) es igual a las ruta.parametro.suscrito(transmitidos)
+    /*
     this.paramsSubscription = this.route.params.subscribe(params => {
       this.informacionservice = params['obtenerInformacion'];
     });
+    */
   }
+  
 
 }
 
