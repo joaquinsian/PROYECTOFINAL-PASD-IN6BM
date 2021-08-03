@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   providedIn: 'root'
 })
 export class LoginService {
-  private URL = "https://pasd-backend.herokuapp.com/PASD/";
+  private URL = "https://pasd-backend.herokuapp.com/PASD";
 
   constructor(private http: HttpClient, private router: Router) { }
 
