@@ -24,13 +24,13 @@ export class InfoComponent implements OnInit {
   //accediendo a los metodos de getdata de serviciossSss
   constructor(
     private route: ActivatedRoute,
-    // private informacionservice: informacionService
+    private informacionservice: informacionService
   ) {}
 
   
   ngOnInit(): void {
     //para los parametros de subscirpcion(transmicion) es igual a las ruta.parametro.suscrito(transmitidos)
-    this.paramsSubscription =this.informacionservice.obtenerInformacion().subscribe(data => {this.miData = data.informacionEncontrada}) /*this.route.params.subscribe(params => {
+    this.paramsSubscription = this.informacionservice.obtenerInformacion().subscribe(data => {this.miData = data.informacionEncontrada}) /*this.route.params.subscribe(params => {
       this.informacionservice = params['obtenerInformacion'];
     });*/
   }
