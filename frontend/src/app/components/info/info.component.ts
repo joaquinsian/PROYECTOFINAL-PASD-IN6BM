@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { informacionService } from 'src/app/services/informacion/informacion.service';
+import { informacionService } from '../../../../../Frontend/src/app/services/informacion/informacion.service';
 
 
 
