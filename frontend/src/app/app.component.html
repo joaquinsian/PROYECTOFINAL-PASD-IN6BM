@@ -14,13 +14,13 @@
                         <a class="navbar-dropdown-option" routerLink="/info/prueba3">Historia Corta</a>
                         <a class="navbar-dropdown-option" routerLink="/info/prueba4">Historia Corta</a>
                     </div>
-                </div> 
+                </div>
                 <ng-container *ngIf="!loginService.loggedIn(); else loggedIn">
                     <a class="navbar-option" routerLink="/signin">Iniciar Sesión</a>
                     <a class="navbar-option" routerLink="/signup">Registrarse</a>
                 </ng-container>
                 <ng-template #loggedIn>
-                  <a class="navbar-option" routerLink="/awaiting-requests" *ngIf="role === 'Admin' ">Solicitudes Pendientes</a>
+                  <a class="navbar-option" routerLink="/awaiting-requests" *ngIf="role === 'Admin'">Solicitudes Pendientes</a>
                   <a class="navbar-option" routerLink="/all-user" *ngIf="role === 'Admin' ">Todos los Usuarios</a>
                   <a class="navbar-option" routerLink="/quotes" *ngIf="role === 'Doctor' ">Gestionar Citas</a>
                     <div class="navbar-dropdown-container">
