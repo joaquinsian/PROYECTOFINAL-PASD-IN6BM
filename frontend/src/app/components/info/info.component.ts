@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-// import { informacionService } from 'src/app/services/informacion/informacion.service';
 
 
 
@@ -25,8 +24,6 @@ export class InfoComponent implements OnInit {
   public iddocumento = "laksjd";
  
   public informacion = {
-    
-    
     titulo: "El Pepe",
     imagen: "https://www.recursosdeautoayuda.com/wp-content/uploads/2018/01/Consecuencias-del-uso-de-las-drogas.jpg",
     parrafos: [
