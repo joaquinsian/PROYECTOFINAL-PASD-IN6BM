@@ -7,7 +7,7 @@ const tiempo = Date.now();
 const hoy = new Date(tiempo);
 
 
-// crear cita desde el usuario doctor, funciona
+// crear cita desde el usuario doctor, funcionaPrueba
 async function crearCitas(req, res) {
     if(req.user.rol === "Doctor"){
         var citasModel = new Citas();
