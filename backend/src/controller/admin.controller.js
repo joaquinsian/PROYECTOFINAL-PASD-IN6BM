@@ -107,7 +107,7 @@ async function editarUsuario(req, res){
 async function eliminarUsuario(req, res){
     if(req.user.rol === "Admin"){
         var idUsuario = req.params.idUsuario;
-        delete params.password;
+        
         await Usuario.findByIdAndDelete(idUsuario, (err, usuarioEliminado) => {
             if(err){
                 return res.status(500).send({mensaje: "Error en la petición"})
