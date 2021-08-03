@@ -10,10 +10,15 @@
                 <div class="game-subcontainer right-container">
                     <h2>Conociéndome</h2>
                     <h4>Nivel: <span style="color:#27ae60"> Fácil</span></h4>
-                    <span class="score">Calificación: 100%</span>
-                    <div>
-                        <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[0]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
-                    </div>
+                    <ng-container *ngIf="scores.easy !== '' else easyempty">
+                        <span class="score">Calificación: {{scores.easy}}%</span>
+                    </ng-container>
+                    <ng-template #easyempty>
+                        <div>
+                            <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[0]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                        </div>
+                    </ng-template>
+
                 </div>
             </div>
         </div>
@@ -26,10 +31,14 @@
                 <div class="game-subcontainer right-container">
                     <h2>Conociéndome</h2>
                     <h4>Nivel: <span style="color:#27ae60"> Fácil</span></h4>
-                    <span class="score">Calificación: 100%</span>
-                    <div>
-                        <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[0]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
-                    </div>
+                    <ng-container *ngIf="scores.easy !== '' else easyempty">
+                        <span class="score">Calificación: {{scores.easy}}%</span>
+                    </ng-container>
+                    <ng-template #easyempty>
+                        <div>
+                            <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[0]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                        </div>
+                    </ng-template>
                 </div>
             </div>
 
@@ -40,10 +49,14 @@
                 <div class="game-subcontainer right-container">
                     <h2>Realidad</h2>
                     <h4>Nivel: <span style="color:#d35400"> Medio</span></h4>
-                    <span class="score">Calificación: 100%</span>
-                    <div>
-                        <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[1]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
-                    </div>
+                    <ng-container *ngIf="scores.medium !== '' else mediumempty">
+                        <span class="score">Calificación: {{scores.medium}}%</span>
+                    </ng-container>
+                    <ng-template #mediumempty>
+                        <div>
+                            <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[1]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                        </div>
+                    </ng-template>
                 </div>
             </div>
         </div>
@@ -54,12 +67,15 @@
                     <i class="icon fas fa-egg"></i>
                 </div>
                 <div class="game-subcontainer right-container">
-                    <h2>Conociéndome</h2>
                     <h4>Nivel: <span style="color:#27ae60"> Fácil</span></h4>
-                    <span class="score">Calificación: 100%</span>
-                    <div>
-                        <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[0]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
-                    </div>
+                    <ng-container *ngIf="scores.easy !== '' else easyempty">
+                        <span class="score">Calificación: {{scores.easy}}%</span>
+                    </ng-container>
+                    <ng-template #easyempty>
+                        <div>
+                            <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[0]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                        </div>
+                    </ng-template>
                 </div>
             </div>
 
@@ -70,10 +86,15 @@
                 <div class="game-subcontainer right-container">
                     <h2>Realidad</h2>
                     <h4>Nivel: <span style="color:#d35400"> Medio</span></h4>
-                    <span class="score">Calificación: 100%</span>
-                    <div>
-                        <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[1]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
-                    </div>
+                    <ng-container *ngIf="scores.medium !== '' else mediumempty">
+                        <span class="score">Calificación: {{scores.medium}}%</span>
+                    </ng-container>
+                    <ng-template #mediumempty>
+                        <div>
+                            <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[1]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                        </div>
+                    </ng-template>
+
                 </div>
             </div>
 
@@ -82,12 +103,17 @@
                     <i class="icon fas fa-flag"></i>
                 </div>
                 <div class="game-subcontainer right-container">
-                    <h2>Lorem Ipsum</h2>
+                    <h2>Realidad</h2>
                     <h4>Nivel: <span style="color:#c0392b"> Dificil</span></h4>
-                    <span class="score">Calificación: 100%</span>
-                    <div>
-                        <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[2]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
-                    </div>
+                    <ng-container *ngIf="scores.hard !== '' else hardempty">
+                        <span class="score">Calificación: {{scores.hard}}%</span>
+                    </ng-container>
+                    <ng-template #hardempty>
+                        <div>
+                            <button class="btn start-game" routerLink="/my-user/game/game-by-id/{{games[2]._id}}/1">Empezar Juego <i class="fas fa-angle-double-right"></i></button>
+                        </div>
+                    </ng-template>
+
                 </div>
             </div>
         </div>

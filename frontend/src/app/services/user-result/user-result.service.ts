@@ -27,4 +27,12 @@ export class UserResultService {
     return this.http.post<any>(this.URL + "/agregardespues/" + question, {},{headers: allheaders});
     
   }
+
+  getMyScores(){
+    if(!sessionStorage.getItem("authorization")) return;
+
+    const headers = new HttpHeaders();
+    const allheaders = headers.set("authorization", sessionStorage.getItem("authorization"));
+    return this.http.get<any>(this.URL + "/obtenercalificaciones",{headers: allheaders});
+  }
 }

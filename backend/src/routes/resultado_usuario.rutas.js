@@ -7,6 +7,7 @@ const md_autenticacion = require('../middlewares/authenticated');
 var api = express.Router();
 api.get('/resultado_de_usuario', resultado_usuarioController.obtenerResultadosUsuario);
 api.get('/resultado_de_usuario/:id', resultado_usuarioController.obtenerResultadoUsuarioPorId);
+api.get("/obtenercalificaciones", resultado_usuarioController.obtenerMisCalificaciones);
 api.post('/agregardespues/:idpregunta', resultado_usuarioController.agregarResultadoAlFinalizarElJuego);
 api.post("/agregarencuesta/:idpregunta", resultado_usuarioController.agregarEncuestaInicialAlFinalizarElJuego)
 api.post('/resultado_de_usuario', resultado_usuarioController.crearResultadoUsuario);

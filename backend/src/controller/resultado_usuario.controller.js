@@ -98,6 +98,15 @@ async function agregarEncuestaInicialAlFinalizarElJuego(req, res) {
 
 }
 
+async function obtenerMisCalificaciones(req, res) {
+    let x = jwt.decode(req.headers["authorization"], "PASD");
+    const idusuario = x.sub;
+
+    const myscores = await ResultadoUsuario.find({ usuario: idusuario }).populate("juego");
+
+    res.json(myscores);
+}
+
 async function editarResultadoUsuario(req, res) {
     const { juego, usuario, resultado } = req.body;
     await ResultadoUsuario.findByIdAndUpdate(req.params.id, { juego, usuario, resultado })
@@ -119,6 +128,7 @@ module.exports = {
     obtenerResultadosUsuario,
     obtenerResultadoUsuarioPorId,
     agregarResultadoAlFinalizarElJuego,
+    obtenerMisCalificaciones,
     agregarEncuestaInicialAlFinalizarElJuego,
     crearResultadoUsuario,
     editarResultadoUsuario,

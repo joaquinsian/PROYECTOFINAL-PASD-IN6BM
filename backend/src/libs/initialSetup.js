@@ -1,6 +1,7 @@
 'use strict'
 const modelojuego = require("../models/juego.model")
-const Pregunta = require("../models/pregunta.model")
+const Pregunta = require("../models/pregunta.model");
+const Info = require("../models/informacion.model")
 
 async function crearJuego() {
     try {
@@ -660,6 +661,7 @@ async function agregarPreguntas() {
     // MOSTRARLOS EN CONSOLA
     console.log(values);
 }
+
 
 module.exports = {
     crearJuego,
