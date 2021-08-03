@@ -37,7 +37,7 @@ async function crearCitas(req, res) {
 //mostrar citas del doctor
 async function obtenerCitas(req, res) {
     let x = jwt.decode(req.headers["authorization"], "PASD");
-    await Citas.find({doctor: x.sub}).populate('usuario doctor').exec((err, citasDoc) => {
+    await Citas.find({doctor: x.sub}).sort({fecha_cita: 1}).populate('usuario doctor').exec((err, citasDoc) => {
         if(err){
             console.log(err);
             return res.status(500).send({ mensaje: "Error en la petición" })

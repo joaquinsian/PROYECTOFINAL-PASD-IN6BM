@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
-import { informacionService } from 'src/app/services/informacion/informacion.service';
+//import { informacionService } from 'src/app/services/informacion/informacion.service';
 
 @Component({
   selector: 'app-info',
@@ -17,12 +17,12 @@ export class InfoComponent implements OnInit {
   public getInformation = "";
   myDate = new Date();*/
 
-  titulo = this.informacionservice.getInformation();
-  
- 
+  //titulo = this.informacionservice.getInformation();
+
+
   public informacion = {
-    
-    
+
+
     /*titulo: this.informacionservice.getInformation(),
     imagen: "https://www.recursosdeautoayuda.com/wp-content/uploads/2018/01/Consecuencias-del-uso-de-las-drogas.jpg",
     parrafos: [
@@ -48,7 +48,7 @@ export class InfoComponent implements OnInit {
   //accediendo a los metodos de getdata de servicios
   constructor(
     private route: ActivatedRoute,
-    private informacionservice: informacionService
+    //private informacionservice: informacionService
   ) {}
 
   /*ngOnInit(): void {
