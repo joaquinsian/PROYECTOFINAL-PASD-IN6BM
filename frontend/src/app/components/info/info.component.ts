@@ -2,28 +2,30 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { informacionService } from 'src/app/services/informacion/informacion.service';
+import { Informacion } from '../models/informacion.models';
+
+
 
 @Component({
   selector: 'app-info',
   templateUrl: './info.component.html',
   styleUrls: ['./info.component.css'],
+ 
 })
 export class InfoComponent implements OnInit {
 
- /* paramsSubscription: Subscription = new Subscription;
-
-
-
-  public getInformation = "";
-  myDate = new Date();*/
-
-  titulo = this.informacionservice.getInformation();
-  
+  public getInformation="";
+  myDate = new Date();
  
+  paramsSubscription: Subscription = new Subscription;
+
+  //public getInformation = "";
+  
+
   public informacion = {
     
     
-    /*titulo: this.informacionservice.getInformation(),
+    titulo: "",
     imagen: "https://www.recursosdeautoayuda.com/wp-content/uploads/2018/01/Consecuencias-del-uso-de-las-drogas.jpg",
     parrafos: [
       {
@@ -38,23 +40,36 @@ export class InfoComponent implements OnInit {
       {
         parrafo: "Nam a leo ligula. Nullam non nulla ac justo aliquet euismod non eu ipsum. Morbi eleifend ante nec odio tincidunt, et tempus massa consectetur. Aenean id tristique orci. Quisque pulvinar purus dapibus nisl consectetur, ut ornare orci gravida. Sed at porttitor justo. Etiam porta fringilla nibh, sed consectetur augue laoreet ut. Fusce ut cursus nibh."
       }
-    ]*/
+    ]
   }
-
-  ngOnInit(){
-
-  }
-
-  //accediendo a los metodos de getdata de servicios
+  //accediendo a los metodos de getdata de serviciossSss
   constructor(
     private route: ActivatedRoute,
     private informacionservice: informacionService
   ) {}
 
-  /*ngOnInit(): void {
+  ngOnInit(): void {
+    //para los parametros de subscirpcion(transmicion) es igual a las ruta.parametro.suscrito(transmitidos)
     this.paramsSubscription = this.route.params.subscribe(params => {
-      this.getInformation = params['obtenerInformacion'];
+      this.informacionservice = params['obtenerInformacion'];
     });
-  }*/
+  }
 
 }
+
+ /*constructor(private _informacionservice: informacionService) {
+    this.idInformacionModel = new Informacion("","","");
+   }*/
+
+
+
+  /*obtenerInformacion(){
+    this._informacionservice.obtenerInformacion().subscribe(
+      response => {
+        this.informacion = response.informacionEncontrados;
+      },
+      error => {
+        console.log(<any>error);
+      }
+    )
+  }*/
